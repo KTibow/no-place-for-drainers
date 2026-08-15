@@ -76,7 +76,20 @@ export async function buildDossier(site: LiveSite, track: string): Promise<Dossi
     title: titleOf(html),
     metas: metasOf(html),
     fields: fieldsOf(html),
-    hosts: hostsIn(corpus),
+    /**
+     * Read from the page and the bundle strings, NOT from `corpus`.
+     *
+     * `essence()` records what it found as `HOST github.com` — the host alone,
+     * scheme discarded — and `hostsIn` matches on `https?://`. So scanning the
+     * corpus for hosts re-scanned text that had already had the scheme removed
+     * and found nothing, and every page whose URLs live only in href/src
+     * attributes reported `HOSTS (none)` to both the classifier and the feed.
+     * 28 of 82 published records carry an empty `outboundHosts`; 20 of those
+     * have iocs the LLM had to recover from PAGE SOURCE instead. Bundled pages
+     * were unaffected and hid it — `jsLiterals` keeps whole URLs, so the corpus
+     * still had `https://` in it for exactly the pages that get bundles.
+     */
+    hosts: hostsIn(`${html}\n${bundleCorpus}`),
     visible: visible.slice(0, 2500),
     corpus,
     bundleCorpus,

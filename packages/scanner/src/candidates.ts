@@ -153,11 +153,32 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
   }
 
   for (const repo of repos) {
-    // Forks stay here. A fork keeps the upstream's name, so most guess a
-    // hostname the upstream already owns — waste, but the lure filter below
-    // removes ~98% of names before they cost a request. The ~9% of forks that
-    // were renamed are worth the rest: a forked kit under a new name is what
-    // repackaging looks like.
+    // No forks. This path is entirely vercel, and vercel is where the request
+    // budget is measured in dozens — so what it buys has to be a *novel* lead,
+    // something nobody has scanned or reported yet. A fork is by construction a
+    // copy of something already public, which is the one thing that cannot be
+    // novel. Even the repackaging case, which used to justify keeping renamed
+    // forks here, is a kit that already exists somewhere upstream.
+    //
+    // Unrenamed forks were worse than unproductive. The guess is *derived from*
+    // the name, so a fork that kept the upstream's name guesses the hostname the
+    // upstream itself deployed to — every time, not by coincidence. The probe
+    // then finds the upstream's live site and files it under the forker, which
+    // is the error the homepage path above refuses for the same reason: it
+    // records somebody as the owner of a site they never deployed. Seen in the
+    // wild — `jiandiao/codex-auth-helper`, a fork twenty minutes old, was
+    // published as the operator of codex-auth-helper.vercel.app while the page
+    // itself linked to `zhishile/codex-auth-helper`, its parent.
+    //
+    // Measured on 2,000 consecutive new repos: 50 pass the name and lure gates,
+    // 7 of those are forks. So this hands 14% of the guess budget back to names
+    // that might actually be new, and the 7 it drops are one coursework repo
+    // forked by three separate students, `mytonwallet` under someone else's
+    // account, and a `WPF-Login` demo.
+    //
+    // The deployment path keeps forks on purpose: a fork's deployment record is
+    // its own, so there is no misattribution and no guessing involved.
+    if (repo.isFork) continue;
     const base = normalizeName(repo.nameWithOwner);
     if (base.length < MIN_GUESS_NAME_LENGTH) continue;
     // Guesses are all on the rationed provider, so the same rule applies:
