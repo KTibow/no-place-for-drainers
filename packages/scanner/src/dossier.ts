@@ -7,6 +7,7 @@
  * reads `render()`. Neither gets to see evidence the other did not.
  */
 import {
+  BUNDLE_SOURCE_MAX_CHARS,
   DOSSIER_MAX_CHARS,
   LLM_SOURCE_MAX_CHARS,
   DOSSIER_MAX_EVIDENCE_LINES,
@@ -44,6 +45,7 @@ export async function buildDossier(site: LiveSite, track: string): Promise<Dossi
   const visible = stripTags(html);
   const pageCorpus = essence(html);
   let bundleCorpus = '';
+  let bundleSource = '';
   let corpus = pageCorpus;
   let jsBytes = 0;
   const bundles: string[] = [];
@@ -58,7 +60,13 @@ export async function buildDossier(site: LiveSite, track: string): Promise<Dossi
       bundles.push(url);
       // Scan the FULL literal set of each bundle: truncating per-bundle fills
       // the budget with framework internals before reaching the app's own copy.
-      bundleCorpus = `${bundleCorpus}\n${jsLiterals(decode(bundle.body))}`.slice(0, MAX_CORPUS_CHARS);
+      const js = decode(bundle.body);
+      // Small enough to read? Show the code. Literals are a fallback for
+      // bundles too large to be anything but library output.
+      if (js.length <= BUNDLE_SOURCE_MAX_CHARS && bundleSource.length < LLM_SOURCE_MAX_CHARS) {
+        bundleSource += `\n\n/* ---- ${url} (${js.length}b) ---- */\n${js}`;
+      }
+      bundleCorpus = `${bundleCorpus}\n${jsLiterals(js)}`.slice(0, MAX_CORPUS_CHARS);
       corpus = `${pageCorpus}\n${bundleCorpus}`.slice(0, MAX_CORPUS_CHARS);
     }
   }
@@ -78,7 +86,13 @@ export async function buildDossier(site: LiveSite, track: string): Promise<Dossi
     // inline and little prose looks like a shell and would be excluded, which
     // is exactly the case this exists for. Bundles are never shipped either
     // way; they stay distilled.
-    source: readableSource(html).length <= LLM_SOURCE_MAX_CHARS ? readableSource(html) : '',
+    source: [
+      readableSource(html).length <= LLM_SOURCE_MAX_CHARS ? readableSource(html) : '',
+      bundleSource,
+    ]
+      .filter(Boolean)
+      .join('\n')
+      .slice(0, LLM_SOURCE_MAX_CHARS),
     htmlBytes: html.length,
     jsBytes,
     bundles,

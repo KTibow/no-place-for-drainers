@@ -183,6 +183,18 @@ export const DOSSIER_MAX_CHARS = 9000;
  * selection and thresholds are untouched.
  */
 export const LLM_SOURCE_MAX_CHARS = 200_000;
+/**
+ * Per-bundle ceiling for shipping a script's source rather than only its string
+ * literals. Sized to separate hand-written scripts from frameworks: a tracking
+ * beacon is ~2 KB and contains its whole purpose in readable form, while a
+ * Next.js or ethers bundle is hundreds of KB of library code that adds nothing.
+ *
+ * Prompted by a page whose entire dossier was 718 characters because the
+ * exfiltration lived in an external 2 KB file. Literals told the classifier a
+ * Telegram endpoint existed; the source would have shown it sending the
+ * visitor's IP on page load.
+ */
+export const BUNDLE_SOURCE_MAX_CHARS = 32_000;
 export const DOSSIER_MAX_EVIDENCE_LINES = 60;
 
 // ── stage 5: detection ──────────────────────────────────────────────────────
