@@ -7,32 +7,46 @@ import { fileURLToPath } from 'node:url';
 // ── stage 1: /repositories walk ─────────────────────────────────────────────
 /**
  * How far back to look. Runs every 2 hours (see the workflow), so a 4 hour
- * window is two cadences deep — enough that a single skipped or badly delayed
- * scheduled run cannot open a gap, and Actions does both.
+ * window is two cadences deep: it takes two consecutive skipped or failed runs
+ * for a repo to go unseen, and Actions skips and delays routinely.
+ *
+ * Six hours was tried and reverted. It gives a third look, but a full 6 hour
+ * walk is ~978 requests and the workflow token allows 1,000 an hour per
+ * repository — so one manual dispatch landing in the same hour as the schedule
+ * would exhaust the budget, and the rate-limit guard responds by sleeping until
+ * reset. Trading a rare two-consecutive-failure gap for a plausible hour-long
+ * hang is a bad trade.
  *
  * The resulting 2x overlap is not waste. A repo enters the walk when it is
  * created, but the deployment often lands later, so the second look at a repo
  * is the one that finds a site that was not live the first time. Duplicate
  * findings cost nothing downstream: the site dedupes by label.
  *
- * Shorter windows also sample better. At ~9,900 new public repos an hour, four
- * hours is ~39,700 — comfortably under REPO_LIMIT, so the cap stops binding and
- * every run covers its whole window instead of half of it.
+ * Deeper overlap is not waste here: a repo enters the walk when it is created,
+ * but its deployment record appears later, so the second and third look are the
+ * ones that find a site the first pass could not have seen.
  */
 export const WINDOW_HOURS = 4;
 /** GitHub's search index lags reality; never treat the last N minutes as head. */
 export const HEAD_LAG_MINUTES = 15;
 /**
- * Ceiling on repos hydrated per run, and a safety valve rather than a throttle:
- * at a 4 hour window it sits above the ~39,700 repos actually in range, so the
- * walk exhausts the window and the cap never binds. It exists to stop a
- * mis-set window from spending the token's whole hourly budget in one run.
+ * Ceiling on repos hydrated per run — a safety valve, not a throttle. The
+ * window is what should decide coverage; this only exists to stop a mis-set
+ * window from spending the token's whole hourly budget in one run.
  *
- * Costing, since that budget is the real limit: a full 4 hour walk is ~397 REST
- * pages plus ~133 GraphQL calls, against the 1,000 requests/hour the workflow
- * token allows per repository. One run every two hours leaves ample headroom.
+ * It had quietly stopped being a safety valve. Measured creation is ~12,200 new
+ * public repos an hour, so a 4 hour window holds ~48,900 and the old 50,000 cap
+ * was 98% consumed. Any rise in creation rate and shards start
+ * stopping early, dropping the tail of each id slice, which is exactly what
+ * "letting repos slip by" looks like — and silently, since a truncated shard
+ * looks identical to an exhausted one. walkNewRepos now says when it binds.
+ *
+ * Costing, since the token budget is the real limit: a full 4 hour walk is ~489
+ * REST pages plus ~163 GraphQL calls against 1,000 requests/hour, and one run
+ * every two hours halves that per hour. The cap now sits ~60% above the window
+ * so creation would have to rise by half before it binds again.
  */
-export const REPO_LIMIT = 50_000;
+export const REPO_LIMIT = 80_000;
 /** Parallel walkers, each covering an equal slice of the repo-id range. */
 export const WALK_SHARDS = 8;
 /** GraphQL node hydration: 300 nodes = 1 rate-limit point. */

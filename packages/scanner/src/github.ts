@@ -119,6 +119,7 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
 
   const collected: Repo[] = [];
   let pages = 0;
+  let truncated = 0;
 
   await pool(
     Array.from({ length: WALK_SHARDS }, (_, i) => i),
@@ -151,6 +152,17 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
       }
       await drain(true);
 
+      if (taken >= perShard && since < until) {
+        // Hit the cap with range left over: the tail of this slice is simply
+        // never looked at, and a truncated shard is indistinguishable from an
+        // exhausted one unless it says so.
+        truncated++;
+        log.warn(
+          log.MAIN,
+          `shard ${shardIndex} hit the ${perShard} repo cap with ids ${since}..${until} unwalked — ` +
+            `coverage truncated, raise REPO_LIMIT`,
+        );
+      }
       log.info(log.MAIN, `shard ${shardIndex}: ids ${from}..${until} → ${hydrated.length} hydrated`);
       collected.push(...hydrated);
     },
