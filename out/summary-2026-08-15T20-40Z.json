@@ -1,0 +1,94 @@
+{
+  "generated": "2026-08-15T21:01:09.529Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-15T16:40:57Z",
+  "repos": 55119,
+  "candidates": 7875,
+  "candidatesByName": 1266,
+  "candidatesByHomepage": 130,
+  "candidatesByDeployment": 6477,
+  "live": 5816,
+  "dossiers": 5809,
+  "triaged": 231,
+  "confirmed": 22,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "404": 654,
+    "410": 2,
+    "live": 5816,
+    "protected": 98,
+    "err-ECONNRESET": 1,
+    "err-provider-blocked": 1301,
+    "err-ENOTFOUND": 3
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1458,
+      "live": 18,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 38,
+        "410": 2,
+        "live": 18,
+        "protected": 98,
+        "err-ECONNRESET": 1,
+        "err-provider-blocked": 1301
+      },
+      "dossiers": 18,
+      "hostnameLane": 18,
+      "contentLane": 3,
+      "triaged": 18,
+      "confirmed": 3,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 185.8
+    },
+    "open": {
+      "name": "open",
+      "candidates": 6417,
+      "live": 5798,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 616,
+        "live": 5798,
+        "err-ENOTFOUND": 3
+      },
+      "dossiers": 5791,
+      "hostnameLane": 181,
+      "contentLane": 37,
+      "triaged": 213,
+      "confirmed": 19,
+      "canaryOutcomes": [],
+      "elapsedSec": 478.37
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 173,
+      "issuedBeforeFirstTrip": 145,
+      "trips": 2,
+      "finalRps": 1.5,
+      "abandoned": true
+    }
+  },
+  "handoff": {
+    "urlscan": 19,
+    "urlscanFailed": 1,
+    "discord": 1,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1211.57,
+  "output": "drainers-2026-08-15T20-40Z.jsonl"
+}
