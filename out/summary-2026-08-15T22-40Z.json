@@ -1,0 +1,124 @@
+{
+  "generated": "2026-08-15T23:03:55.927Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-15T18:40:33Z",
+  "repos": 66054,
+  "candidates": 6200,
+  "candidatesByName": 942,
+  "candidatesByHomepage": 100,
+  "candidatesByDeployment": 5156,
+  "live": 4657,
+  "dossiers": 4651,
+  "triaged": 199,
+  "confirmed": 15,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 1,
+    "404": 587,
+    "410": 1,
+    "451": 1,
+    "500": 2,
+    "live": 4657,
+    "protected": 64,
+    "err-ECONNRESET": 1,
+    "err-provider-blocked": 882,
+    "err-ENOTFOUND": 3,
+    "err-EAI_AGAIN": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1071,
+      "live": 24,
+      "takedowns": [
+        {
+          "url": "https://microsoft-account.vercel.app",
+          "host": "microsoft-account.vercel.app",
+          "label": "microsoft-account.vercel.app",
+          "source": "guess",
+          "repo": "lwandlezwane32-eng/Microsoft-account-",
+          "repoCreatedAt": "2026-08-15T19:14:50Z",
+          "status": 451,
+          "server": "Vercel",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::ll8ff-1786834548112-dab2715f970c</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 1,
+        "404": 95,
+        "410": 1,
+        "451": 1,
+        "500": 2,
+        "live": 24,
+        "protected": 64,
+        "err-ECONNRESET": 1,
+        "err-provider-blocked": 882
+      },
+      "dossiers": 24,
+      "hostnameLane": 24,
+      "contentLane": 2,
+      "triaged": 24,
+      "confirmed": 2,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 191.2
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5129,
+      "live": 4633,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 492,
+        "live": 4633,
+        "err-ENOTFOUND": 3,
+        "err-EAI_AGAIN": 1
+      },
+      "dossiers": 4627,
+      "hostnameLane": 142,
+      "contentLane": 37,
+      "triaged": 175,
+      "confirmed": 13,
+      "canaryOutcomes": [],
+      "elapsedSec": 510.83
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 221,
+      "issuedBeforeFirstTrip": 199,
+      "trips": 2,
+      "finalRps": 1.5,
+      "abandoned": true
+    }
+  },
+  "handoff": {
+    "urlscan": 13,
+    "urlscanFailed": 0,
+    "discord": 0,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://microsoft-account.vercel.app",
+      "host": "microsoft-account.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/lwandlezwane32-eng/Microsoft-account-",
+      "repoCreatedAt": "2026-08-15T19:14:50Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1402.16,
+  "output": "drainers-2026-08-15T22-40Z.jsonl"
+}
