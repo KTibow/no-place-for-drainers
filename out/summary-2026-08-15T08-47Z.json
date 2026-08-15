@@ -1,0 +1,94 @@
+{
+  "generated": "2026-08-15T09:05:51.029Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-15T04:47:32Z",
+  "repos": 56475,
+  "candidates": 7183,
+  "candidatesByName": 1356,
+  "candidatesByHomepage": 117,
+  "candidatesByDeployment": 5708,
+  "live": 5128,
+  "dossiers": 5121,
+  "triaged": 195,
+  "confirmed": 15,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 1,
+    "404": 579,
+    "503": 1,
+    "522": 1,
+    "live": 5128,
+    "protected": 93,
+    "err-ENOTFOUND": 4,
+    "err-ECONNRESET": 1,
+    "err-provider-blocked": 1373,
+    "err-ECONNREFUSED": 1,
+    "err-ENETUNREACH": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1536,
+      "live": 13,
+      "takedowns": [],
+      "probeStatuses": {
+        "402": 1,
+        "404": 53,
+        "503": 1,
+        "live": 13,
+        "protected": 93,
+        "err-ENOTFOUND": 1,
+        "err-ECONNRESET": 1,
+        "err-provider-blocked": 1373
+      },
+      "dossiers": 13,
+      "hostnameLane": 13,
+      "contentLane": 3,
+      "triaged": 13,
+      "confirmed": 2,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 152.43
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5647,
+      "live": 5115,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 526,
+        "522": 1,
+        "live": 5115,
+        "err-ENOTFOUND": 3,
+        "err-ECONNREFUSED": 1,
+        "err-ENETUNREACH": 1
+      },
+      "dossiers": 5108,
+      "hostnameLane": 157,
+      "contentLane": 33,
+      "triaged": 182,
+      "confirmed": 13,
+      "canaryOutcomes": [],
+      "elapsedSec": 365.21
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 179,
+      "issuedBeforeFirstTrip": 152,
+      "trips": 2,
+      "finalRps": 1.5,
+      "abandoned": true
+    }
+  },
+  "takedowns": [],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1098.04,
+  "output": "drainers-2026-08-15T08-47Z.jsonl"
+}
