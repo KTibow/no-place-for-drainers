@@ -236,8 +236,16 @@ export const OUT_DIR = fileURLToPath(new URL('../../../out', import.meta.url));
 // ── misc ────────────────────────────────────────────────────────────────────
 export const USER_AGENT =
   'no-place-for-drainers/1.0 (defensive security research; abuse reporting)';
-/** Injected every run to prove acquisition works end to end. Probed first. */
-export const CANARY_URLS = ['https://defixs-finance.vercel.app'];
+/**
+ * Injected every run to prove acquisition works end to end. Probed first, and
+ * more than one on purpose: these are live drainers, so any of them can be
+ * taken down at any moment, and a canary that vanishes must not read as a
+ * broken scanner. Catching any one of them is enough.
+ */
+export const CANARY_URLS = [
+  'https://defixs-finance.vercel.app',
+  'https://rectifyesvalidation.vercel.app',
+];
 
 /**
  * The offline canary: a synthetic page run through extraction, rules and the

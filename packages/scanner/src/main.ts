@@ -99,8 +99,8 @@ type TrackResult = {
   contentLane: number;
   triaged: number;
   confirmed: number;
-  /** Did the live canary get far enough to be probed at all? */
-  canaryProbed: boolean;
+  /** What each canary probe came back as: live, takedown, dead, or blocked. */
+  canaryOutcomes: string[];
   elapsedSec: number;
 };
 
@@ -112,9 +112,19 @@ const tracks = [vercelTrack, openTrack];
 
 // ── canary ── can we still recognise a drainer, and can we still reach one ──
 const offlineCanary = await runOfflineCanary();
-const liveCanaryProbed = tracks.some((t) => t.canaryProbed);
-const liveCanaryCaught = queue.records.some((r) => r.source === 'canary');
-const liveCanary = liveCanaryCaught ? 'caught' : liveCanaryProbed ? 'missed' : 'unreachable';
+// Four states, because a canary has a lifecycle. Caught is the good one.
+// Missed means one was reachable and serving and we failed to flag it — the
+// only reading that indicts the scanner. Gone means every reachable canary is
+// now dead or taken down, which is a win for the world and a job for us to
+// find new ones. Unreachable means the provider never let us ask.
+const canaryOutcomes = tracks.flatMap((t) => t.canaryOutcomes);
+const liveCanary = queue.records.some((r) => r.source === 'canary')
+  ? 'caught'
+  : canaryOutcomes.includes('live')
+    ? 'missed'
+    : canaryOutcomes.some((o) => o === 'dead' || o === 'takedown')
+      ? 'gone'
+      : 'unreachable';
 
 // ── stage 7 ── summary ──────────────────────────────────────────────────────
 log.stage(log.MAIN, 7, 'analyst queue', basename(queue.path));
@@ -186,6 +196,9 @@ if (liveCanary === 'caught') {
   log.error(log.MAIN, 'live canary MISSED — it was reachable and we failed to flag it');
   console.log('::error title=live canary missed::a reachable known-bad site was not flagged');
   process.exitCode = 1;
+} else if (liveCanary === 'gone') {
+  log.warn(log.MAIN, `live canaries are gone (${canaryOutcomes.join(', ')}) — taken down, so pick new ones`);
+  console.log('::warning title=canaries gone::every known-bad canary is down; replace CANARY_URLS');
 } else {
   log.warn(log.MAIN, 'live canary UNREACHABLE — its provider blocked us, so this run has no coverage there');
   console.log('::warning title=live canary unreachable::provider blocked; coverage gap, not a broken pipeline');
@@ -254,7 +267,7 @@ async function runTrack(
   const takedowns: LiveSite[] = [];
   const statuses = new Map<string, number>();
   const counts = { live: 0, dossiers: 0, hostnameLane: 0, contentLane: 0, triaged: 0, confirmed: 0 };
-  let canaryProbed = false;
+  const canaryOutcomes: string[] = [];
   const triageGate = semaphore(LLM_CONCURRENCY);
   let done = 0;
 
@@ -272,8 +285,8 @@ async function runTrack(
       // ── 3 ── liveness, and the page while we are there ────────────────────
       const outcome = await probeSite(candidate, name);
       statuses.set(outcome.statusKey, (statuses.get(outcome.statusKey) ?? 0) + 1);
-      if (candidate.source === 'canary' && outcome.statusKey !== 'err-provider-blocked') {
-        canaryProbed = true;
+      if (candidate.source === 'canary') {
+        canaryOutcomes.push(outcome.statusKey === 'err-provider-blocked' ? 'blocked' : outcome.kind);
       }
       if (outcome.kind === 'takedown') takedowns.push(outcome.site);
       if (outcome.kind !== 'live') return;
@@ -354,7 +367,7 @@ async function runTrack(
     contentLane: counts.contentLane,
     triaged: counts.triaged,
     confirmed: counts.confirmed,
-    canaryProbed,
+    canaryOutcomes,
     elapsedSec: Math.round((Date.now() - began) / 10) / 100,
   };
 }
