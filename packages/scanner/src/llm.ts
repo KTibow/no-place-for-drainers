@@ -184,6 +184,10 @@ async function askOnce(
   const parsed = extractJson(content) ?? extractJson(choice?.message?.reasoning_content ?? '');
   if (parsed) return coerce(parsed);
   {
+    // The whole body, not head and tail. These arrive ~2 per run and are not
+    // reproducible on demand — 0 of 6 replays of a payload that had just
+    // failed — so the log line is the only evidence that will ever exist, and
+    // printing 90 chars of each end hid the malformation in the middle.
     // Say why. "unparseable json" is not a diagnosis. finish_reason separates
     // truncation from a model that simply wrote prose, and the tail shows which
     // — valid JSON that stops mid-string reads very differently from an apology.
@@ -194,8 +198,7 @@ async function askOnce(
       'warn',
       `llm unusable: finish=${choice?.finish_reason ?? '?'} ` +
         `completion=${usage.completion_tokens ?? '?'} reasoning=${usage.reasoning_tokens ?? '?'} ` +
-        `content=${content.length}c head=${JSON.stringify(content.slice(0, 90))} ` +
-        `tail=${JSON.stringify(content.slice(-90))}`,
+        `content=${content.length}c body=${JSON.stringify(content.slice(0, 2000))}`,
     );
     return null;
   }

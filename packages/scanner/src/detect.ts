@@ -59,6 +59,42 @@ export const RULES: Record<string, Rule> = {
     pattern:
       /rakbank|paypal|barclays|hsbc|santander|wells\s*fargo|chase\s*bank|binance|kraken|coinbase\s*(?:pro|exchange)/i,
   },
+  /**
+   * Money extracted by promise rather than by credential. Added because the
+   * content lane is by far the most precise gate we have — 43% of what it
+   * forwards is confirmed, against 3% for the hostname lane — yet it fired on
+   * only 22 of 4,523 dossiers, because its vocabulary was written when this
+   * only hunted drainers. Two confirmed scams scored 0: a fake BTC voucher
+   * demanding a "gas fee" to withdraw, and an investment scheme promising
+   * guaranteed returns per cycle. Both reached triage on their hostname alone.
+   */
+  advance_fee: {
+    weight: 2,
+    pattern: new RegExp(
+      [
+        '(?:gas|withdrawal|unlock|activation|processing|release|clearance)\\s*fee',
+        'fee\\s*to\\s*(?:withdraw|unlock|release|claim|activate)',
+        'pay\\s*(?:a\\s*)?small\\s*fee',
+        'to\\s*(?:receive|claim|unlock)\\s*your\\s*(?:reward|prize|voucher|funds|bonus)',
+        'voucher\\s*code',
+      ].join('|'),
+      'i',
+    ),
+  },
+  guaranteed_return: {
+    weight: 2,
+    pattern: new RegExp(
+      [
+        'guaranteed\\s*(?:profit|return|income|payout)',
+        '(?:profit|return|roi)\\s*(?:of\\s*)?\\d{2,}\\s*%',
+        '\\d{2,}\\s*%\\s*(?:profit|return|roi|daily|weekly|monthly|per\\s*cycle)',
+        'keuntungan\\s*(?:pasti|terjamin)',
+        'investment\\s*package',
+        'double\\s*your\\s*(?:money|investment|crypto)',
+      ].join('|'),
+      'i',
+    ),
+  },
   cred_field: {
     weight: 1,
     pattern: /type=["']password["']|FIELD[^\n]*password|cardpin|card_pin|\bcvv\b|\botp\b|\bpin\s*code\b/i,
