@@ -158,6 +158,7 @@ export function report(url: string, error?: string): void {
   const provider = providerOf(url);
   if (!provider) return;
   const bucket = bucketFor(provider);
+  if (bucket.abandoned) return; // already given up; stop re-announcing it
 
   if (error !== 'ECONNRESET' && error !== 'UND_ERR_SOCKET') return;
   if (Date.now() < bucket.blockedUntil) return; // already backing off

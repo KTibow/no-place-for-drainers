@@ -28,31 +28,9 @@ import {
 import { request } from './http.ts';
 import * as log from './log.ts';
 import type { Classification, Dossier, LiveSite } from './types.ts';
-import { decode, kb, pool } from './util.ts';
+import { decode, kb } from './util.ts';
 
-export async function buildDossiers(
-  sites: LiveSite[],
-  concurrency: number,
-  track: string,
-): Promise<Dossier[]> {
-  const out: Dossier[] = [];
-  let done = 0;
-
-  const extract = async (site: LiveSite) => {
-    const dossier = await buildDossier(site, track);
-    // The raw page has been extracted into the dossier and is never read again.
-    // Holding thousands of them, some multi-megabyte, is how a runner dies.
-    site.html = '';
-    if (dossier) out.push(dossier);
-    if (++done % 200 === 0) log.info(track, `extracted ${done}/${sites.length}`);
-  };
-
-  await pool(sites, concurrency, extract);
-
-  return out;
-}
-
-async function buildDossier(site: LiveSite, track: string): Promise<Dossier | null> {
+export async function buildDossier(site: LiveSite, track: string): Promise<Dossier | null> {
   // The page already arrived with the liveness probe; only bundles cost a
   // request from here.
   const html = site.html;

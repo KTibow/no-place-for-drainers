@@ -1,5 +1,5 @@
 /**
- * Stage 3 — liveness, for both paths at once, and the page while we are there.
+ * Stage 3 — liveness, and the page while we are there.
  *
  * One GET per candidate. A HEAD would be cheaper in bytes, but the providers
  * that matter ration *requests*, not bandwidth, and every live site then cost a
@@ -18,13 +18,7 @@ import {
 import { request } from './http.ts';
 import * as log from './log.ts';
 import type { Candidate, LiveSite } from './types.ts';
-import { decode, hostOf, pool } from './util.ts';
-
-export type ProbeResult = {
-  live: LiveSite[];
-  takedowns: LiveSite[];
-  statuses: Record<string, number>;
-};
+import { decode, hostOf } from './util.ts';
 
 /**
  * One bucket per outcome. Without this the log only ever names the hits, so a
@@ -39,78 +33,65 @@ function bucket(status: number, error?: string): string {
   return String(status);
 }
 
-export async function probeLiveness(
-  candidates: Candidate[],
-  concurrency: number,
-  track: string,
-): Promise<ProbeResult> {
-  const live: LiveSite[] = [];
-  const takedowns: LiveSite[] = [];
-  const statuses = new Map<string, number>();
-  let done = 0;
+export type ProbeOutcome =
+  | { kind: 'live'; site: LiveSite; statusKey: string }
+  | { kind: 'takedown'; site: LiveSite; statusKey: string }
+  | { kind: 'dead'; statusKey: string };
 
-  const tally = () =>
-    [...statuses]
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 8)
-      .map(([name, count]) => `${name}:${count}`)
-      .join(' ');
+/**
+ * Probe one candidate. Returning per-site rather than per-batch is what lets a
+ * worker carry a high-priority name all the way to a verdict while the rest of
+ * the queue is still being probed — and what leaves findings on disk when a run
+ * is killed halfway.
+ */
+export async function probeSite(candidate: Candidate, track: string): Promise<ProbeOutcome> {
+  // One GET, following redirects, keeping the body. A dead host costs a few
+  // extra KB; a live one saves an entire request at a provider that counts them.
+  const res = await request(candidate.url, {
+    tries: 2,
+    timeoutMs: PROBE_TIMEOUT_MS,
+    redirect: 'follow',
+    headers: { accept: 'text/html,application/xhtml+xml' },
+  });
 
-  const probeOne = async (candidate: Candidate) => {
-    // One GET, following redirects, keeping the body. A dead host costs a few
-    // extra KB; a live one saves an entire request at a provider that counts
-    // them. Stage 4 then only goes back for JS bundles.
-    const res = await request(candidate.url, {
-      tries: 2,
-      timeoutMs: PROBE_TIMEOUT_MS,
-      redirect: 'follow',
-      headers: { accept: 'text/html,application/xhtml+xml' },
-    });
-    // Where did we actually end up? A deployment behind password protection
-    // redirects to its provider's login page, and following that would attribute
-    // the provider's own page to this candidate.
-    const finalHost = hostOf(res.url || candidate.url);
-    if (finalHost !== candidate.host && PROTECTION_HOSTS.some((h) => finalHost.endsWith(h))) {
-      statuses.set('protected', (statuses.get('protected') ?? 0) + 1);
-      log.site(track, candidate.label, 'drop', `deployment is protected — redirects to ${finalHost}`);
-      if (++done % 500 === 0) log.info(track, `probed ${done}/${candidates.length} — ${tally()}`);
-      return;
-    }
+  // Where did we actually end up? A deployment behind password protection
+  // redirects to its provider's login page, and following that would attribute
+  // the provider's own page to this candidate.
+  const finalHost = hostOf(res.url || candidate.url);
+  if (finalHost !== candidate.host && PROTECTION_HOSTS.some((h) => finalHost.endsWith(h))) {
+    log.site(track, candidate.label, 'drop', `deployment is protected — redirects to ${finalHost}`);
+    return { kind: 'dead', statusKey: 'protected' };
+  }
 
-    const server = res.headers.get('server') ?? '';
-    const note = res.headers.get('x-vercel-error') ?? res.headers.get('x-nf-error') ?? '';
-    const site: LiveSite = {
-      ...candidate,
-      status: res.status,
-      server,
-      note,
-      html: res.body.length ? decode(res.body) : '',
-    };
-
-    const key = bucket(res.status, res.error);
-    statuses.set(key, (statuses.get(key) ?? 0) + 1);
-
-    if (res.status === TAKEDOWN_STATUS) {
-      takedowns.push(site);
-      log.site(track, 
-        candidate.label,
-        'takedown',
-        `451 ${note || 'no reason header'} src=${candidate.source} repo=github.com/${candidate.repo} created=${candidate.repoCreatedAt}`,
-      );
-    } else if (LIVE_STATUSES.has(res.status)) {
-      live.push(site);
-      log.site(track, 
-        candidate.label,
-        'live',
-        `${res.status} src=${candidate.source} repo=${candidate.repo} created=${candidate.repoCreatedAt}`,
-      );
-    }
-
-    if (++done % 500 === 0) log.info(track, `probed ${done}/${candidates.length} — ${tally()}`);
+  const note = res.headers.get('x-vercel-error') ?? res.headers.get('x-nf-error') ?? '';
+  const site: LiveSite = {
+    ...candidate,
+    status: res.status,
+    server: res.headers.get('server') ?? '',
+    note,
+    html: res.body.length ? decode(res.body) : '',
   };
+  const statusKey = bucket(res.status, res.error);
 
-  await pool(candidates, concurrency, probeOne);
+  if (res.status === TAKEDOWN_STATUS) {
+    log.site(
+      track,
+      candidate.label,
+      'takedown',
+      `451 ${note || 'no reason header'} src=${candidate.source} repo=github.com/${candidate.repo} created=${candidate.repoCreatedAt}`,
+    );
+    return { kind: 'takedown', site, statusKey };
+  }
 
-  log.info(track, `probed ${done}/${candidates.length} — ${tally()}`);
-  return { live, takedowns, statuses: Object.fromEntries(statuses) };
+  if (LIVE_STATUSES.has(res.status)) {
+    log.site(
+      track,
+      candidate.label,
+      'live',
+      `${res.status} src=${candidate.source} repo=${candidate.repo} created=${candidate.repoCreatedAt}`,
+    );
+    return { kind: 'live', site, statusKey };
+  }
+
+  return { kind: 'dead', statusKey };
 }

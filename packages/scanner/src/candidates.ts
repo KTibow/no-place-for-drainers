@@ -22,6 +22,7 @@ import {
   lureScore,
   MIN_GUESS_NAME_LENGTH,
 } from './config.ts';
+import { isPaced } from './pace.ts';
 import type { Candidate, Repo } from './types.ts';
 import { hostOf } from './util.ts';
 
@@ -34,6 +35,25 @@ function normalizeName(nameWithOwner: string): string {
     .replace(/[^a-z0-9._-]+/g, '-')
     .replace(/-{2,}/g, '-')
     .replace(/^-|-$/g, '');
+}
+
+/**
+ * One rule, scoped to the constraint rather than to how we found the candidate:
+ * if the provider rations requests, the name has to earn one.
+ *
+ * Vercel answers an over-eager scanner by resetting connections and gives a CI
+ * runner somewhere between 38 and 1,900 requests before it does. github.io
+ * served 600 requests at 68/s without complaint. So a lure-less name is worth a
+ * request at one provider and not at the other, and that has nothing to do with
+ * whether we guessed the URL or read it from a homepage field.
+ *
+ * The cost is content-lane coverage on rationed providers: a drainer whose repo
+ * and host are both innocuous is now only reachable there if something else
+ * nominates it. On an unrationed provider we still fetch everything and let the
+ * page speak for itself.
+ */
+function earnsRequest(url: string, name: string): boolean {
+  return !isPaced(url) || looksLikeLure(name);
 }
 
 /** host + path, no scheme, no trailing slash. */
@@ -76,6 +96,7 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
     if (!url) continue;
     const host = hostOf(url);
     if (!FREE_HOSTS.test(host)) continue;
+    if (!earnsRequest(url, `${labelOf(url)} ${repo.nameWithOwner}`)) continue;
     if (!out.has(url)) {
       out.set(url, {
         url,
@@ -96,11 +117,10 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
     // repackaging looks like.
     const base = normalizeName(repo.nameWithOwner);
     if (base.length < MIN_GUESS_NAME_LENGTH) continue;
-    // The name has to earn the request. Guessing for every repo is ~35,000
-    // requests at one provider, and vercel answers that by resetting every
-    // connection from the source IP. Measured on live repo names, this keeps
-    // ~2%, so a 50k-repo run guesses ~880 hosts instead of ~34,700.
-    if (!looksLikeLure(base)) continue;
+    // Guesses are all on the rationed provider, so the same rule applies:
+    // measured on live repo names it keeps ~2%, which is ~880 guessed hosts per
+    // 50k-repo run instead of ~34,700.
+    if (!earnsRequest(`https://${base}.${GUESS_HOST_SUFFIX}`, base)) continue;
     const host = `${base}.${GUESS_HOST_SUFFIX}`;
     const url = `https://${host}`;
     if (!out.has(url)) {
@@ -124,7 +144,10 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
    * judged worth the request; they should not be queued behind a few thousand
    * URLs whose only credential is that somebody typed them into a form field.
    */
-  const rank = (c: Candidate) => (c.source === 'guess' ? 0 : 1);
+  // The canary first, always. It is the only thing that can tell a quiet day
+  // from a broken scanner, and it spent the last run at the back of a queue
+  // that a provider block truncated — so it never ran at all.
+  const rank = (c: Candidate) => (c.source === 'canary' ? 0 : c.source === 'guess' ? 1 : 2);
   const strength = (c: Candidate) => lureScore(`${c.label} ${c.repo}`);
   return [...out.values()].sort((a, b) => rank(a) - rank(b) || strength(b) - strength(a));
 }

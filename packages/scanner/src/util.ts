@@ -27,6 +27,26 @@ export function partition<T>(items: T[], predicate: (item: T) => boolean): [T[],
   return [yes, no];
 }
 
+/**
+ * Caps how many callers may be inside `run` at once. Workers carry a site
+ * through every stage, so a stage that must stay slow (the LLM) needs its own
+ * limit independent of the worker count.
+ */
+export function semaphore(limit: number) {
+  let active = 0;
+  const waiting: (() => void)[] = [];
+  return async function run<T>(fn: () => Promise<T>): Promise<T> {
+    if (active >= limit) await new Promise<void>((resolve) => waiting.push(resolve));
+    active++;
+    try {
+      return await fn();
+    } finally {
+      active--;
+      waiting.shift()?.();
+    }
+  };
+}
+
 export function chunk<T>(items: T[], size: number): T[][] {
   const out: T[][] = [];
   for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));

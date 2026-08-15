@@ -30,7 +30,7 @@ import { basename } from 'node:path';
 import { buildCandidates } from './candidates.ts';
 import {
   CANARY_URLS,
-  FETCH_CONCURRENCY,
+  OFFLINE_CANARY_HTML,
   LLM_CONCURRENCY,
   LLM_MIN_CONFIDENCE,
   PACED_CONCURRENCY,
@@ -38,16 +38,16 @@ import {
   WINDOW_HOURS,
 } from './config.ts';
 import { classify } from './detect.ts';
-import { buildDossiers, render } from './dossier.ts';
+import { buildDossier, render } from './dossier.ts';
 import { requireToken, walkNewRepos } from './github.ts';
 import * as llm from './llm.ts';
 import * as log from './log.ts';
 import { AnalystQueue } from './output.ts';
 import { isPaced } from './pace.ts';
 import * as pace from './pace.ts';
-import { probeLiveness } from './probe.ts';
+import { probeSite } from './probe.ts';
 import type { Candidate, Finding, LiveSite } from './types.ts';
-import { hostOf, partition, pool } from './util.ts';
+import { hostOf, partition, pool, semaphore } from './util.ts';
 
 const startedAt = Date.now();
 
@@ -64,8 +64,11 @@ log.flow(log.MAIN, 'repos', repos.length, 'hydrated with homepage + createdAt');
 // ── stage 2 ── name path + homepage path ────────────────────────────────────
 log.stage(log.MAIN, 2, 'candidate URLs', 'repo name → guessed host | homepage field → free hosts');
 const candidates: Candidate[] = buildCandidates(repos);
+// Unshift, not push: buildCandidates has already sorted, so appending would
+// put the health check back at the end of the queue where a provider block
+// truncates it — which is exactly how it went unprobed last run.
 for (const url of CANARY_URLS) {
-  candidates.push({
+  candidates.unshift({
     url,
     host: hostOf(url),
     label: hostOf(url),
@@ -95,18 +98,25 @@ type TrackResult = {
   contentLane: number;
   triaged: number;
   confirmed: number;
+  /** Did the live canary get far enough to be probed at all? */
+  canaryProbed: boolean;
   elapsedSec: number;
 };
 
 const [vercelTrack, openTrack] = await Promise.all([
-  runTrack('vercel', pacedCandidates, PACED_CONCURRENCY, PACED_CONCURRENCY),
-  runTrack('open', freeCandidates, PROBE_CONCURRENCY, FETCH_CONCURRENCY),
+  runTrack('vercel', pacedCandidates, PACED_CONCURRENCY),
+  runTrack('open', freeCandidates, PROBE_CONCURRENCY),
 ]);
 const tracks = [vercelTrack, openTrack];
 
+// ── canary ── can we still recognise a drainer, and can we still reach one ──
+const offlineCanary = await runOfflineCanary();
+const liveCanaryProbed = tracks.some((t) => t.canaryProbed);
+const liveCanaryCaught = queue.records.some((r) => r.source === 'canary');
+const liveCanary = liveCanaryCaught ? 'caught' : liveCanaryProbed ? 'missed' : 'unreachable';
+
 // ── stage 7 ── summary ──────────────────────────────────────────────────────
 log.stage(log.MAIN, 7, 'analyst queue', basename(queue.path));
-const canaryCaught = queue.records.some((r) => r.source === 'canary');
 const sum = (pick: (t: TrackResult) => number) => tracks.reduce((n, t) => n + pick(t), 0);
 
 const summary = {
@@ -143,7 +153,8 @@ const summary = {
       source: site.source,
     })),
   ),
-  canaryCaught,
+  canary: { offline: offlineCanary, live: liveCanary },
+  canaryCaught: offlineCanary === 'caught' && liveCanary !== 'missed',
   elapsedSec: Math.round((Date.now() - startedAt) / 10) / 100,
   output: basename(queue.path),
 };
@@ -155,125 +166,193 @@ for (const record of [...queue.records].sort((a, b) => b.confidence - a.confiden
 log.info(log.MAIN, `summary → ${basename(summaryPath)}`);
 console.log(JSON.stringify(summary, null, 2));
 
-// The canary is the only thing in here that knows the difference between "a
-// quiet day on GitHub" and "the scanner has been silently broken for a week".
-// A run that misses it has produced evidence, not results — commit it, publish
-// it, and still go red.
-if (canaryCaught) {
-  log.info(log.MAIN, 'canary CAUGHT — pipeline is sound');
+// Two questions, two answers. The offline canary says whether we can still
+// recognise a drainer; the live one says whether we can still reach any. Only a
+// genuine failure of either goes red — a provider refusing to talk to us is a
+// coverage gap to report, not evidence that the scanner is broken.
+if (offlineCanary === 'caught') {
+  log.info(log.MAIN, 'offline canary CAUGHT — extraction, rules and triage are sound');
 } else {
-  log.error(log.MAIN, 'canary MISSED — this run found nothing because it is broken, not because there was nothing');
-  console.log('::error title=canary missed::the pipeline did not flag a known-bad site; treat this run as unreliable');
+  log.error(log.MAIN, 'offline canary MISSED — the classifier no longer recognises a textbook drainer');
+  console.log('::error title=offline canary missed::classification is broken; treat this run as unreliable');
   process.exitCode = 1;
 }
 
-/** Stages 3 through 6 for one provider class. Two of these run at once. */
+if (liveCanary === 'caught') {
+  log.info(log.MAIN, 'live canary CAUGHT — acquisition is sound end to end');
+} else if (liveCanary === 'missed') {
+  log.error(log.MAIN, 'live canary MISSED — it was reachable and we failed to flag it');
+  console.log('::error title=live canary missed::a reachable known-bad site was not flagged');
+  process.exitCode = 1;
+} else {
+  log.warn(log.MAIN, 'live canary UNREACHABLE — its provider blocked us, so this run has no coverage there');
+  console.log('::warning title=live canary unreachable::provider blocked; coverage gap, not a broken pipeline');
+}
+
+/** Extraction, rules and triage over a synthetic page. No network involved. */
+async function runOfflineCanary(): Promise<'caught' | 'missed'> {
+  const site: LiveSite = {
+    url: 'offline://canary',
+    host: 'offline-canary',
+    label: 'offline-canary',
+    source: 'canary',
+    repo: 'CANARY/offline',
+    repoCreatedAt: new Date().toISOString(),
+    status: 200,
+    server: 'offline',
+    note: '',
+    html: OFFLINE_CANARY_HTML,
+  };
+  const dossier = await buildDossier(site, log.MAIN);
+  if (!dossier) return 'missed';
+  const classification = classify(dossier);
+  if (!classification.lanes.length) {
+    log.warn(log.MAIN, `offline canary scored ${classification.score} and reached no lane`);
+    return 'missed';
+  }
+  const verdict = await llm.triage(render(dossier, classification), 'offline-canary', log.MAIN);
+  log.site(
+    log.MAIN,
+    'offline-canary',
+    'llm',
+    `${verdict.verdict.toUpperCase()} conf=${verdict.confidence.toFixed(2)} score=${classification.score} signals=${Object.keys(classification.hits).join(',')}`,
+  );
+  return llm.passes(verdict) ? 'caught' : 'missed';
+}
+
+/**
+ * Stages 3 through 6 for one provider class, one site at a time.
+ *
+ * A worker carries a single candidate the whole way — probe, dossier, rules,
+ * LLM, queue — instead of the run advancing stage by stage over everything.
+ * Three reasons, all of them things the staged version got wrong:
+ *
+ * Priority reaches the end. The queue is ordered by lure strength, but with a
+ * barrier at every stage that only reordered *probing*; the best name still
+ * waited for the worst one to be probed before it could be looked at. Now the
+ * first verdict lands in seconds.
+ *
+ * A killed run keeps its findings. Records append as they are confirmed, so a
+ * cancelled or timed-out run leaves everything it had actually established
+ * rather than losing it behind two unfinished stages.
+ *
+ * And nothing accumulates. Holding every dossier at once is what forced a
+ * corpus cap and manual freeing; per-site, each one is garbage as soon as its
+ * verdict is in.
+ *
+ * The LLM gets its own semaphore because it is the one stage that must stay
+ * slow while the workers stay wide.
+ */
 async function runTrack(
   name: string,
   trackCandidates: Candidate[],
-  probeConcurrency: number,
-  fetchConcurrency: number,
+  workers: number,
 ): Promise<TrackResult> {
   const began = Date.now();
-  const done = (extra: Partial<TrackResult> = {}): TrackResult => ({
-    name,
-    candidates: trackCandidates.length,
-    live: 0,
-    takedowns: [],
-    probeStatuses: {},
-    dossiers: 0,
-    hostnameLane: 0,
-    contentLane: 0,
-    triaged: 0,
-    confirmed: 0,
-    elapsedSec: Math.round((Date.now() - began) / 10) / 100,
-    ...extra,
+  const takedowns: LiveSite[] = [];
+  const statuses = new Map<string, number>();
+  const counts = { live: 0, dossiers: 0, hostnameLane: 0, contentLane: 0, triaged: 0, confirmed: 0 };
+  let canaryProbed = false;
+  const triageGate = semaphore(LLM_CONCURRENCY);
+  let done = 0;
+
+  const tally = () =>
+    [...statuses]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8)
+      .map(([key, n]) => `${key}:${n}`)
+      .join(' ');
+
+  log.stage(name, 3, 'site pipeline', `${trackCandidates.length} candidates, ${workers} workers`);
+
+  await pool(trackCandidates, workers, async (candidate) => {
+    try {
+      // ── 3 ── liveness, and the page while we are there ────────────────────
+      const outcome = await probeSite(candidate, name);
+      statuses.set(outcome.statusKey, (statuses.get(outcome.statusKey) ?? 0) + 1);
+      if (candidate.source === 'canary' && outcome.statusKey !== 'err-provider-blocked') {
+        canaryProbed = true;
+      }
+      if (outcome.kind === 'takedown') takedowns.push(outcome.site);
+      if (outcome.kind !== 'live') return;
+      counts.live++;
+
+      // ── 4 ── the dossier both classifiers will read ───────────────────────
+      const dossier = await buildDossier(outcome.site, name);
+      outcome.site.html = '';
+      if (!dossier) return;
+      counts.dossiers++;
+
+      // ── 5 ── detection: hostname lane | content lane ──────────────────────
+      const classification = classify(dossier);
+      const signals =
+        Object.entries(classification.hits)
+          .map(([hit, found]) => `${hit}(${found.length})`)
+          .join(' ') || 'none';
+      log.site(
+        name,
+        dossier.site.label,
+        'rules',
+        `score=${classification.score} lanes=${classification.lanes.join('+') || '-'} ${signals}`,
+      );
+      if (classification.lanes.includes('hostname')) counts.hostnameLane++;
+      if (classification.lanes.includes('content')) counts.contentLane++;
+      if (!classification.lanes.length) return;
+      counts.triaged++;
+
+      // ── 6 ── LLM triage on that same dossier ──────────────────────────────
+      const label = dossier.site.label;
+      const text = render(dossier, classification);
+      log.block(name, label, 'dossier', text);
+
+      const verdict = await triageGate(() => llm.triage(text, label, name));
+      log.site(
+        name,
+        label,
+        'llm',
+        `${verdict.verdict.toUpperCase()} conf=${verdict.confidence.toFixed(2)} ` +
+          `category=${verdict.category} brand=${verdict.brand ?? '-'}`,
+      );
+      for (const reason of verdict.reasons) log.block(name, label, 'llm', `reason: ${reason}`);
+      for (const ioc of verdict.iocs) log.block(name, label, 'llm', `ioc: ${ioc}`);
+
+      if (!llm.passes(verdict)) {
+        log.site(name, label, 'drop', `below the queue bar (needs malicious >= ${LLM_MIN_CONFIDENCE})`);
+        return;
+      }
+
+      // ── 7 ── straight to the analyst queue, on disk, now ──────────────────
+      counts.confirmed++;
+      const record = queue.add({ dossier, classification, llm: verdict });
+      log.site(name, label, 'pass', `-> ${basename(queue.path)}  ${record.category} (${record.brand ?? 'no brand'})`);
+    } finally {
+      if (++done % 500 === 0) {
+        log.info(name, `${done}/${trackCandidates.length} — ${tally()} | live:${counts.live} triaged:${counts.triaged} confirmed:${counts.confirmed}`);
+      }
+    }
   });
 
-  if (!trackCandidates.length) return done();
-
-  // ── stage 3 ── probe liveness ─────────────────────────────────────────────
-  log.stage(name, 3, 'probe liveness', `one GET, keep the body (${trackCandidates.length} candidates)`);
-  const { live, takedowns, statuses } = await probeLiveness(trackCandidates, probeConcurrency, name);
-  log.flow(name, 'live URLs', live.length, `${((live.length / trackCandidates.length) * 100).toFixed(1)}% of candidates`);
-  log.flow(name, 'already taken down', takedowns.length, 'http 451 — someone got there first');
+  log.info(name, `${done}/${trackCandidates.length} — ${tally()}`);
   for (const site of takedowns) {
     log.site(name, site.label, 'takedown', `${site.note || '451'}  github.com/${site.repo}  created=${site.repoCreatedAt}  via ${site.source} path`);
   }
+  log.flow(name, 'live URLs', counts.live, `${((counts.live / Math.max(trackCandidates.length, 1)) * 100).toFixed(1)}% of candidates`);
+  log.flow(name, 'dossiers', counts.dossiers, 'one evidence doc per live site');
+  log.flow(name, 'to triage', counts.triaged, `hostname ${counts.hostnameLane} | content ${counts.contentLane}`);
+  log.flow(name, 'confirmed', counts.confirmed, 'analyst queue');
 
-  // ── stage 4 ── dossier per live site ──────────────────────────────────────
-  log.stage(name, 4, 'dossier', 'extract the signal surface, follow SPA bundles');
-  const dossiers = await buildDossiers(live, fetchConcurrency, name);
-  log.flow(name, 'dossiers', dossiers.length, 'one evidence doc per live site');
-
-  // ── stage 5 ── detection: hostname lane | content lane ────────────────────
-  log.stage(name, 5, 'detection', 'hostname keyword lane | content rule lane');
-  const scored = dossiers.map((dossier) => ({ dossier, classification: classify(dossier) }));
-  for (const { dossier, classification } of scored) {
-    const signals =
-      Object.entries(classification.hits)
-        .map(([hit, found]) => `${hit}(${found.length})`)
-        .join(' ') || 'none';
-    log.site(
-      name,
-      dossier.site.label,
-      'rules',
-      `score=${classification.score} lanes=${classification.lanes.join('+') || '-'} ${signals}`,
-    );
-  }
-  const triageQueue = scored.filter((s) => s.classification.lanes.length > 0);
-  // Both classifiers have now seen everything they are going to see, so the
-  // corpus of anything that did not make the queue is dead weight — and at tens
-  // of thousands of sites with JS bundles behind them, dead weight is the thing
-  // that kills the run.
-  for (const { dossier, classification } of scored) {
-    if (!classification.lanes.length) dossier.corpus = '';
-  }
-  const hostnameLane = scored.filter((s) => s.classification.lanes.includes('hostname')).length;
-  const contentLane = scored.filter((s) => s.classification.lanes.includes('content')).length;
-  log.flow(name, 'hostname lane', hostnameLane, 'priority');
-  log.flow(name, 'content lane', contentLane, 'over rule threshold');
-  log.flow(name, 'to triage', triageQueue.length, 'union of both lanes');
-
-  // ── stage 6 ── LLM triage on the same dossier ─────────────────────────────
-  log.stage(name, 6, 'LLM triage', 'second opinion on the identical dossier');
-  let confirmed = 0;
-
-  await pool(triageQueue, LLM_CONCURRENCY, async ({ dossier, classification }) => {
-    const host = dossier.site.label;
-    const text = render(dossier, classification);
-    log.block(name, host, 'dossier', text);
-
-    const verdict = await llm.triage(text, host, name);
-    log.site(
-      name,
-      host,
-      'llm',
-      `${verdict.verdict.toUpperCase()} conf=${verdict.confidence.toFixed(2)} ` +
-        `category=${verdict.category} brand=${verdict.brand ?? '-'}`,
-    );
-    for (const reason of verdict.reasons) log.block(name, host, 'llm', `reason: ${reason}`);
-    for (const ioc of verdict.iocs) log.block(name, host, 'llm', `ioc: ${ioc}`);
-
-    if (!llm.passes(verdict)) {
-      log.site(name, host, 'drop', `below the queue bar (needs malicious ≥ ${LLM_MIN_CONFIDENCE})`);
-      return;
-    }
-    const finding: Finding = { dossier, classification, llm: verdict };
-    confirmed++;
-    const record = queue.add(finding);
-    log.site(name, host, 'pass', `→ ${basename(queue.path)}  ${record.category} (${record.brand ?? 'no brand'})`);
-  });
-
-  log.flow(name, 'confirmed', confirmed, 'analyst queue');
-  return done({
-    live: live.length,
+  return {
+    name,
+    candidates: trackCandidates.length,
+    live: counts.live,
     takedowns,
-    probeStatuses: statuses,
-    dossiers: dossiers.length,
-    hostnameLane,
-    contentLane,
-    triaged: triageQueue.length,
-    confirmed,
-  });
+    probeStatuses: Object.fromEntries(statuses),
+    dossiers: counts.dossiers,
+    hostnameLane: counts.hostnameLane,
+    contentLane: counts.contentLane,
+    triaged: counts.triaged,
+    confirmed: counts.confirmed,
+    canaryProbed,
+    elapsedSec: Math.round((Date.now() - began) / 10) / 100,
+  };
 }

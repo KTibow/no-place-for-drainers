@@ -66,11 +66,12 @@ Every knob is a constant in `packages/scanner/src/config.ts`. There are no CLI
 flags and no config files, by design.
 
 The one that decides everything else is `LURE_ANYWHERE` / `LURE_BOUNDED` — the
-vocabulary that makes a repo name worth guessing a deployment for. Guessing for
-every new repo means ~35,000 requests at one provider, and vercel's edge answers
-that by resetting every connection from the source IP after a few hundred, which
-is exactly how the first two runs produced nothing. The filter keeps ~2% of
-names, so a 50k-repo run guesses ~880 hosts instead of ~34,700.
+vocabulary that makes a name worth spending a request on. It applies wherever
+the provider rations requests and nowhere else: vercel gives a runner somewhere
+between 38 and 1,900 requests before it starts resetting connections, while
+github.io served 600 at 68/s without complaint. So on vercel a name has to earn
+its request (guessed or declared, ~2% do); on github.io we fetch everything and
+let the page speak for itself.
 
 Widening it is the main lever on recall, and the main way to get blocked again.
 The probe tally on every progress line (`404:253 live:93 err-ECONNRESET:6`) is
