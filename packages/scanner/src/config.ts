@@ -87,9 +87,22 @@ export const LURE = new RegExp(
   'i',
 );
 
+const LURE_GLOBAL = new RegExp(LURE.source, 'gi');
+
 /** True when a name is worth spending a request on. */
 export function looksLikeLure(name: string): boolean {
   return LURE.test(name.replace(/[._]+/g, '-'));
+}
+
+/**
+ * How many distinct lure words a name contains. Used to order the queue, not
+ * to filter it: when a provider only lets a few dozen requests through, those
+ * requests should go to `wallet-restore-sync` before `study-sync-app`, and
+ * ordering is the only lever that survives an arbitrary budget.
+ */
+export function lureScore(name: string): number {
+  const normalized = name.replace(/[._]+/g, '-');
+  return new Set([...normalized.matchAll(LURE_GLOBAL)].map((m) => m[0].toLowerCase())).size;
 }
 
 // ── stage 3: liveness ───────────────────────────────────────────────────────

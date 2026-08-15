@@ -19,6 +19,7 @@ import {
   FREE_HOSTS,
   GUESS_HOST_SUFFIX,
   looksLikeLure,
+  lureScore,
   MIN_GUESS_NAME_LENGTH,
 } from './config.ts';
 import type { Candidate, Repo } from './types.ts';
@@ -124,5 +125,6 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
    * URLs whose only credential is that somebody typed them into a form field.
    */
   const rank = (c: Candidate) => (c.source === 'guess' ? 0 : 1);
-  return [...out.values()].sort((a, b) => rank(a) - rank(b));
+  const strength = (c: Candidate) => lureScore(`${c.label} ${c.repo}`);
+  return [...out.values()].sort((a, b) => rank(a) - rank(b) || strength(b) - strength(a));
 }

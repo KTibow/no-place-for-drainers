@@ -47,6 +47,17 @@ const COOLDOWN_MS = 120_000;
 const MAX_COOLDOWN_MS = 600_000;
 /** After this many trips, stop spending the run on a provider that is done with us. */
 const MAX_TRIPS = 4;
+/**
+ * A healthy source IP sustains hundreds of requests at this rate — measured,
+ * 700 at 3/s and 700 at 6/s with zero errors. Tripping in the first few dozen
+ * therefore does not mean we were too fast; it means the bucket was already
+ * empty when we arrived, which is the normal state of a shared CI runner
+ * address. Nothing we do in this run will refill it, so stop early instead of
+ * spending fifteen minutes proving it: the last run burned 878s to learn that
+ * 38 requests was the whole budget.
+ */
+const HEALTHY_ARRIVAL = 250;
+const TRIPS_WHEN_PENALIZED = 2;
 
 const PACED_PROVIDERS = ['vercel.app'];
 
@@ -155,11 +166,15 @@ export function report(url: string, error?: string): void {
   bucket.trips++;
   bucket.rps = Math.max(MIN_RPS, bucket.rps / 2);
 
-  if (bucket.trips >= MAX_TRIPS) {
+  const arrivedPenalized = (bucket.issuedBeforeFirstTrip ?? 0) < HEALTHY_ARRIVAL;
+  const limit = arrivedPenalized ? TRIPS_WHEN_PENALIZED : MAX_TRIPS;
+
+  if (bucket.trips >= limit) {
     bucket.abandoned = true;
     log.warn(trackOf(provider),
-      `${provider} still resetting after ${bucket.trips} backoffs and ${bucket.issued} requests — ` +
-        `giving up on it for this run rather than crawling`,
+      `${provider} gave us ${bucket.issuedBeforeFirstTrip} requests before its first reset` +
+        `${arrivedPenalized ? ' (arrived rate-limited — this IP had no budget to begin with)' : ''}` +
+        ` and is still resetting after ${bucket.trips} backoffs — giving up on it for this run`,
     );
     return;
   }
