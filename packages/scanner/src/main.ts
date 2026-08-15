@@ -111,7 +111,7 @@ await pool(triageQueue, LLM_CONCURRENCY, async ({ dossier, classification }) => 
   const text = render(dossier, classification);
   log.block(host, 'dossier', text);
 
-  const verdict = await llm.triage(text);
+  const verdict = await llm.triage(text, host);
   log.site(
     host,
     'llm',

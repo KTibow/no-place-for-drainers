@@ -24,8 +24,8 @@ export type ProbeResult = {
  * and "we are being refused and dropping the answers on the floor" — a
  * distinction that has already cost one wrong diagnosis.
  */
-function bucket(status: number): string {
-  if (status === 0) return 'err';
+function bucket(status: number, error?: string): string {
+  if (status === 0) return `err-${error ?? 'unknown'}`;
   if (status === TAKEDOWN_STATUS) return '451';
   if (LIVE_STATUSES.has(status)) return 'live';
   return String(status);
@@ -54,7 +54,7 @@ export async function probeLiveness(candidates: Candidate[]): Promise<ProbeResul
     const note = res.headers.get('x-vercel-error') ?? res.headers.get('x-nf-error') ?? '';
     const site: LiveSite = { ...candidate, status: res.status, server, note };
 
-    const key = bucket(res.status);
+    const key = bucket(res.status, res.error);
     statuses.set(key, (statuses.get(key) ?? 0) + 1);
 
     if (res.status === TAKEDOWN_STATUS) {

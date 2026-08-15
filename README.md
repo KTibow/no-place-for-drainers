@@ -63,9 +63,18 @@ more of the window. `CROF_KEY` is required for stage 6.
 ## Tuning
 
 Every knob is a constant in `packages/scanner/src/config.ts`. There are no CLI
-flags and no config files, by design. `REPO_LIMIT` is the throttle for the whole
-pipeline; measured ratios are ~0.9 candidates per repo, 22% of candidates live,
-and about one triage per 30 live sites.
+flags and no config files, by design.
+
+The one that decides everything else is `LURE_ANYWHERE` / `LURE_BOUNDED` — the
+vocabulary that makes a repo name worth guessing a deployment for. Guessing for
+every new repo means ~35,000 requests at one provider, and vercel's edge answers
+that by resetting every connection from the source IP after a few hundred, which
+is exactly how the first two runs produced nothing. The filter keeps ~2% of
+names, so a 50k-repo run guesses ~880 hosts instead of ~34,700.
+
+Widening it is the main lever on recall, and the main way to get blocked again.
+The probe tally on every progress line (`404:253 live:93 err-ECONNRESET:6`) is
+how you tell which is happening.
 
 `CANARY_URLS` is injected into every run. If the canary is not caught, the
 pipeline is broken — the summary says so, and the runs page says so louder.

@@ -23,14 +23,28 @@ export type HttpResponse = {
   headers: Headers;
   /** Final URL after redirects, when we followed them. */
   url: string;
+  /**
+   * Why status is 0. "The request failed" is not a diagnosis — ECONNRESET,
+   * EAI_AGAIN and UND_ERR_CONNECT_TIMEOUT are three completely different bugs
+   * with three different fixes, and collapsing them into one silent bucket has
+   * already burned two rounds of guessing here.
+   */
+  error?: string;
 };
 
-const EMPTY: HttpResponse = {
+const failed = (error: string): HttpResponse => ({
   status: 0,
   body: new Uint8Array(),
   headers: new globalThis.Headers() as unknown as Headers,
   url: '',
-};
+  error,
+});
+
+/** Node nests the interesting part under `cause`; the outer message is always "fetch failed". */
+function causeOf(err: unknown): string {
+  const e = err as { name?: string; code?: string; cause?: { code?: string; message?: string } };
+  return e?.cause?.code ?? e?.code ?? e?.cause?.message?.slice(0, 40) ?? e?.name ?? 'unknown';
+}
 
 type RequestOptions = {
   method?: string;
@@ -101,10 +115,10 @@ export async function request(url: string, opts: RequestOptions = {}): Promise<H
 
       const body = opts.method === 'HEAD' ? new Uint8Array() : await readCapped(res, cap);
       return { status: res.status, body, headers: res.headers, url: res.url || url };
-    } catch {
-      if (attempt === tries - 1) return EMPTY;
+    } catch (err) {
+      if (attempt === tries - 1) return failed(causeOf(err));
       await sleep(2 ** attempt * 500);
     }
   }
-  return EMPTY;
+  return failed('retries-exhausted');
 }

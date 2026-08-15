@@ -52,7 +52,7 @@ async function buildDossier(site: LiveSite): Promise<Dossier | null> {
     headers: { accept: 'text/html,application/xhtml+xml' },
   });
   if (!res.body.length) {
-    log.site(site.host, 'drop', `no body on GET (status ${res.status})`);
+    log.site(site.host, 'drop', `no body on GET (status ${res.status}${res.error ? ` ${res.error}` : ''})`);
     return null;
   }
 

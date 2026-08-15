@@ -2,8 +2,10 @@ name: no place for drainers
 
 on:
   schedule:
-    # Daily, offset off the hour so we are not competing with everyone's cron.
-    - cron: '17 4 * * *'
+    # Every 8 hours against a 10 hour window, offset off the hour so we are not
+    # competing with everyone else's cron. The 2 hour overlap absorbs Actions
+    # scheduling drift, which is routinely tens of minutes.
+    - cron: '17 */8 * * *'
   workflow_dispatch:
 
 permissions:

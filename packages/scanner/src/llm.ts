@@ -8,7 +8,6 @@
  */
 import {
   LLM_BASE_URL,
-  LLM_MAX_TOKENS,
   LLM_MIN_CONFIDENCE,
   LLM_MODEL,
   LLM_REASONING_EFFORT,
@@ -71,9 +70,9 @@ export function failureCount(): number {
  * A model that returns junk must not read as "benign" — that is a fail-open on
  * the last gate in the pipeline. One retry, then count it and say so.
  */
-export async function triage(dossierText: string): Promise<LlmVerdict> {
+export async function triage(dossierText: string, host: string): Promise<LlmVerdict> {
   for (let attempt = 0; attempt < 2; attempt++) {
-    const verdict = await askOnce(dossierText);
+    const verdict = await askOnce(dossierText, host);
     if (verdict) return verdict;
   }
   failures++;
@@ -81,7 +80,7 @@ export async function triage(dossierText: string): Promise<LlmVerdict> {
 }
 
 /** Null means "no usable answer", which is different from "benign". */
-async function askOnce(dossierText: string): Promise<LlmVerdict | null> {
+async function askOnce(dossierText: string, host: string): Promise<LlmVerdict | null> {
   const res = await request(`${LLM_BASE_URL}/chat/completions`, {
     method: 'POST',
     tries: 3,
@@ -91,7 +90,6 @@ async function askOnce(dossierText: string): Promise<LlmVerdict | null> {
     body: JSON.stringify({
       model: LLM_MODEL,
       reasoning_effort: LLM_REASONING_EFFORT,
-      max_tokens: LLM_MAX_TOKENS,
       temperature: 0,
       response_format: { type: 'json_object' },
       messages: [
@@ -102,16 +100,34 @@ async function askOnce(dossierText: string): Promise<LlmVerdict | null> {
   });
 
   if (res.status !== 200 || !res.body.length) {
-    log.warn(`llm http ${res.status}`);
+    log.site(host, 'warn', `llm http ${res.status}${res.error ? ` ${res.error}` : ''}`);
     return null;
   }
 
+  let payload: any;
   try {
-    const payload = JSON.parse(decode(res.body));
-    const content: string = payload?.choices?.[0]?.message?.content ?? '';
+    payload = JSON.parse(decode(res.body));
+  } catch {
+    log.site(host, 'warn', `llm response was not json: ${decode(res.body).slice(0, 120)}`);
+    return null;
+  }
+
+  const choice = payload?.choices?.[0];
+  const content: string = choice?.message?.content ?? '';
+  try {
     return coerce(JSON.parse(content.replace(/^```(?:json)?|```$/g, '').trim()));
   } catch {
-    log.warn('llm returned unparseable json, retrying');
+    // Say why. "unparseable json" is not a diagnosis. finish_reason separates
+    // truncation from a model that simply wrote prose, and the tail shows which
+    // — valid JSON that stops mid-string reads very differently from an apology.
+    const usage = payload?.usage ?? {};
+    log.site(
+      host,
+      'warn',
+      `llm unusable: finish=${choice?.finish_reason ?? '?'} ` +
+        `completion=${usage.completion_tokens ?? '?'} reasoning=${usage.reasoning_tokens ?? '?'} ` +
+        `content=${content.length}c tail=${JSON.stringify(content.slice(-120))}`,
+    );
     return null;
   }
 }

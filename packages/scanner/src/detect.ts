@@ -11,7 +11,7 @@
  * Both lanes read the dossier that stage 4 already built, and the LLM in stage
  * 6 reads that same dossier. Two independent opinions, one set of facts.
  */
-import { CONTENT_SCORE_THRESHOLD } from './config.ts';
+import { CONTENT_SCORE_THRESHOLD, looksLikeLure } from './config.ts';
 import type { Classification, Dossier, RuleHits } from './types.ts';
 
 type Rule = { weight: number; pattern: RegExp };
@@ -70,9 +70,14 @@ const WEB3_API = /window\.ethereum|eth_requestAccounts|personal_sign|wagmi|viem|
 const BRANDS =
   /metamask|trust\s*wallet|walletconnect|phantom\s*wallet|coinbase\s*wallet|ledger\s*live|trezor|exodus\s*wallet|safepal/gi;
 
-/** Words that only appear in a hostname when the hostname is the lure. */
-const HOSTNAME_KEYWORDS =
-  /wallet|metamask|phantom|ledger|trezor|seedphrase|recover|restore|validat|verify|sync|claim|airdrop|presale|giveaway|unlock|migrat|rectif|dapp-|-dapp|web3(?:auth|connect)|binance|coinbase|kraken|paypal|helpdesk|support-|-support|secure-|-secure/i;
+/**
+ * The priority lane shares the acquisition vocabulary in config — the words
+ * that make a name worth a request are the words that make it worth a second
+ * look. It reads the repo name as well as the host: a repo called
+ * `metamask-recovery-portal` whose homepage points at `neutral-name.vercel.app`
+ * is exactly the case a host-only test misses.
+ */
+const lureLane = (host: string, repo: string) => looksLikeLure(`${host} ${repo}`);
 
 /** Union of every rule, used to pick the evidence lines that go in the dossier. */
 export const ANY_RULE = new RegExp(
@@ -103,7 +108,7 @@ export function classify(dossier: Dossier): Classification {
   }
 
   const lanes: Classification['lanes'] = [];
-  if (HOSTNAME_KEYWORDS.test(dossier.site.host)) lanes.push('hostname');
+  if (lureLane(dossier.site.host, dossier.site.repo)) lanes.push('hostname');
   if (score >= CONTENT_SCORE_THRESHOLD) lanes.push('content');
 
   return { score, hits, lanes };

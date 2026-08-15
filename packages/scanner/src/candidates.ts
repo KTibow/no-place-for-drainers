@@ -15,7 +15,12 @@
  * the correct guess rather than supplementing it. That regex belongs on
  * observed hostnames as a kit-clustering key, if we ever want one.
  */
-import { FREE_HOSTS, GUESS_HOST_SUFFIX, MIN_GUESS_NAME_LENGTH } from './config.ts';
+import {
+  FREE_HOSTS,
+  GUESS_HOST_SUFFIX,
+  looksLikeLure,
+  MIN_GUESS_NAME_LENGTH,
+} from './config.ts';
 import type { Candidate, Repo } from './types.ts';
 import { hostOf } from './util.ts';
 
@@ -66,6 +71,11 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
   for (const repo of repos) {
     const base = normalizeName(repo.nameWithOwner);
     if (base.length < MIN_GUESS_NAME_LENGTH) continue;
+    // The name has to earn the request. Guessing for every repo is ~35,000
+    // requests at one provider, and vercel answers that by resetting every
+    // connection from the source IP. Measured on live repo names, this keeps
+    // ~2%, so a 50k-repo run guesses ~880 hosts instead of ~34,700.
+    if (!looksLikeLure(base)) continue;
     const host = `${base}.${GUESS_HOST_SUFFIX}`;
     const url = `https://${host}`;
     if (!out.has(url)) {
