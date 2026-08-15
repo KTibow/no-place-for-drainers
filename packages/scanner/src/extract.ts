@@ -14,6 +14,11 @@ import { parse } from 'acorn';
  */
 export function readableSource(html: string): string {
   return html
+    // Inlined base64 blobs are images and fonts: no judgement value, and they
+    // dominate. A real drainer measured 408 KB of which 333 KB was three data
+    // URIs, which pushed it past the source cap so the classifier had to judge
+    // it blind. Stripping them leaves 32 KB of actual page.
+    .replace(/data:[a-z0-9.+-]+\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=\s]+/gi, 'data:<stripped>')
     .replace(/<style[\s\S]*?<\/style>/gi, '')
     .replace(/<link[^>]+rel=["']stylesheet["'][^>]*>/gi, '')
     .replace(/<!--[\s\S]*?-->/g, '')
