@@ -1,0 +1,53 @@
+---
+/**
+ * The one line of chrome on the site: run stats (passed as children, where a
+ * page has them) followed by the links, all in the same muted register. The
+ * current page drops out of the list rather than rendering as a dead link.
+ */
+import { href } from '../data';
+
+interface Props {
+  current?: 'index' | 'runs';
+}
+
+const { current } = Astro.props;
+
+const links = [
+  { key: 'index', label: 'index', url: href('/') },
+  { key: 'runs', label: 'runs', url: href('/runs/') },
+  { key: 'json', label: 'json', url: href('/drainers.json') },
+  { key: 'source', label: 'source', url: 'https://github.com/KTibow/no-place-for-drainers' },
+].filter((link) => link.key !== current);
+
+const hasStats = Astro.slots.has('default');
+---
+
+<p class="meta">
+  {hasStats && <slot />}
+  {
+    links.map((link, i) => (
+      <>
+        {(hasStats || i > 0) && <span class="sep"> · </span>}
+        <a href={link.url}>{link.label}</a>
+      </>
+    ))
+  }
+</p>
+
+<style>
+  .meta {
+    color: var(--m3c-on-surface-variant);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Stats arrive through the slot, so they carry the caller's scope. */
+  .meta :global(b) {
+    color: var(--m3c-on-surface);
+    font-weight: 600;
+  }
+
+  .sep {
+    opacity: 0.5;
+  }
+</style>

@@ -1,4 +1,5 @@
 ---
+import Meta from '../../components/Meta.astro';
 import Page from '../../layouts/Page.astro';
 import { loadRuns, loadSites, type Site } from '../../data';
 
@@ -62,6 +63,8 @@ const r = site.latest;
     The URL is printed rather than linked. Two classifiers agreed it exists to take something from
     whoever opens it.
   </p>
+
+  <Meta />
 </Page>
 
 <style>
@@ -129,6 +132,7 @@ const r = site.latest;
 
   .note {
     margin-top: 3rem;
+    margin-bottom: 2rem;
     color: var(--m3c-on-surface-variant);
     font-size: 0.85rem;
     max-width: 34rem;

@@ -1,13 +1,15 @@
 ---
 import '../styles/global.css';
-import { href } from '../data';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = 'Wallet drainers and phishing kits, found on free hosts hours after they go up.' } = Astro.props;
+const {
+  title,
+  description = 'Wallet drainers and phishing kits, found on free hosts hours after they go up.',
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -20,14 +22,6 @@ const { title, description = 'Wallet drainers and phishing kits, found on free h
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🚱</text></svg>" />
   </head>
   <body>
-    <header>
-      <a href={href('/')}>no place for drainers</a>
-      <nav>
-        <a href={href('/runs/')}>runs</a>
-        <a href={href('/drainers.json')}>json</a>
-        <a href="https://github.com/KTibow/no-place-for-drainers">source</a>
-      </nav>
-    </header>
     <main>
       <slot />
     </main>
@@ -35,35 +29,9 @@ const { title, description = 'Wallet drainers and phishing kits, found on free h
 </html>
 
 <style>
-  header,
   main {
     max-width: 58rem;
     margin-inline: auto;
-    padding-inline: 1.5rem;
-  }
-
-  header {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
-    align-items: baseline;
-    justify-content: space-between;
-    padding-block: 1.75rem 2.5rem;
-    font-size: 0.9rem;
-  }
-
-  header > a {
-    font-family: var(--mono);
-    color: var(--m3c-on-surface);
-  }
-
-  nav {
-    display: flex;
-    gap: 1.25rem;
-    color: var(--m3c-on-surface-variant);
-  }
-
-  main {
-    padding-bottom: 6rem;
+    padding: 4rem 1.5rem 6rem;
   }
 </style>

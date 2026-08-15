@@ -1,4 +1,5 @@
 ---
+import Meta from '../components/Meta.astro';
 import Page from '../layouts/Page.astro';
 import { href, loadRuns, loadSites } from '../data';
 
@@ -17,15 +18,23 @@ const scanned = runs.reduce((total, run) => total + run.summary.repos, 0);
     long before anyone would think to submit it anywhere.
   </p>
 
-  <p class="stats">
+  <Meta current="index">
     <b>{sites.length}</b> confirmed{' · '}
     <b>{runs.length}</b> {runs.length === 1 ? 'run' : 'runs'}{' · '}
     <b>{scanned.toLocaleString()}</b> repos walked{latest ? ` · last scan ${latest.date}` : ''}
-  </p>
+  </Meta>
 
   {
     sites.length === 0 ? (
-      <p class="empty">Nothing confirmed yet. The first scan has not landed.</p>
+      <p class="empty">
+        {
+          runs.length === 0
+            ? 'No scan has landed yet.'
+            : latest?.summary.canaryCaught === false
+              ? 'Nothing confirmed — but the last run missed its canary, so it found nothing because it was broken, not because there was nothing.'
+              : `Nothing confirmed across ${runs.length === 1 ? 'the last run' : `the last ${runs.length} runs`}.`
+        }
+      </p>
     ) : (
       <ol class="sites">
         {sites.map((site) => (
@@ -56,20 +65,13 @@ const scanned = runs.reduce((total, run) => total + run.summary.repos, 0);
     color: var(--m3c-on-surface);
   }
 
-  .stats {
-    color: var(--m3c-on-surface-variant);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .stats b {
-    color: var(--m3c-on-surface);
-    font-weight: 600;
-  }
-
   .empty {
     color: var(--m3c-on-surface-variant);
     padding-block: 3rem;
+  }
+
+  .sites {
+    margin-top: 0.75rem;
   }
 
   .sites a {
