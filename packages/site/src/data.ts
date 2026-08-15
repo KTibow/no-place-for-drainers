@@ -49,12 +49,15 @@ export type Summary = {
   candidatesByName: number;
   candidatesByHomepage: number;
   live: number;
+  /** Absent on runs from before the probe tally existed. */
+  probeStatuses?: Record<string, number>;
   takedowns: Takedown[];
   dossiers: number;
   hostnameLane: number;
   contentLane: number;
   triaged: number;
   confirmed: number;
+  llmFailures?: number;
   canaryCaught: boolean;
   elapsedSec: number;
   output: string;

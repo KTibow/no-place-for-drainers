@@ -12,12 +12,37 @@ import * as log from './log.ts';
 import type { Candidate, LiveSite } from './types.ts';
 import { pool } from './util.ts';
 
-export type ProbeResult = { live: LiveSite[]; takedowns: LiveSite[] };
+export type ProbeResult = {
+  live: LiveSite[];
+  takedowns: LiveSite[];
+  statuses: Record<string, number>;
+};
+
+/**
+ * One bucket per outcome. Without this the log only ever names the hits, so a
+ * long silent stretch is indistinguishable between "these hosts do not exist"
+ * and "we are being refused and dropping the answers on the floor" — a
+ * distinction that has already cost one wrong diagnosis.
+ */
+function bucket(status: number): string {
+  if (status === 0) return 'err';
+  if (status === TAKEDOWN_STATUS) return '451';
+  if (LIVE_STATUSES.has(status)) return 'live';
+  return String(status);
+}
 
 export async function probeLiveness(candidates: Candidate[]): Promise<ProbeResult> {
   const live: LiveSite[] = [];
   const takedowns: LiveSite[] = [];
+  const statuses = new Map<string, number>();
   let done = 0;
+
+  const tally = () =>
+    [...statuses]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8)
+      .map(([name, count]) => `${name}:${count}`)
+      .join(' ');
 
   await pool(candidates, PROBE_CONCURRENCY, async (candidate) => {
     const res = await request(candidate.url, {
@@ -28,6 +53,9 @@ export async function probeLiveness(candidates: Candidate[]): Promise<ProbeResul
     const server = res.headers.get('server') ?? '';
     const note = res.headers.get('x-vercel-error') ?? res.headers.get('x-nf-error') ?? '';
     const site: LiveSite = { ...candidate, status: res.status, server, note };
+
+    const key = bucket(res.status);
+    statuses.set(key, (statuses.get(key) ?? 0) + 1);
 
     if (res.status === TAKEDOWN_STATUS) {
       takedowns.push(site);
@@ -45,8 +73,9 @@ export async function probeLiveness(candidates: Candidate[]): Promise<ProbeResul
       );
     }
 
-    if (++done % 500 === 0) log.info(`probed ${done}/${candidates.length}`);
+    if (++done % 500 === 0) log.info(`probed ${done}/${candidates.length} — ${tally()}`);
   });
 
-  return { live, takedowns };
+  log.info(`probed ${done}/${candidates.length} — ${tally()}`);
+  return { live, takedowns, statuses: Object.fromEntries(statuses) };
 }

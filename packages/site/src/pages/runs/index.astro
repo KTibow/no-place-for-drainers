@@ -30,6 +30,17 @@ const runs = loadRuns();
           <span class="cost"> · {Math.round(run.summary.elapsedSec / 60)} min · {run.summary.windowHours}h window</span>
         </p>
 
+        {
+          run.summary.probeStatuses && (
+            <p class="probes">
+              probes returned {Object.entries(run.summary.probeStatuses)
+                .sort((a, b) => b[1] - a[1])
+                .map(([status, count]) => `${status} ${count.toLocaleString()}`)
+                .join(', ')}
+            </p>
+          )
+        }
+
         {run.records.length > 0 && (
           <ul class="hits">
             {run.records.map((record) => (
@@ -105,6 +116,13 @@ const runs = loadRuns();
 
   .cost {
     white-space: nowrap;
+  }
+
+  .probes {
+    margin-top: 0.3rem;
+    color: var(--m3c-on-surface-variant);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
   }
 
   .hits,

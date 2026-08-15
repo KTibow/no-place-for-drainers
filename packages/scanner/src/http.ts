@@ -1,5 +1,21 @@
+import { Agent, fetch, type Headers, type Response } from 'undici';
 import { MAX_BODY_BYTES, USER_AGENT } from './config.ts';
 import { sleep } from './util.ts';
+
+/**
+ * Vercel's edge resets any TLS connection whose ALPN list *starts* with
+ * `http/1.1`, even when h2 is also offered. Node's built-in fetch offers
+ * exactly that, so it cannot reach *.vercel.app at all — which silently cost a
+ * whole run: 1,090 vercel hosts probed live and every single one failed its
+ * GET, while github.io went 779/779. Measured at the raw TLS layer, 6 trials
+ * each: ["http/1.1"] 0/6, ["http/1.1","h2"] 0/6, ["h2","http/1.1"] 6/6.
+ *
+ * undici hardcodes the ALPN order and applies it *after* user connect options,
+ * so `connect: { ALPNProtocols }` cannot override it. `preferH2` is the only
+ * supported way to put h2 first, and it is why this uses the undici package
+ * rather than the global fetch, whose dispatcher is not reachable from here.
+ */
+const dispatcher = new Agent({ allowH2: true, connect: { preferH2: true } });
 
 export type HttpResponse = {
   status: number;
@@ -12,7 +28,7 @@ export type HttpResponse = {
 const EMPTY: HttpResponse = {
   status: 0,
   body: new Uint8Array(),
-  headers: new Headers(),
+  headers: new globalThis.Headers() as unknown as Headers,
   url: '',
 };
 
@@ -68,6 +84,7 @@ export async function request(url: string, opts: RequestOptions = {}): Promise<H
         body: opts.body,
         redirect: opts.redirect ?? 'manual',
         signal: AbortSignal.timeout(opts.timeoutMs ?? 30_000),
+        dispatcher,
       });
 
       if ((res.status === 403 || res.status === 429) && attempt < tries - 1) {

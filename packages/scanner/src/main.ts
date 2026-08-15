@@ -61,7 +61,7 @@ log.flow('candidates', candidates.length, `deduped (+${CANARY_URLS.length} canar
 
 // ── stage 3 ── probe liveness, both paths ───────────────────────────────────
 log.stage(3, 'probe liveness', 'HEAD, deduped union of both paths');
-const { live, takedowns } = await probeLiveness(candidates);
+const { live, takedowns, statuses } = await probeLiveness(candidates);
 log.flow('live URLs', live.length, `${((live.length / candidates.length) * 100).toFixed(1)}% of candidates`);
 log.flow('already taken down', takedowns.length, 'http 451 — someone got there first');
 // 451s never reach the dossier stage, so this is the only place they get named.
@@ -134,7 +134,7 @@ await pool(triageQueue, LLM_CONCURRENCY, async ({ dossier, classification }) => 
 log.flow('confirmed', findings.length, 'analyst queue');
 
 // ── stage 7 ── summary ──────────────────────────────────────────────────────
-log.stage(7, 'analyst queue', queue.path);
+log.stage(7, 'analyst queue', basename(queue.path));
 const canaryCaught = findings.some((f) => f.dossier.site.source === 'canary');
 const summary = {
   generated: new Date().toISOString(),
@@ -145,6 +145,9 @@ const summary = {
   candidatesByName: bySource('guess'),
   candidatesByHomepage: bySource('homepage'),
   live: live.length,
+  // What every probe actually returned, so a quiet run can be told apart from
+  // a blocked one without re-running it.
+  probeStatuses: statuses,
   takedowns: takedowns.map((site) => ({
     url: site.url,
     host: site.host,
@@ -158,6 +161,7 @@ const summary = {
   contentLane: scored.filter((s) => s.classification.lanes.includes('content')).length,
   triaged: triageQueue.length,
   confirmed: findings.length,
+  llmFailures: llm.failureCount(),
   canaryCaught,
   elapsedSec: Math.round((Date.now() - startedAt) / 10) / 100,
   output: basename(queue.path),
@@ -167,6 +171,17 @@ const summaryPath = queue.writeSummary(summary);
 for (const record of [...queue.records].sort((a, b) => b.confidence - a.confidence)) {
   log.site(record.host, 'pass', `${record.confidence.toFixed(2)} ${record.category} — ${record.reasons[0] ?? ''}`);
 }
-log.info(`canary ${canaryCaught ? 'CAUGHT — pipeline is sound' : 'MISSED — check the pipeline'}`);
-log.info(`summary → ${summaryPath}`);
+log.info(`summary → ${basename(summaryPath)}`);
 console.log(JSON.stringify(summary, null, 2));
+
+// The canary is the only thing in here that knows the difference between "a
+// quiet day on GitHub" and "the scanner has been silently broken for a week".
+// A run that misses it has produced evidence, not results — commit it, publish
+// it, and still go red.
+if (canaryCaught) {
+  log.info('canary CAUGHT — pipeline is sound');
+} else {
+  log.error('canary MISSED — this run found nothing because it is broken, not because there was nothing');
+  console.log('::error title=canary missed::the pipeline did not flag a known-bad site; treat this run as unreliable');
+  process.exitCode = 1;
+}

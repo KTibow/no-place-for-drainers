@@ -15,6 +15,7 @@ import {
   LLM_TIMEOUT_MS,
 } from './config.ts';
 import { request } from './http.ts';
+import * as log from './log.ts';
 import type { LlmVerdict } from './types.ts';
 import { decode } from './util.ts';
 
@@ -59,7 +60,28 @@ const FAILED: LlmVerdict = {
   iocs: [],
 };
 
+let failures = 0;
+
+/** Calls that never produced a usable verdict. Reported in the run summary. */
+export function failureCount(): number {
+  return failures;
+}
+
+/**
+ * A model that returns junk must not read as "benign" — that is a fail-open on
+ * the last gate in the pipeline. One retry, then count it and say so.
+ */
 export async function triage(dossierText: string): Promise<LlmVerdict> {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const verdict = await askOnce(dossierText);
+    if (verdict) return verdict;
+  }
+  failures++;
+  return { ...FAILED, reasons: ['llm produced no usable verdict after 2 attempts'] };
+}
+
+/** Null means "no usable answer", which is different from "benign". */
+async function askOnce(dossierText: string): Promise<LlmVerdict | null> {
   const res = await request(`${LLM_BASE_URL}/chat/completions`, {
     method: 'POST',
     tries: 3,
@@ -80,7 +102,8 @@ export async function triage(dossierText: string): Promise<LlmVerdict> {
   });
 
   if (res.status !== 200 || !res.body.length) {
-    return { ...FAILED, reasons: [`llm http ${res.status}`] };
+    log.warn(`llm http ${res.status}`);
+    return null;
   }
 
   try {
@@ -88,7 +111,8 @@ export async function triage(dossierText: string): Promise<LlmVerdict> {
     const content: string = payload?.choices?.[0]?.message?.content ?? '';
     return coerce(JSON.parse(content.replace(/^```(?:json)?|```$/g, '').trim()));
   } catch {
-    return { ...FAILED, reasons: ['llm returned unparseable json'] };
+    log.warn('llm returned unparseable json, retrying');
+    return null;
   }
 }
 

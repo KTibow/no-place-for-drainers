@@ -37,7 +37,11 @@ jobs:
           set -o pipefail
           pnpm scan 2>&1 | tee scan.log
 
+      # Always, even when the scan exits non-zero on a missed canary: a broken
+      # run still produced evidence, and its summary is how you find out when
+      # it broke.
       - name: commit results
+        if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -71,6 +75,7 @@ jobs:
 
   publish:
     needs: scan
+    if: always()
     permissions:
       contents: read
       pages: write
