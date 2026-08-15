@@ -5,10 +5,15 @@ export type Repo = {
   homepageUrl: string | null;
   createdAt: string;
   isFork: boolean;
+  /**
+   * Where GitHub says this repo actually deployed, from the Deployments API.
+   * Authoritative rather than guessed, and present for ~18% of new repos.
+   */
+  deploymentUrl: string | null;
 };
 
 /** Which arm of the diagram produced this URL. */
-export type CandidateSource = 'homepage' | 'guess' | 'canary';
+export type CandidateSource = 'deployment' | 'homepage' | 'guess' | 'canary';
 
 export type Candidate = {
   url: string;

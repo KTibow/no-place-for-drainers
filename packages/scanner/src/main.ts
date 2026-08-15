@@ -78,6 +78,7 @@ for (const url of CANARY_URLS) {
   });
 }
 const bySource = (s: string) => candidates.filter((c) => c.source === s).length;
+log.flow(log.MAIN, 'deployment path', bySource('deployment'), 'URLs GitHub already knows about');
 log.flow(log.MAIN, 'name path', bySource('guess'), 'guessed deployments');
 log.flow(log.MAIN, 'homepage path', bySource('homepage'), 'exact free-host URLs');
 log.flow(log.MAIN, 'candidates', candidates.length, `deduped (+${CANARY_URLS.length} canary)`);
@@ -127,6 +128,7 @@ const summary = {
   candidates: candidates.length,
   candidatesByName: bySource('guess'),
   candidatesByHomepage: bySource('homepage'),
+  candidatesByDeployment: bySource('deployment'),
   live: sum((t) => t.live),
   dossiers: sum((t) => t.dossiers),
   triaged: sum((t) => t.triaged),

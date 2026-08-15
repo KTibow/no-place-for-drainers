@@ -83,6 +83,29 @@ function normalizeUrl(raw: string): string | null {
 export function buildCandidates(repos: Repo[]): Candidate[] {
   const out = new Map<string, Candidate>();
 
+  // Deployment URLs first: GitHub is telling us where this repo actually
+  // published, so unlike a guess the site is certain to exist, and unlike a
+  // homepage field it cannot be stale or inherited. Forks are kept here for
+  // exactly that reason — a fork's homepage comes from its parent, but its
+  // deployments are its own.
+  for (const repo of repos) {
+    const url = normalizeUrl(repo.deploymentUrl ?? '');
+    if (!url) continue;
+    const host = hostOf(url);
+    if (!FREE_HOSTS.test(host)) continue;
+    if (!earnsRequest(url, `${labelOf(url)} ${repo.nameWithOwner}`)) continue;
+    if (!out.has(url)) {
+      out.set(url, {
+        url,
+        host,
+        label: labelOf(url),
+        source: 'deployment',
+        repo: repo.nameWithOwner,
+        repoCreatedAt: repo.createdAt,
+      });
+    }
+  }
+
   for (const repo of repos) {
     // A fork inherits the upstream's homepage field, so its homepage points at
     // the upstream's deployment rather than anything this account shipped.
@@ -147,7 +170,10 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
   // The canary first, always. It is the only thing that can tell a quiet day
   // from a broken scanner, and it spent the last run at the back of a queue
   // that a provider block truncated — so it never ran at all.
-  const rank = (c: Candidate) => (c.source === 'canary' ? 0 : c.source === 'guess' ? 1 : 2);
+  // A deployment URL beats a guess on the same budget: identically filtered,
+  // but certain to resolve rather than ~15% likely to.
+  const order: Record<string, number> = { canary: 0, deployment: 1, guess: 2, homepage: 3 };
+  const rank = (c: Candidate) => order[c.source] ?? 9;
   const strength = (c: Candidate) => lureScore(`${c.label} ${c.repo}`);
   return [...out.values()].sort((a, b) => rank(a) - rank(b) || strength(b) - strength(a));
 }

@@ -164,7 +164,15 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
   return { repos, cutoff: iso(cutoff) };
 }
 
-const FIELDS = 'databaseId nameWithOwner homepageUrl createdAt isFork';
+/**
+ * `deployments` is what Pages, Vercel and Netlify all write to when they
+ * publish, so it names the real URL instead of us guessing one. It costs 2
+ * extra rate-limit points per 300-repo batch (1 -> 3), which is nothing against
+ * the hourly budget. Do not raise HYDRATE_BATCH to compensate: 600 nodes with
+ * deployments attached 502s.
+ */
+const FIELDS = `databaseId nameWithOwner homepageUrl createdAt isFork
+  deployments(last:3){ nodes { latestStatus { environmentUrl } } }`;
 
 /** 300 ids per call = 1 point. Deleted repos come back as nulls; drop them. */
 async function hydrate(nodeIds: string[]): Promise<Repo[]> {
@@ -179,7 +187,13 @@ async function hydrate(nodeIds: string[]): Promise<Repo[]> {
   const out: Repo[] = [];
   for (const [key, value] of Object.entries<any>(data?.data ?? {})) {
     if (!key.startsWith('b') || !Array.isArray(value)) continue;
-    for (const node of value) if (node?.nameWithOwner) out.push(node as Repo);
+    for (const node of value) {
+      if (!node?.nameWithOwner) continue;
+      const urls: string[] = (node.deployments?.nodes ?? [])
+        .map((n: any) => n?.latestStatus?.environmentUrl)
+        .filter(Boolean);
+      out.push({ ...node, deploymentUrl: urls[urls.length - 1] ?? null } as Repo);
+    }
   }
   return out;
 }
