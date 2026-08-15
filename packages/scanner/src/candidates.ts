@@ -53,6 +53,14 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
   const out = new Map<string, Candidate>();
 
   for (const repo of repos) {
+    // A fork inherits the upstream's homepage field, so its homepage points at
+    // the upstream's deployment rather than anything this account shipped.
+    // Measured on 444 new forks: 195 had a homepage identical to the parent's,
+    // 1 differed. Keeping them spends a third of this path re-probing other
+    // people's established projects, and records the forker as the owner of a
+    // site they never deployed — the one error in an abuse feed that hurts
+    // somebody. The name path deliberately keeps forks; see below.
+    if (repo.isFork) continue;
     const url = normalizeUrl(repo.homepageUrl ?? '');
     if (!url) continue;
     const host = hostOf(url);
@@ -69,6 +77,11 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
   }
 
   for (const repo of repos) {
+    // Forks stay here. A fork keeps the upstream's name, so most guess a
+    // hostname the upstream already owns — waste, but the lure filter below
+    // removes ~98% of names before they cost a request. The ~9% of forks that
+    // were renamed are worth the rest: a forked kit under a new name is what
+    // repackaging looks like.
     const base = normalizeName(repo.nameWithOwner);
     if (base.length < MIN_GUESS_NAME_LENGTH) continue;
     // The name has to earn the request. Guessing for every repo is ~35,000
