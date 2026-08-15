@@ -19,6 +19,14 @@ export async function pool<T, R>(
   return out;
 }
 
+/** Split into [matching, rest], preserving order within each. */
+export function partition<T>(items: T[], predicate: (item: T) => boolean): [T[], T[]] {
+  const yes: T[] = [];
+  const no: T[] = [];
+  for (const item of items) (predicate(item) ? yes : no).push(item);
+  return [yes, no];
+}
+
 export function chunk<T>(items: T[], size: number): T[][] {
   const out: T[][] = [];
   for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));

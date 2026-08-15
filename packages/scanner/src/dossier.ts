@@ -9,7 +9,6 @@
 import {
   DOSSIER_MAX_CHARS,
   DOSSIER_MAX_EVIDENCE_LINES,
-  FETCH_CONCURRENCY,
   FETCH_TIMEOUT_MS,
   MAX_BUNDLES,
   MAX_CORPUS_CHARS,
@@ -31,32 +30,37 @@ import * as log from './log.ts';
 import type { Classification, Dossier, LiveSite } from './types.ts';
 import { decode, kb, pool } from './util.ts';
 
-export async function buildDossiers(sites: LiveSite[]): Promise<Dossier[]> {
+export async function buildDossiers(
+  sites: LiveSite[],
+  concurrency: number,
+  track: string,
+): Promise<Dossier[]> {
   const out: Dossier[] = [];
   let done = 0;
 
-  await pool(sites, FETCH_CONCURRENCY, async (site) => {
-    const dossier = await buildDossier(site);
+  const extract = async (site: LiveSite) => {
+    const dossier = await buildDossier(site, track);
+    // The raw page has been extracted into the dossier and is never read again.
+    // Holding thousands of them, some multi-megabyte, is how a runner dies.
+    site.html = '';
     if (dossier) out.push(dossier);
-    if (++done % 200 === 0) log.info(`fetched ${done}/${sites.length}`);
-  });
+    if (++done % 200 === 0) log.info(track, `extracted ${done}/${sites.length}`);
+  };
+
+  await pool(sites, concurrency, extract);
 
   return out;
 }
 
-async function buildDossier(site: LiveSite): Promise<Dossier | null> {
-  const res = await request(site.url, {
-    tries: 2,
-    timeoutMs: FETCH_TIMEOUT_MS,
-    redirect: 'follow',
-    headers: { accept: 'text/html,application/xhtml+xml' },
-  });
-  if (!res.body.length) {
-    log.site(site.host, 'drop', `no body on GET (status ${res.status}${res.error ? ` ${res.error}` : ''})`);
+async function buildDossier(site: LiveSite, track: string): Promise<Dossier | null> {
+  // The page already arrived with the liveness probe; only bundles cost a
+  // request from here.
+  const html = site.html;
+  if (!html) {
+    log.site(track, site.host, 'drop', `live at ${site.status} but returned no body`);
     return null;
   }
 
-  const html = decode(res.body);
   const visible = stripTags(html);
   let corpus = essence(html);
   let jsBytes = 0;
@@ -84,12 +88,12 @@ async function buildDossier(site: LiveSite): Promise<Dossier | null> {
     hosts: hostsIn(corpus),
     visible: visible.slice(0, 800),
     corpus,
-    htmlBytes: res.body.length,
+    htmlBytes: html.length,
     jsBytes,
     bundles,
   };
 
-  log.site(
+  log.site(track, 
     site.host,
     'dossier',
     `html=${kb(dossier.htmlBytes)} js=${kb(jsBytes)}/${bundles.length} ` +

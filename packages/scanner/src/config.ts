@@ -94,10 +94,36 @@ export function looksLikeLure(name: string): boolean {
 
 // ── stage 3: liveness ───────────────────────────────────────────────────────
 export const LIVE_STATUSES = new Set([200, 301, 302, 307, 308, 401, 403]);
+/**
+ * Hosts that mean "this deployment is password-protected", not "this is the
+ * site". A Vercel deployment with protection enabled 307s to
+ * vercel.com/login?next=/sso-api…, and because the probe follows redirects we
+ * would otherwise fetch Vercel's own 481 KB login page and hand it to the
+ * classifier as the candidate's content. That produced a confident
+ * "generic-credential-phish" verdict on Vercel's actual login screen.
+ *
+ * Attributing another host's page to this repo is the same failure as
+ * inheriting a fork's homepage: it names the wrong owner.
+ */
+export const PROTECTION_HOSTS = [
+  'vercel.com',
+  'vercel.app/sso',
+  'netlify.com',
+  'app.netlify.com',
+  'github.com',
+  'cloudflareaccess.com',
+];
 /** x-vercel-error: DEPLOYMENT_DISABLED — free ground truth that someone got there first. */
 export const TAKEDOWN_STATUS = 451;
 export const PROBE_CONCURRENCY = 64;
-export const PROBE_TIMEOUT_MS = 12_000;
+/**
+ * Workers for rate-limited providers. Their throughput is set by the limiter,
+ * not by this, so it only needs enough in flight to keep the bucket drained —
+ * and it runs as a separate lane so a paced provider cannot stall an unpaced
+ * one. github.io is the bulk of the candidates and has never rationed anything.
+ */
+export const PACED_CONCURRENCY = 12;
+export const PROBE_TIMEOUT_MS = 20_000;
 
 // ── stage 4: dossier ────────────────────────────────────────────────────────
 export const FETCH_CONCURRENCY = 24;

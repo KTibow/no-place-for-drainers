@@ -34,7 +34,7 @@ let rateFloorUntil = 0;
 async function api(path: string, init?: { method?: string; body?: string }): Promise<unknown> {
   const wait = rateFloorUntil - Date.now();
   if (wait > 0) {
-    log.warn(`rate limit floor reached, sleeping ${Math.ceil(wait / 1000)}s`);
+    log.warn(log.MAIN, `rate limit floor reached, sleeping ${Math.ceil(wait / 1000)}s`);
     await sleep(wait);
   }
 
@@ -57,7 +57,7 @@ async function api(path: string, init?: { method?: string; body?: string }): Pro
   }
 
   if (res.status !== 200 || res.body.length === 0) {
-    log.warn(`GET ${path.slice(0, 80)} → ${res.status}`);
+    log.warn(log.MAIN, `GET ${path.slice(0, 80)} → ${res.status}`);
     return null;
   }
   try {
@@ -112,7 +112,7 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
 
   const span = headId - startId;
   const perShard = Math.ceil(REPO_LIMIT / WALK_SHARDS);
-  log.info(
+  log.info(log.MAIN, 
     `window ${iso(cutoff)} → ${iso(head)}  ids ${startId}..${headId} (${span.toLocaleString()} ids), ` +
       `${WALK_SHARDS} shards × ${perShard} repos`,
   );
@@ -151,14 +151,14 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
       }
       await drain(true);
 
-      log.info(`shard ${shardIndex}: ids ${from}..${until} → ${hydrated.length} hydrated`);
+      log.info(log.MAIN, `shard ${shardIndex}: ids ${from}..${until} → ${hydrated.length} hydrated`);
       collected.push(...hydrated);
     },
   );
 
   const cutoffMs = cutoff.getTime();
   const repos = collected.filter((r) => Date.parse(r.createdAt) >= cutoffMs);
-  log.info(
+  log.info(log.MAIN, 
     `${pages} REST pages, ${collected.length} hydrated, ${repos.length} inside the ${WINDOW_HOURS}h window`,
   );
   return { repos, cutoff: iso(cutoff) };

@@ -102,5 +102,15 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
     }
   }
 
-  return [...out.values()];
+  /**
+   * Guessed names first. Providers rate-limit by source IP and the block is
+   * sticky for minutes, so the tail of this list is the part that may never get
+   * probed — and until now the tail was the guesses. The last run proved it:
+   * when the block landed, 2,540 homepage candidates had been probed and
+   * exactly 2 guesses had. The guesses are the ones a keyword filter already
+   * judged worth the request; they should not be queued behind a few thousand
+   * URLs whose only credential is that somebody typed them into a form field.
+   */
+  const rank = (c: Candidate) => (c.source === 'guess' ? 0 : 1);
+  return [...out.values()].sort((a, b) => rank(a) - rank(b));
 }

@@ -92,7 +92,7 @@ export async function request(url: string, opts: RequestOptions = {}): Promise<H
   const cap = opts.cap ?? MAX_BODY_BYTES;
 
   for (let attempt = 0; attempt < tries; attempt++) {
-    await pace.acquire(url);
+    if (!(await pace.acquire(url))) return failed('provider-blocked');
     try {
       const res = await fetch(url, {
         method: opts.method ?? 'GET',

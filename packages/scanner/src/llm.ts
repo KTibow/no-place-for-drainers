@@ -42,6 +42,12 @@ BENIGN, no matter how many crypto keywords appear:
 - documentation, tutorials, blog posts, or security write-ups ABOUT phishing or seed phrases
 - portfolios, landing pages, dashboards, games, framework starter templates ("Create Next App")
 - a page whose only evidence is one brand name, or the word "private key" in a developer context
+- a self-hosted admin panel, deploy tool, or config UI that asks for the operator's OWN
+  credentials — a Cloudflare API token, an AWS key, a database URL, a bot token. The operator
+  and the victim are the same person, so there is nobody to steal from. Tells: the page is an
+  admin console or settings screen rather than a landing page, the fields configure a service
+  the visitor already runs, and the surrounding copy is documentation rather than urgency.
+  Phishing impersonates a login you already have; a config UI sets up something you are building.
 
 SUSPICIOUS is for a page that shows drainer shape but whose evidence is too thin to call: brand impersonation with no harvesting form, or an incomplete deployment.
 
@@ -70,9 +76,13 @@ export function failureCount(): number {
  * A model that returns junk must not read as "benign" — that is a fail-open on
  * the last gate in the pipeline. One retry, then count it and say so.
  */
-export async function triage(dossierText: string, host: string): Promise<LlmVerdict> {
+export async function triage(
+  dossierText: string,
+  host: string,
+  track: string,
+): Promise<LlmVerdict> {
   for (let attempt = 0; attempt < 2; attempt++) {
-    const verdict = await askOnce(dossierText, host);
+    const verdict = await askOnce(dossierText, host, track);
     if (verdict) return verdict;
   }
   failures++;
@@ -80,7 +90,11 @@ export async function triage(dossierText: string, host: string): Promise<LlmVerd
 }
 
 /** Null means "no usable answer", which is different from "benign". */
-async function askOnce(dossierText: string, host: string): Promise<LlmVerdict | null> {
+async function askOnce(
+  dossierText: string,
+  host: string,
+  track: string,
+): Promise<LlmVerdict | null> {
   const res = await request(`${LLM_BASE_URL}/chat/completions`, {
     method: 'POST',
     tries: 3,
@@ -100,7 +114,7 @@ async function askOnce(dossierText: string, host: string): Promise<LlmVerdict | 
   });
 
   if (res.status !== 200 || !res.body.length) {
-    log.site(host, 'warn', `llm http ${res.status}${res.error ? ` ${res.error}` : ''}`);
+    log.site(track, host, 'warn', `llm http ${res.status}${res.error ? ` ${res.error}` : ''}`);
     return null;
   }
 
@@ -108,7 +122,7 @@ async function askOnce(dossierText: string, host: string): Promise<LlmVerdict | 
   try {
     payload = JSON.parse(decode(res.body));
   } catch {
-    log.site(host, 'warn', `llm response was not json: ${decode(res.body).slice(0, 120)}`);
+    log.site(track, host, 'warn', `llm response was not json: ${decode(res.body).slice(0, 120)}`);
     return null;
   }
 
@@ -122,6 +136,7 @@ async function askOnce(dossierText: string, host: string): Promise<LlmVerdict | 
     // — valid JSON that stops mid-string reads very differently from an apology.
     const usage = payload?.usage ?? {};
     log.site(
+      track,
       host,
       'warn',
       `llm unusable: finish=${choice?.finish_reason ?? '?'} ` +

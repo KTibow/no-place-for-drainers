@@ -14,8 +14,8 @@
  * Trips cluster near a few hundred requests rather than at a rate, which reads
  * like a token bucket of roughly that capacity with a slow refill. The refill
  * is the number that matters and it is not observable from outside, so this
- * does not hardcode a guess: it starts conservative, backs off hard whenever
- * the provider starts resetting, and creeps back up while it is being answered.
+ * does not hardcode a guess: it sits deliberately below the observed ceiling
+ * and only ever backs off. See RPS for why it never climbs.
  *
  * Everything not listed here is unpaced — github.io, the GitHub API and the LLM
  * endpoint have never shown this behaviour.
@@ -23,16 +23,30 @@
 import * as log from './log.ts';
 import { sleep } from './util.ts';
 
-/** Opening request rate per second, per provider. */
-const START_RPS = 4;
+/**
+ * Deliberately below the observed ceiling, and it never climbs.
+ *
+ * An earlier version used AIMD — creep up, halve on failure — which is right
+ * when overshooting costs one retry. Here overshooting costs minutes of sticky
+ * block, so probing for the ceiling is far more expensive than the throughput
+ * it buys. Measured: 4-12/s sustained 1,750 requests with zero errors, and the
+ * run died ~150 requests after the ramp touched 16/s (locally, 16/s tripped at
+ * request 267). We do not need to know the exact ceiling. We need to finish.
+ */
+const RPS = 6;
 const MIN_RPS = 0.5;
-const MAX_RPS = 16;
 /** Requests that may go out back to back before pacing bites. */
 const BURST = 20;
-/** How long to stop talking to a provider entirely once it starts resetting. */
-const COOLDOWN_MS = 90_000;
-/** Consecutive clean responses before creeping the rate back up. */
-const RECOVERY_STREAK = 250;
+/**
+ * First cooldown, doubled on each subsequent trip. 90s was not enough: every
+ * pause expired while the block was still in force, one request got through,
+ * and it tripped again — a 90-second sawtooth that made no progress for
+ * fourteen minutes.
+ */
+const COOLDOWN_MS = 120_000;
+const MAX_COOLDOWN_MS = 600_000;
+/** After this many trips, stop spending the run on a provider that is done with us. */
+const MAX_TRIPS = 4;
 
 const PACED_PROVIDERS = ['vercel.app'];
 
@@ -41,7 +55,11 @@ type Bucket = {
   tokens: number;
   updated: number;
   blockedUntil: number;
-  streak: number;
+  trips: number;
+  /** Requests actually issued, and how many before the provider first balked. */
+  issued: number;
+  issuedBeforeFirstTrip: number | null;
+  abandoned: boolean;
 };
 
 const buckets = new Map<string, Bucket>();
@@ -56,26 +74,56 @@ function providerOf(url: string): string | null {
   return PACED_PROVIDERS.find((p) => host === p || host.endsWith(`.${p}`)) ?? null;
 }
 
+/**
+ * Whether this URL goes through the limiter at all. Callers use it to run the
+ * paced and unpaced populations as separate lanes: they share nothing, and a
+ * provider that rations requests should not be able to stall a provider that
+ * does not.
+ */
+export function isPaced(url: string): boolean {
+  return providerOf(url) !== null;
+}
+
+/** Log under the track that owns this provider, so its warnings line up. */
+function trackOf(provider: string): string {
+  return provider.replace(/\.(app|dev|io)$/, '');
+}
+
 function bucketFor(provider: string): Bucket {
   let bucket = buckets.get(provider);
   if (!bucket) {
-    bucket = { rps: START_RPS, tokens: BURST, updated: Date.now(), blockedUntil: 0, streak: 0 };
+    bucket = {
+      rps: RPS,
+      tokens: BURST,
+      updated: Date.now(),
+      blockedUntil: 0,
+      trips: 0,
+      issued: 0,
+      issuedBeforeFirstTrip: null,
+      abandoned: false,
+    };
     buckets.set(provider, bucket);
   }
   return bucket;
 }
 
-/** Blocks until this request is allowed to go out. */
-export async function acquire(url: string): Promise<void> {
+/**
+ * Blocks until this request may go out. Returns false when the provider has
+ * refused us often enough that continuing would spend the rest of the run
+ * discovering that it is still refusing.
+ */
+export async function acquire(url: string): Promise<boolean> {
   const provider = providerOf(url);
-  if (!provider) return;
+  if (!provider) return true;
   const bucket = bucketFor(provider);
+  if (bucket.abandoned) return false;
 
   for (;;) {
     const now = Date.now();
 
     if (now < bucket.blockedUntil) {
       await sleep(Math.min(bucket.blockedUntil - now, 5000));
+      if (bucket.abandoned) return false;
       continue;
     }
 
@@ -84,7 +132,8 @@ export async function acquire(url: string): Promise<void> {
 
     if (bucket.tokens >= 1) {
       bucket.tokens -= 1;
-      return;
+      bucket.issued++;
+      return true;
     }
     await sleep(Math.ceil(((1 - bucket.tokens) / bucket.rps) * 1000));
   }
@@ -99,29 +148,46 @@ export function report(url: string, error?: string): void {
   if (!provider) return;
   const bucket = bucketFor(provider);
 
-  if (error === 'ECONNRESET' || error === 'UND_ERR_SOCKET') {
-    if (Date.now() < bucket.blockedUntil) return; // already backing off
-    bucket.rps = Math.max(MIN_RPS, bucket.rps / 2);
-    bucket.blockedUntil = Date.now() + COOLDOWN_MS;
-    bucket.tokens = 0;
-    bucket.streak = 0;
-    log.warn(
-      `${provider} is resetting connections — pausing ${COOLDOWN_MS / 1000}s, rate now ${bucket.rps}/s`,
+  if (error !== 'ECONNRESET' && error !== 'UND_ERR_SOCKET') return;
+  if (Date.now() < bucket.blockedUntil) return; // already backing off
+
+  bucket.issuedBeforeFirstTrip ??= bucket.issued;
+  bucket.trips++;
+  bucket.rps = Math.max(MIN_RPS, bucket.rps / 2);
+
+  if (bucket.trips >= MAX_TRIPS) {
+    bucket.abandoned = true;
+    log.warn(trackOf(provider),
+      `${provider} still resetting after ${bucket.trips} backoffs and ${bucket.issued} requests — ` +
+        `giving up on it for this run rather than crawling`,
     );
     return;
   }
 
-  if (error) return; // some other failure, not a signal about pace
-  if (++bucket.streak >= RECOVERY_STREAK && bucket.rps < MAX_RPS) {
-    bucket.streak = 0;
-    bucket.rps = Math.min(MAX_RPS, bucket.rps * 1.25);
-    log.info(`${provider} steady for ${RECOVERY_STREAK} requests — rate now ${bucket.rps.toFixed(1)}/s`);
-  }
+  const cooldown = Math.min(MAX_COOLDOWN_MS, COOLDOWN_MS * 2 ** (bucket.trips - 1));
+  bucket.blockedUntil = Date.now() + cooldown;
+  bucket.tokens = 0;
+  log.warn(trackOf(provider),
+    `${provider} is resetting connections after ${bucket.issued} requests — ` +
+      `pausing ${cooldown / 1000}s, rate now ${bucket.rps}/s`,
+  );
 }
 
-/** For the run summary: what each provider settled at. */
-export function rates(): Record<string, number> {
+/**
+ * For the run summary. `issuedBeforeFirstTrip` is the number worth watching: it
+ * is the provider's actual budget, measured, rather than inferred from a log.
+ */
+export function stats(): Record<string, unknown> {
   return Object.fromEntries(
-    [...buckets].map(([provider, bucket]) => [provider, Number(bucket.rps.toFixed(2))]),
+    [...buckets].map(([provider, b]) => [
+      provider,
+      {
+        issued: b.issued,
+        issuedBeforeFirstTrip: b.issuedBeforeFirstTrip,
+        trips: b.trips,
+        finalRps: Number(b.rps.toFixed(2)),
+        abandoned: b.abandoned,
+      },
+    ]),
   );
 }

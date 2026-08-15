@@ -23,6 +23,12 @@ export type LiveSite = Candidate & {
   server: string;
   /** For 451s: the host's own takedown reason, e.g. DEPLOYMENT_DISABLED. */
   note: string;
+  /**
+   * The page, fetched by the liveness probe itself. Probing with HEAD and then
+   * re-fetching with GET cost two requests per live site against providers that
+   * ration them by the hundred, for no information the first request lacked.
+   */
+  html: string;
 };
 
 /**
