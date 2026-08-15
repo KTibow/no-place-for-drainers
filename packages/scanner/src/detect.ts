@@ -1,0 +1,110 @@
+/**
+ * Stage 5 — detection, two lanes into the same triage queue.
+ *
+ *   hostname lane : priority lane. `restore-wallet-sync.vercel.app` earns a
+ *                   look regardless of what the HTML says, because the name is
+ *                   chosen for the victim, not for the developer.
+ *   content lane  : weighted rules over the dossier corpus. Weights are the
+ *                   point — a lone "private key" is a legitimate SSH tutorial,
+ *                   a seed-phrase prompt is not.
+ *
+ * Both lanes read the dossier that stage 4 already built, and the LLM in stage
+ * 6 reads that same dossier. Two independent opinions, one set of facts.
+ */
+import { CONTENT_SCORE_THRESHOLD } from './config.ts';
+import type { Classification, Dossier, RuleHits } from './types.ts';
+
+type Rule = { weight: number; pattern: RegExp };
+
+export const RULES: Record<string, Rule> = {
+  // Nothing legitimate ships a Telegram bot token or a Discord webhook in
+  // client-side code. This is the exfil channel itself.
+  exfil: {
+    weight: 3,
+    pattern: /api\.telegram\.org|bot\d{6,}:AA|discord(?:app)?\.com\/api\/webhooks|chat_id/i,
+  },
+  // No honest website has a reason to ask for these words.
+  seed: {
+    weight: 3,
+    pattern: /seed\s*phrase|recovery\s*phrase|mnemonic|12[-\s]word|24[-\s]word|secret\s*recovery/i,
+  },
+  // Weak alone: real apps handle SSH keys, JWTs and crypto private keys.
+  privkey: { weight: 1, pattern: /private\s*key|keystore\s*(?:file|json)/i },
+  drain_copy: {
+    weight: 2,
+    pattern: new RegExp(
+      [
+        'irregular\\s*balance',
+        'asset\\s*recovery',
+        'rectify',
+        'validate\\s*wallet',
+        'sync\\s*wallet',
+        'restore\\s*wallet',
+        'claim\\s*(?:your\\s*)?airdrop',
+        'import\\s*(?:an\\s*)?existing\\s*wallet',
+        'migrate\\s*(?:your\\s*)?wallet',
+        'wallet\\s*verification',
+        'connect\\s*(?:your\\s*)?wallet\\s*to\\s*(?:claim|verify|restore)',
+      ].join('|'),
+      'i',
+    ),
+  },
+  wallet_brand: {
+    weight: 1,
+    pattern:
+      /metamask|trust\s*wallet|walletconnect|phantom\s*wallet|coinbase\s*wallet|ledger\s*live|trezor|exodus\s*wallet|safepal|rainbow\s*wallet/i,
+  },
+  bank_brand: {
+    weight: 1,
+    pattern:
+      /rakbank|paypal|barclays|hsbc|santander|wells\s*fargo|chase\s*bank|binance|kraken|coinbase\s*(?:pro|exchange)/i,
+  },
+  cred_field: {
+    weight: 1,
+    pattern: /type=["']password["']|FIELD[^\n]*password|cardpin|card_pin|\bcvv\b|\botp\b|\bpin\s*code\b/i,
+  },
+};
+
+/** Real web3 code. Its absence next to wallet branding is the tell. */
+const WEB3_API = /window\.ethereum|eth_requestAccounts|personal_sign|wagmi|viem|ethers\.|@solana\/web3/i;
+const BRANDS =
+  /metamask|trust\s*wallet|walletconnect|phantom\s*wallet|coinbase\s*wallet|ledger\s*live|trezor|exodus\s*wallet|safepal/gi;
+
+/** Words that only appear in a hostname when the hostname is the lure. */
+const HOSTNAME_KEYWORDS =
+  /wallet|metamask|phantom|ledger|trezor|seedphrase|recover|restore|validat|verify|sync|claim|airdrop|presale|giveaway|unlock|migrat|rectif|dapp-|-dapp|web3(?:auth|connect)|binance|coinbase|kraken|paypal|helpdesk|support-|-support|secure-|-secure/i;
+
+/** Union of every rule, used to pick the evidence lines that go in the dossier. */
+export const ANY_RULE = new RegExp(
+  Object.values(RULES)
+    .map((r) => r.pattern.source)
+    .join('|'),
+  'i',
+);
+
+export function classify(dossier: Dossier): Classification {
+  const text = dossier.corpus;
+  const hits: RuleHits = {};
+  let score = 0;
+
+  for (const [name, rule] of Object.entries(RULES)) {
+    const matches = [...text.matchAll(new RegExp(rule.pattern.source, 'gi'))];
+    if (!matches.length) continue;
+    hits[name] = [...new Set(matches.map((m) => m[0].slice(0, 60)))].sort().slice(0, 8);
+    score += rule.weight;
+  }
+
+  // A wallet *picker* — several brands side by side — with no actual web3 code
+  // behind it is the drainer shape. One stray brand string is not.
+  const brands = new Set([...text.matchAll(BRANDS)].map((m) => m[0].toLowerCase().replace(/\s+/g, '')));
+  if (brands.size >= 2 && !WEB3_API.test(text)) {
+    hits.fake_wallet_picker = [`${brands.size} brands, no web3 API`];
+    score += 3;
+  }
+
+  const lanes: Classification['lanes'] = [];
+  if (HOSTNAME_KEYWORDS.test(dossier.site.host)) lanes.push('hostname');
+  if (score >= CONTENT_SCORE_THRESHOLD) lanes.push('content');
+
+  return { score, hits, lanes };
+}

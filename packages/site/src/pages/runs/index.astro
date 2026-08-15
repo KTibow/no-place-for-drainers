@@ -1,0 +1,136 @@
+---
+import Page from '../../layouts/Page.astro';
+import { href, loadRuns } from '../../data';
+
+const runs = loadRuns();
+---
+
+<Page title="runs — no place for drainers">
+  <h1>Runs</h1>
+  <p class="lede">
+    Every scan and what it cost. The funnel is the whole point: hundreds of thousands of repos
+    narrow to a handful of pages worth a human's attention, and each stage has to throw away
+    almost everything it is handed.
+  </p>
+
+  {runs.length === 0 && <p class="empty">No runs yet.</p>}
+
+  {
+    runs.map((run) => (
+      <section>
+        <h2>
+          {run.date}
+          {!run.summary.canaryCaught && <span class="broken"> canary missed</span>}
+        </h2>
+        <p class="funnel">
+          {run.summary.repos.toLocaleString()} repos → {run.summary.candidates.toLocaleString()} candidates
+          ({run.summary.candidatesByName.toLocaleString()} guessed, {run.summary.candidatesByHomepage.toLocaleString()} declared)
+          → {run.summary.live.toLocaleString()} live → {run.summary.triaged.toLocaleString()} triaged
+          → <b>{run.summary.confirmed.toLocaleString()} confirmed</b>
+          <span class="cost"> · {Math.round(run.summary.elapsedSec / 60)} min · {run.summary.windowHours}h window</span>
+        </p>
+
+        {run.records.length > 0 && (
+          <ul class="hits">
+            {run.records.map((record) => (
+              <li>
+                <a href={href(`/s/${record.host}/`)} class="mono">{record.host}</a>
+                <span> {record.category}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {run.summary.takedowns.length > 0 && (
+          <>
+            <p class="label">
+              {run.summary.takedowns.length} already taken down — the host agreed before we arrived,
+              and the repo is still up
+            </p>
+            <ul class="takedowns">
+              {run.summary.takedowns.map((takedown) => (
+                <li>
+                  <span class="mono">{takedown.host}</span>
+                  <span> {takedown.reason.toLowerCase().replace(/_/g, ' ')} · </span>
+                  <a href={takedown.repoUrl} rel="noreferrer">repo</a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+    ))
+  }
+</Page>
+
+<style>
+  .lede {
+    max-width: 44rem;
+    color: var(--m3c-on-surface-variant);
+    margin-block: 1rem 3rem;
+  }
+
+  .empty {
+    color: var(--m3c-on-surface-variant);
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--m3c-on-surface);
+    font-size: 1.05rem;
+  }
+
+  .broken {
+    color: var(--m3c-error);
+    font-weight: 500;
+  }
+
+  .funnel {
+    margin-top: 0.4rem;
+    color: var(--m3c-on-surface-variant);
+    font-size: 0.9rem;
+    max-width: 46rem;
+  }
+
+  .funnel b {
+    color: var(--m3c-primary);
+    font-weight: 600;
+  }
+
+  .cost {
+    white-space: nowrap;
+  }
+
+  .hits,
+  .takedowns {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .hits li,
+  .takedowns li {
+    padding-block: 0.15rem;
+  }
+
+  .hits span,
+  .takedowns span {
+    color: var(--m3c-on-surface-variant);
+  }
+
+  .takedowns .mono {
+    color: var(--m3c-on-surface);
+  }
+
+  .label {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--m3c-on-surface-variant);
+    max-width: 40rem;
+  }
+</style>

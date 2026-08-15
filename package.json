@@ -1,0 +1,21 @@
+{
+  "name": "no-place-for-drainers",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "scan": "pnpm --filter scanner scan",
+    "typecheck": "pnpm -r typecheck",
+    "dev": "pnpm --filter site dev",
+    "build": "pnpm --filter site build"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "onFail": "download"
+    }
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

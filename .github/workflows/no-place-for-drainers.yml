@@ -1,0 +1,74 @@
+name: no place for drainers
+
+on:
+  schedule:
+    # Daily, offset off the hour so we are not competing with everyone's cron.
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: no-place-for-drainers
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: scan
+        env:
+          # The workflow token is enough for public reads; set a GITHUB_PAT
+          # secret to get the 5,000/hr core limit instead of 1,000/hr.
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT || github.token }}
+          CROF_KEY: ${{ secrets.CROF_KEY }}
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: |
+          set -o pipefail
+          pnpm scan 2>&1 | tee scan.log
+
+      - name: commit results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add out
+          if git diff --staged --quiet; then
+            echo "no change in out/"
+            exit 0
+          fi
+          summary=$(ls -1 out/summary-*.json | tail -1)
+          git commit -m "scan $(basename "$summary" .json | cut -d- -f2-): $(jq -r .confirmed "$summary") confirmed, $(jq -r '.takedowns | length' "$summary") already down"
+          git push
+
+      # The console log is the detailed record — every line carries its
+      # hostname, so one grep replays a site's whole life. Too big to commit,
+      # worth keeping longer than the default log retention.
+      - name: upload scan log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-log-${{ github.run_id }}
+          path: scan.log
+          retention-days: 90
+          if-no-files-found: warn
+
+  publish:
+    needs: scan
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

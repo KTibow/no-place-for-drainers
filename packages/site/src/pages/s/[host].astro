@@ -1,0 +1,147 @@
+---
+import Page from '../../layouts/Page.astro';
+import { loadRuns, loadSites, type Site } from '../../data';
+
+export async function getStaticPaths() {
+  return loadSites(loadRuns()).map((site) => ({ params: { host: site.host }, props: { site } }));
+}
+
+const { site } = Astro.props as { site: Site };
+const r = site.latest;
+---
+
+<Page title={`${site.host} — no place for drainers`}>
+  <h1 class="mono">{site.host}</h1>
+  <p class="verdict">
+    {r.category}{r.brand ? <> · impersonating <b>{r.brand}</b></> : null} · {r.confidence.toFixed(2)} confidence
+  </p>
+  {r.title && <p class="pagetitle">Served as “{r.title}”</p>}
+
+  <h2>Why</h2>
+  <ul class="reasons">
+    {r.reasons.map((reason) => <li>{reason}</li>)}
+  </ul>
+
+  {
+    r.iocs.length > 0 && (
+      <>
+        <h2>Indicators</h2>
+        <ul class="iocs mono">{r.iocs.map((ioc) => <li>{ioc}</li>)}</ul>
+      </>
+    )
+  }
+
+  <h2>Provenance</h2>
+  <dl>
+    <dt>URL</dt>
+    <dd class="mono url">{r.url}</dd>
+
+    <dt>Repo</dt>
+    <dd>
+      <a href={r.repoUrl} rel="noreferrer">{r.repo}</a>, created {r.repoCreatedAt.replace('T', ' ').replace('Z', ' UTC')}
+    </dd>
+
+    <dt>Found via</dt>
+    <dd>
+      {r.source === 'guess' ? 'guessed from the repo name' : r.source === 'homepage' ? 'the repo homepage field' : r.source} · {r.lanes.join(' and ')} {r.lanes.length === 1 ? 'lane' : 'lanes'} · rule score {r.ruleScore}
+    </dd>
+
+    <dt>Rule signals</dt>
+    <dd>{r.ruleSignals.join(', ') || 'none'}</dd>
+
+    <dt>Talks to</dt>
+    <dd class="mono">{r.outboundHosts.join(', ') || 'nothing outbound'}</dd>
+
+    <dt>Seen</dt>
+    <dd>
+      {site.firstSeen}{site.lastSeen !== site.firstSeen ? ` through ${site.lastSeen}` : ''}, {site.seenOn.length} {site.seenOn.length === 1 ? 'run' : 'runs'} · HTTP {r.httpStatus}
+    </dd>
+  </dl>
+
+  <p class="note">
+    The URL is printed rather than linked. Two classifiers agreed it exists to take something from
+    whoever opens it.
+  </p>
+</Page>
+
+<style>
+  h1 {
+    overflow-wrap: anywhere;
+    font-size: 1.4rem;
+  }
+
+  .verdict {
+    color: var(--m3c-primary);
+    margin-top: 0.35rem;
+  }
+
+  .verdict b {
+    font-weight: 600;
+  }
+
+  .pagetitle {
+    color: var(--m3c-on-surface-variant);
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .reasons li,
+  .iocs li {
+    padding-left: 1.1rem;
+    text-indent: -1.1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .reasons li::before {
+    content: '— ';
+    color: var(--m3c-on-surface-variant);
+  }
+
+  .iocs li {
+    overflow-wrap: anywhere;
+    color: var(--m3c-error);
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.6rem 1.5rem;
+  }
+
+  dt {
+    color: var(--m3c-on-surface-variant);
+    font-size: 0.85rem;
+    padding-top: 0.1rem;
+  }
+
+  dd {
+    overflow-wrap: anywhere;
+  }
+
+  .url {
+    color: var(--m3c-on-surface-variant);
+    user-select: all;
+  }
+
+  .note {
+    margin-top: 3rem;
+    color: var(--m3c-on-surface-variant);
+    font-size: 0.85rem;
+    max-width: 34rem;
+  }
+
+  @media (max-width: 34rem) {
+    dl {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+
+    dd {
+      margin-bottom: 0.9rem;
+    }
+  }
+</style>

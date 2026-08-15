@@ -1,0 +1,99 @@
+@import '@unocss/reset/tailwind-v4.css';
+
+:root {
+  color-scheme: light dark;
+  --m3c-surface: light-dark(#fff4ef, #1b0a00);
+  --m3c-surface-container-lowest: light-dark(#fff, #000);
+  --m3c-surface-container-low: light-dark(#ffede2, #220e00);
+  --m3c-surface-container: light-dark(#ffe3cf, #2b1300);
+  --m3c-surface-container-high: light-dark(#ffdcc2, #341800);
+  --m3c-surface-container-highest: light-dark(#ffd5b5, #3d1e00);
+  --m3c-on-surface: light-dark(#492603, #ffe0c9);
+  --m3c-on-surface-variant: light-dark(#7d522b, #d7a072);
+  --m3c-outline: light-dark(#9c6c43, #9b6b42);
+  --m3c-outline-variant: light-dark(#d9a274, #673f1a);
+  --m3c-inverse-surface: light-dark(#1b0a00, #fff8f5);
+  --m3c-inverse-on-surface: light-dark(#c79266, #764b25);
+  --m3c-primary: light-dark(#964400, #ff924b);
+  --m3c-on-primary: light-dark(#fff0e9, #502100);
+  --m3c-primary-container: #ff7a0f;
+  --m3c-on-primary-container: #3e1800;
+  --m3c-inverse-primary: light-dark(#fd7700, #9b4600);
+  --m3c-secondary: light-dark(#8b4b00, #fe9833);
+  --m3c-on-secondary: light-dark(#fff0e7, #4d2700);
+  --m3c-secondary-container: light-dark(#ffc699, #8f4d00);
+  --m3c-on-secondary-container: light-dark(#6e3a00, #fff6f1);
+  --m3c-tertiary: light-dark(#775600, #ffd174);
+  --m3c-on-tertiary: light-dark(#fff1dc, #624600);
+  --m3c-tertiary-container: #febf2a;
+  --m3c-on-tertiary-container: #563e00;
+  --m3c-error: light-dark(#b02500, #ff7351);
+  --m3c-on-error: light-dark(#ffefec, #450900);
+  --m3c-error-container: light-dark(#f95630, #b92902);
+  --m3c-on-error-container: light-dark(#520c00, #ffd2c8);
+  --m3c-shadow: #000;
+  --m3c-scrim: #000;
+  --m3c-on-on-primary: light-dark(#954300, #ff924b);
+  --m3c-primary-container-subtle: light-dark(#ffc9ab, #4c1f00);
+  --m3c-on-primary-container-subtle: light-dark(#793600, #ff8d42);
+  --m3c-secondary-container-subtle: light-dark(#ffcaa0, #462300);
+  --m3c-on-secondary-container-subtle: light-dark(#713c00, #f7922e);
+  --m3c-tertiary-container-subtle: light-dark(#ffcd67, #3b2900);
+  --m3c-on-tertiary-container-subtle: light-dark(#5f4500, #dba100);
+  --m3c-error-container-subtle: light-dark(#ffc8bb, #5a0e00);
+  --m3c-on-error-container-subtle: light-dark(#8f1c00, #ff8a6e);
+
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
+}
+
+body {
+  background: var(--m3c-surface);
+  color: var(--m3c-on-surface);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2 {
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1rem;
+  color: var(--m3c-on-surface-variant);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+a {
+  color: var(--m3c-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+code,
+.mono {
+  font-family: var(--mono);
+  font-size: 0.9em;
+}
+
+::selection {
+  background: var(--m3c-primary-container);
+  color: var(--m3c-on-primary-container);
+}

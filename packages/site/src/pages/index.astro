@@ -1,0 +1,107 @@
+---
+import Page from '../layouts/Page.astro';
+import { href, loadRuns, loadSites } from '../data';
+
+const runs = loadRuns();
+const sites = loadSites(runs);
+const latest = runs[0];
+const scanned = runs.reduce((total, run) => total + run.summary.repos, 0);
+---
+
+<Page title="no place for drainers">
+  <h1>Drainers, hours old.</h1>
+  <p class="lede">
+    A wallet drainer needs a host, and the free ones are one <code>git push</code> away. That push
+    is the mistake: the deployment is anonymous, the repo behind it is not. This walks every new
+    public repo on GitHub, works out where it deployed, and reads what is actually being served —
+    long before anyone would think to submit it anywhere.
+  </p>
+
+  <p class="stats">
+    <b>{sites.length}</b> confirmed{' · '}
+    <b>{runs.length}</b> {runs.length === 1 ? 'run' : 'runs'}{' · '}
+    <b>{scanned.toLocaleString()}</b> repos walked{latest ? ` · last scan ${latest.date}` : ''}
+  </p>
+
+  {
+    sites.length === 0 ? (
+      <p class="empty">Nothing confirmed yet. The first scan has not landed.</p>
+    ) : (
+      <ol class="sites">
+        {sites.map((site) => (
+          <li>
+            <a href={href(`/s/${site.host}/`)}>
+              <span class="host mono">{site.host}</span>
+              <span class="what">
+                {site.latest.category}
+                {site.latest.brand ? ` · ${site.latest.brand}` : ''}
+              </span>
+              <span class="when">{site.firstSeen}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    )
+  }
+</Page>
+
+<style>
+  .lede {
+    max-width: 44rem;
+    color: var(--m3c-on-surface-variant);
+    margin-block: 1rem 2.5rem;
+  }
+
+  .lede code {
+    color: var(--m3c-on-surface);
+  }
+
+  .stats {
+    color: var(--m3c-on-surface-variant);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .stats b {
+    color: var(--m3c-on-surface);
+    font-weight: 600;
+  }
+
+  .empty {
+    color: var(--m3c-on-surface-variant);
+    padding-block: 3rem;
+  }
+
+  .sites a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.15rem 1.5rem;
+    align-items: baseline;
+    padding: 0.7rem 0.75rem;
+    margin-inline: -0.75rem;
+    border-radius: 0.5rem;
+    color: var(--m3c-on-surface);
+  }
+
+  .sites a:hover {
+    background: var(--m3c-surface-container-low);
+    text-decoration: none;
+  }
+
+  .host {
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+  }
+
+  .what,
+  .when {
+    color: var(--m3c-on-surface-variant);
+    font-size: 0.85rem;
+  }
+
+  .when {
+    grid-column: 2;
+    grid-row: 1;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
