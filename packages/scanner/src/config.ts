@@ -30,23 +30,18 @@ export const WINDOW_HOURS = 4;
 /** GitHub's search index lags reality; never treat the last N minutes as head. */
 export const HEAD_LAG_MINUTES = 15;
 /**
- * Ceiling on repos hydrated per run — a safety valve, not a throttle. The
- * window is what should decide coverage; this only exists to stop a mis-set
- * window from spending the token's whole hourly budget in one run.
+ * Requests to keep in reserve. The walk stops rather than spends the last of
+ * the token's hourly allowance, so hydration of what it already collected can
+ * still finish.
  *
- * It had quietly stopped being a safety valve. Measured creation is ~12,200 new
- * public repos an hour, so a 4 hour window holds ~48,900 and the old 50,000 cap
- * was 98% consumed. Any rise in creation rate and shards start
- * stopping early, dropping the tail of each id slice, which is exactly what
- * "letting repos slip by" looks like — and silently, since a truncated shard
- * looks identical to an exhausted one. walkNewRepos now says when it binds.
- *
- * Costing, since the token budget is the real limit: a full 4 hour walk is ~489
- * REST pages plus ~163 GraphQL calls against 1,000 requests/hour, and one run
- * every two hours halves that per hour. The cap now sits ~60% above the window
- * so creation would have to rise by half before it binds again.
+ * This replaces a REPO_LIMIT cap. That cap was meant to stop a mis-set window
+ * from exhausting the budget, but it decided coverage as a side effect and did
+ * it silently: at 12,200 new public repos an hour a 4 hour window needs ~6,240
+ * per shard, the cap allowed 6,250, and six of eight shards were quietly
+ * stopping early. Guarding the budget directly leaves the window as the only
+ * thing that governs coverage, and a run that does run short says so.
  */
-export const REPO_LIMIT = 80_000;
+export const REQUEST_RESERVE = 60;
 /** Parallel walkers, each covering an equal slice of the repo-id range. */
 export const WALK_SHARDS = 8;
 /** GraphQL node hydration: 300 nodes = 1 rate-limit point. */

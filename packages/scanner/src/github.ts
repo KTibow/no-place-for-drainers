@@ -11,7 +11,13 @@
  * across shards, so a capped run is a stratified sample across the whole
  * window instead of the first N repos of it.
  */
-import { HEAD_LAG_MINUTES, HYDRATE_BATCH, REPO_LIMIT, WALK_SHARDS, WINDOW_HOURS } from './config.ts';
+import {
+  HEAD_LAG_MINUTES,
+  HYDRATE_BATCH,
+  REQUEST_RESERVE,
+  WALK_SHARDS,
+  WINDOW_HOURS,
+} from './config.ts';
 import { request } from './http.ts';
 import * as log from './log.ts';
 import type { Repo } from './types.ts';
@@ -29,15 +35,15 @@ export function requireToken(): void {
   }
 }
 
-let rateFloorUntil = 0;
+/**
+ * Set once the token's remaining allowance drops into the reserve. The walk
+ * checks it and stops; it never sleeps. Waiting for a reset means hanging for
+ * up to an hour mid-run, which reads as a stuck job — a short run that says why
+ * is strictly better.
+ */
+let budgetSpent = false;
 
 async function api(path: string, init?: { method?: string; body?: string }): Promise<unknown> {
-  const wait = rateFloorUntil - Date.now();
-  if (wait > 0) {
-    log.warn(log.MAIN, `rate limit floor reached, sleeping ${Math.ceil(wait / 1000)}s`);
-    await sleep(wait);
-  }
-
   const res = await request(`${API}${path}`, {
     method: init?.method,
     body: init?.body,
@@ -50,10 +56,22 @@ async function api(path: string, init?: { method?: string; body?: string }): Pro
     },
   });
 
+  // Only the buckets the walk actually spends. Search has its own allowance of
+  // 30 per minute, permanently below any sane reserve, so counting it stopped
+  // every shard before it walked a single page.
+  const resource = res.headers.get('x-ratelimit-resource') ?? '';
   const remaining = Number(res.headers.get('x-ratelimit-remaining'));
-  const reset = Number(res.headers.get('x-ratelimit-reset'));
-  if (Number.isFinite(remaining) && remaining <= 1 && Number.isFinite(reset)) {
-    rateFloorUntil = Math.max(rateFloorUntil, reset * 1000 + 2000);
+  if (
+    (resource === 'core' || resource === 'graphql') &&
+    Number.isFinite(remaining) &&
+    remaining <= REQUEST_RESERVE &&
+    !budgetSpent
+  ) {
+    budgetSpent = true;
+    log.warn(
+      log.MAIN,
+      `${resource} budget down to ${remaining} — stopping the walk short of the window`,
+    );
   }
 
   if (res.status !== 200 || res.body.length === 0) {
@@ -111,10 +129,9 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
   }
 
   const span = headId - startId;
-  const perShard = Math.ceil(REPO_LIMIT / WALK_SHARDS);
   log.info(log.MAIN, 
     `window ${iso(cutoff)} → ${iso(head)}  ids ${startId}..${headId} (${span.toLocaleString()} ids), ` +
-      `${WALK_SHARDS} shards × ${perShard} repos`,
+      `${WALK_SHARDS} shards walking the whole window`,
   );
 
   const collected: Repo[] = [];
@@ -128,7 +145,6 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
       const from = startId + Math.floor((span * shardIndex) / WALK_SHARDS);
       const until = startId + Math.floor((span * (shardIndex + 1)) / WALK_SHARDS);
       let since = from - 1;
-      let taken = 0;
       const pending: string[] = [];
       const hydrated: Repo[] = [];
 
@@ -139,7 +155,7 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
         }
       };
 
-      while (since < until && taken < perShard) {
+      while (since < until && !budgetSpent) {
         const page = (await api(`/repositories?since=${since}&per_page=100`)) as
           | { id: number; node_id: string }[]
           | null;
@@ -147,21 +163,16 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
         pages++;
         since = page[page.length - 1]!.id;
         for (const r of page) pending.push(r.node_id);
-        taken += page.length;
         await drain(false);
       }
       await drain(true);
 
-      if (taken >= perShard && since < until) {
-        // Hit the cap with range left over: the tail of this slice is simply
-        // never looked at, and a truncated shard is indistinguishable from an
-        // exhausted one unless it says so.
+      if (since < until) {
+        // Stopped with range left over, which can now only mean the budget ran
+        // out. A truncated shard is indistinguishable from an exhausted one
+        // unless it says so.
         truncated++;
-        log.warn(
-          log.MAIN,
-          `shard ${shardIndex} hit the ${perShard} repo cap with ids ${since}..${until} unwalked — ` +
-            `coverage truncated, raise REPO_LIMIT`,
-        );
+        log.warn(log.MAIN, `shard ${shardIndex} stopped with ids ${since}..${until} unwalked`);
       }
       log.info(log.MAIN, `shard ${shardIndex}: ids ${from}..${until} → ${hydrated.length} hydrated`);
       collected.push(...hydrated);
