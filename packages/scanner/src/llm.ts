@@ -171,9 +171,14 @@ async function askOnce(
 
   const choice = payload?.choices?.[0];
   const content: string = choice?.message?.content ?? '';
-  try {
-    return coerce(JSON.parse(content.replace(/^```(?:json)?|```$/g, '').trim()));
-  } catch {
+  // Reasoning models fail two ways here, both seen in production. They wrap the
+  // object in prose or a fence, so take the outermost braces rather than
+  // assuming the whole string is JSON. And they sometimes spend the entire
+  // completion on reasoning_content and emit nothing at all — in which case the
+  // verdict is usually sitting in the reasoning, so look there before giving up.
+  const parsed = extractJson(content) ?? extractJson(choice?.message?.reasoning_content ?? '');
+  if (parsed) return coerce(parsed);
+  {
     // Say why. "unparseable json" is not a diagnosis. finish_reason separates
     // truncation from a model that simply wrote prose, and the tail shows which
     // — valid JSON that stops mid-string reads very differently from an apology.
@@ -184,8 +189,23 @@ async function askOnce(
       'warn',
       `llm unusable: finish=${choice?.finish_reason ?? '?'} ` +
         `completion=${usage.completion_tokens ?? '?'} reasoning=${usage.reasoning_tokens ?? '?'} ` +
-        `content=${content.length}c tail=${JSON.stringify(content.slice(-120))}`,
+        `content=${content.length}c head=${JSON.stringify(content.slice(0, 90))} ` +
+        `tail=${JSON.stringify(content.slice(-90))}`,
     );
+    return null;
+  }
+}
+
+/** The outermost {...} in a string, parsed. Tolerates fences and stray prose. */
+function extractJson(text: string): any {
+  const trimmed = text.trim();
+  if (!trimmed) return null;
+  const start = trimmed.indexOf('{');
+  const end = trimmed.lastIndexOf('}');
+  if (start === -1 || end <= start) return null;
+  try {
+    return JSON.parse(trimmed.slice(start, end + 1));
+  } catch {
     return null;
   }
 }
