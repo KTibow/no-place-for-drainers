@@ -196,18 +196,54 @@ async function askOnce(
   }
 }
 
-/** The outermost {...} in a string, parsed. Tolerates fences and stray prose. */
+/**
+ * The first complete {...} in a string, parsed. Tolerates fences, prose on
+ * either side, and — the reason this scans for balance rather than taking the
+ * outermost braces — a model that emits its object twice. First-to-last brace
+ * would span both copies and parse as neither.
+ *
+ * Brace counting has to respect strings and escapes, or a `}` inside a quoted
+ * reason ends the object early.
+ */
 function extractJson(text: string): any {
   const trimmed = text.trim();
   if (!trimmed) return null;
-  const start = trimmed.indexOf('{');
-  const end = trimmed.lastIndexOf('}');
-  if (start === -1 || end <= start) return null;
   try {
-    return JSON.parse(trimmed.slice(start, end + 1));
+    return JSON.parse(trimmed);
   } catch {
-    return null;
+    /* fall through to scanning */
   }
+
+  const start = trimmed.indexOf('{');
+  if (start === -1) return null;
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let i = start; i < trimmed.length; i++) {
+    const ch = trimmed[i];
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (ch === '\\') {
+      escaped = true;
+      continue;
+    }
+    if (ch === '"') {
+      inString = !inString;
+      continue;
+    }
+    if (inString) continue;
+    if (ch === '{') depth++;
+    else if (ch === '}' && --depth === 0) {
+      try {
+        return JSON.parse(trimmed.slice(start, i + 1));
+      } catch {
+        return null;
+      }
+    }
+  }
+  return null;
 }
 
 function coerce(raw: any): LlmVerdict {
