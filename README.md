@@ -7,7 +7,7 @@ new public repo on GitHub, guesses or reads its deployment URL, and looks at
 what is actually being served — a few hours after it goes up, and long before
 anyone would think to submit it to urlscan.
 
-**→ [ktibow.github.io/no-place-for-drainers](https://ktibow.github.io/no-place-for-drainers/)**
+**→ [kendell.dev/no-place-for-drainers](https://kendell.dev/no-place-for-drainers/)**
 
 ```
 1  /repositories walk    every new public repo, id-sharded across the window
