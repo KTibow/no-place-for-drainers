@@ -23,6 +23,25 @@ export const RULES: Record<string, Rule> = {
     weight: 3,
     pattern: /api\.telegram\.org|bot\d{6,}:AA|discord(?:app)?\.com\/api\/webhooks|chat_id/i,
   },
+  /**
+   * The same exfil channel wearing a respectable coat. A client-side email
+   * relay — EmailJS is the one that keeps turning up — takes a form submission
+   * straight from the browser to whatever mailbox the operator configured, so
+   * it needs no server and leaves no endpoint in the page beyond an SDK import.
+   *
+   * Unlike a bot token this has honest uses: it is how a static portfolio ships
+   * a contact form, so the content lane will now forward some of those. That is
+   * the trade taken deliberately. Two confirmed BSP Bank transfer-phishing kits
+   * (2026-08-15) scored 0 on every rule and reached triage on their hostname
+   * alone; their entire harvesting apparatus was one jsdelivr script tag. At
+   * weight 2 they would still have scored 0 — the relay IS the evidence on a
+   * page like that, so it has to carry the lane by itself. The LLM prompt is
+   * extended in the same change to tell a contact form from a harvester.
+   */
+  exfil_mail: {
+    weight: 3,
+    pattern: /api\.emailjs\.com|@emailjs\/browser|emailjs-com|emailjs\.(?:send|sendForm|init)/i,
+  },
   // No honest website has a reason to ask for these words.
   seed: {
     weight: 3,

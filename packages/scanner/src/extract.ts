@@ -105,6 +105,20 @@ export function essence(html: string): string {
     }
   }
 
+  /**
+   * The script URLs themselves, not just their hosts. `hostsIn` keeps
+   * `cdn.jsdelivr.net` and discards the path, and the literal scan above skips
+   * any <script> that has a src — so a page whose exfil channel is an SDK
+   * loaded off a CDN put nothing at all in the corpus for the rules to match.
+   * That is the whole visible apparatus of an EmailJS harvester: one script tag
+   * pointing at `@emailjs/browser`, with the send call in an external file the
+   * dossier only fetches for SPA shells. Two confirmed bank-phishing kits
+   * scored 0 that way.
+   */
+  for (const m of html.matchAll(/<script[^>]+src=["']([^"']{1,300})["']/gi)) {
+    parts.push(`SRC ${m[1]}`);
+  }
+
   for (const host of hostsIn(html)) parts.push(`HOST ${host}`);
   parts.push(`TEXT ${stripTags(html).slice(0, 4000)}`);
 
