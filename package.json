@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@11.1.1",
   "scripts": {
     "scan": "pnpm --filter scanner scan",
     "typecheck": "pnpm -r typecheck",
@@ -13,10 +12,13 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
+      "version": "11.1.1",
+      "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "26",
       "onFail": "download"
     }
-  },
-  "engines": {
-    "node": ">=24"
   }
 }
