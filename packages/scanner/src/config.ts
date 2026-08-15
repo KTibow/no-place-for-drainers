@@ -6,23 +6,31 @@ import { fileURLToPath } from 'node:url';
 
 // ── stage 1: /repositories walk ─────────────────────────────────────────────
 /**
- * How far back to look. Runs every 8 hours (see the workflow), so a 10 hour
- * window leaves 2 hours of overlap — Actions cron drifts, and a gap in the
- * window is a repo nobody ever looks at. Overlap only costs a re-probe; the
- * site dedupes by host.
+ * How far back to look. Runs every 2 hours (see the workflow), so a 4 hour
+ * window is two cadences deep — enough that a single skipped or badly delayed
+ * scheduled run cannot open a gap, and Actions does both.
  *
- * Shorter windows also sample better: with a fixed REPO_LIMIT, 50k repos is a
- * far larger fraction of 10 hours than of 24.
+ * The resulting 2x overlap is not waste. A repo enters the walk when it is
+ * created, but the deployment often lands later, so the second look at a repo
+ * is the one that finds a site that was not live the first time. Duplicate
+ * findings cost nothing downstream: the site dedupes by label.
+ *
+ * Shorter windows also sample better. At ~9,900 new public repos an hour, four
+ * hours is ~39,700 — comfortably under REPO_LIMIT, so the cap stops binding and
+ * every run covers its whole window instead of half of it.
  */
-export const WINDOW_HOURS = 10;
+export const WINDOW_HOURS = 4;
 /** GitHub's search index lags reality; never treat the last N minutes as head. */
 export const HEAD_LAG_MINUTES = 15;
 /**
- * Hard cap on repos hydrated per run. This is the throttle for the whole
- * pipeline; measured ratios downstream are roughly 0.9 candidates per repo,
- * 22% of candidates live, and 1 triage per ~30 live sites. A shard walks about
- * 1.4 minutes of GitHub's creation timeline per 300 repos, so the cap divided
- * across the shards is what fraction of the window actually gets sampled.
+ * Ceiling on repos hydrated per run, and a safety valve rather than a throttle:
+ * at a 4 hour window it sits above the ~39,700 repos actually in range, so the
+ * walk exhausts the window and the cap never binds. It exists to stop a
+ * mis-set window from spending the token's whole hourly budget in one run.
+ *
+ * Costing, since that budget is the real limit: a full 4 hour walk is ~397 REST
+ * pages plus ~133 GraphQL calls, against the 1,000 requests/hour the workflow
+ * token allows per repository. One run every two hours leaves ample headroom.
  */
 export const REPO_LIMIT = 50_000;
 /** Parallel walkers, each covering an equal slice of the repo-id range. */

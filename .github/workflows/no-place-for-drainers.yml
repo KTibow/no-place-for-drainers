@@ -2,10 +2,10 @@ name: no place for drainers
 
 on:
   schedule:
-    # Every 8 hours against a 10 hour window, offset off the hour so we are not
-    # competing with everyone else's cron. The 2 hour overlap absorbs Actions
-    # scheduling drift, which is routinely tens of minutes.
-    - cron: '17 */8 * * *'
+    # Every 2 hours against a 4 hour window, offset off the hour so we are not
+    # competing with everyone else's cron. Two cadences of lookback means a
+    # skipped or badly delayed run cannot open a gap, and Actions does both.
+    - cron: '17 */2 * * *'
   workflow_dispatch:
 
 permissions:
