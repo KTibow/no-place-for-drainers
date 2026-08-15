@@ -1,0 +1,101 @@
+{
+  "generated": "2026-08-15T18:17:59.988Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-15T13:54:56Z",
+  "repos": 69040,
+  "candidates": 9214,
+  "candidatesByName": 1451,
+  "candidatesByHomepage": 171,
+  "candidatesByDeployment": 7590,
+  "live": 6840,
+  "dossiers": 6837,
+  "triaged": 249,
+  "confirmed": 14,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "404": 748,
+    "410": 3,
+    "live": 6840,
+    "protected": 115,
+    "err-ECONNRESET": 1,
+    "err-provider-blocked": 1500,
+    "err-ENOTFOUND": 4,
+    "err-ERR_TLS_CERT_ALTNAME_INVALID": 1,
+    "err-redirect count exceeded": 1,
+    "err-23": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1677,
+      "live": 8,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 49,
+        "410": 3,
+        "live": 8,
+        "protected": 115,
+        "err-ECONNRESET": 1,
+        "err-provider-blocked": 1500,
+        "err-ENOTFOUND": 1
+      },
+      "dossiers": 8,
+      "hostnameLane": 8,
+      "contentLane": 3,
+      "triaged": 8,
+      "confirmed": 2,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 175.99
+    },
+    "open": {
+      "name": "open",
+      "candidates": 7537,
+      "live": 6832,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 699,
+        "live": 6832,
+        "err-ENOTFOUND": 3,
+        "err-ERR_TLS_CERT_ALTNAME_INVALID": 1,
+        "err-redirect count exceeded": 1,
+        "err-23": 1
+      },
+      "dossiers": 6829,
+      "hostnameLane": 210,
+      "contentLane": 34,
+      "triaged": 241,
+      "confirmed": 12,
+      "canaryOutcomes": [],
+      "elapsedSec": 485.61
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 185,
+      "issuedBeforeFirstTrip": 154,
+      "trips": 2,
+      "finalRps": 1.5,
+      "abandoned": true
+    }
+  },
+  "handoff": {
+    "urlscan": 12,
+    "urlscanFailed": 0,
+    "discord": 0,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1383.96,
+  "output": "drainers-2026-08-15T17-54Z.jsonl"
+}
