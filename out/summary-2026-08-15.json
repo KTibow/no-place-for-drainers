@@ -1,32 +1,94 @@
 {
-  "generated": "2026-08-15T04:07:36.933Z",
+  "generated": "2026-08-15T05:31:15.323Z",
   "windowHours": 10,
-  "cutoff": "2026-08-14T18:02:03Z",
-  "repos": 48377,
-  "candidates": 4064,
-  "candidatesByName": 1194,
-  "candidatesByHomepage": 2869,
-  "live": 1722,
-  "probeStatuses": {
-    "402": 1,
-    "404": 157,
-    "405": 4,
-    "426": 1,
-    "429": 1,
-    "500": 11,
-    "503": 2,
-    "live": 1722,
-    "err-ECONNRESET": 2148,
-    "err-ENOTFOUND": 17
-  },
-  "takedowns": [],
-  "dossiers": 752,
-  "hostnameLane": 20,
-  "contentLane": 3,
-  "triaged": 23,
-  "confirmed": 1,
+  "cutoff": "2026-08-14T19:14:03Z",
+  "repos": 48468,
+  "candidates": 3453,
+  "candidatesByName": 1144,
+  "candidatesByHomepage": 2308,
+  "live": 440,
+  "dossiers": 438,
+  "triaged": 29,
+  "confirmed": 0,
   "llmFailures": 0,
+  "probeStatuses": {
+    "404": 107,
+    "451": 1,
+    "live": 440,
+    "err-ENOTFOUND": 1,
+    "err-ECONNRESET": 2,
+    "err-provider-blocked": 2902
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 3010,
+      "live": 18,
+      "takedowns": [
+        {
+          "url": "https://bridgelink.vercel.app",
+          "host": "bridgelink.vercel.app",
+          "source": "guess",
+          "repo": "TegaJeremy/Bridgelink",
+          "repoCreatedAt": "2026-08-14T22:29:49Z",
+          "status": 451,
+          "server": "Vercel",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::kt77j-1786771841364-49dc4c7861c3</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "404": 86,
+        "451": 1,
+        "live": 18,
+        "err-ENOTFOUND": 1,
+        "err-ECONNRESET": 2,
+        "err-provider-blocked": 2902
+      },
+      "dossiers": 18,
+      "hostnameLane": 18,
+      "contentLane": 0,
+      "triaged": 18,
+      "confirmed": 0,
+      "elapsedSec": 878.78
+    },
+    "open": {
+      "name": "open",
+      "candidates": 443,
+      "live": 422,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 21,
+        "live": 422
+      },
+      "dossiers": 420,
+      "hostnameLane": 9,
+      "contentLane": 2,
+      "triaged": 11,
+      "confirmed": 0,
+      "elapsedSec": 21.58
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 112,
+      "issuedBeforeFirstTrip": 38,
+      "trips": 5,
+      "finalRps": 0.5,
+      "abandoned": true
+    }
+  },
+  "takedowns": [
+    {
+      "url": "https://bridgelink.vercel.app",
+      "host": "bridgelink.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/TegaJeremy/Bridgelink",
+      "repoCreatedAt": "2026-08-14T22:29:49Z",
+      "source": "guess"
+    }
+  ],
   "canaryCaught": false,
-  "elapsedSec": 333.55,
+  "elapsedSec": 1031.85,
   "output": "drainers-2026-08-15.jsonl"
 }
