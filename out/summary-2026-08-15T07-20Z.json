@@ -1,0 +1,78 @@
+{
+  "generated": "2026-08-15T07:24:56.054Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-15T03:20:19Z",
+  "repos": 48021,
+  "candidates": 1528,
+  "candidatesByName": 1158,
+  "candidatesByHomepage": 369,
+  "live": 294,
+  "dossiers": 294,
+  "triaged": 18,
+  "confirmed": 2,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "404": 65,
+    "live": 294,
+    "err-ENOTFOUND": 2,
+    "err-ECONNRESET": 1,
+    "err-provider-blocked": 1166
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1218,
+      "live": 10,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 40,
+        "live": 10,
+        "err-ENOTFOUND": 1,
+        "err-ECONNRESET": 1,
+        "err-provider-blocked": 1166
+      },
+      "dossiers": 10,
+      "hostnameLane": 10,
+      "contentLane": 2,
+      "triaged": 10,
+      "confirmed": 1,
+      "canaryProbed": true,
+      "elapsedSec": 138.57
+    },
+    "open": {
+      "name": "open",
+      "candidates": 310,
+      "live": 284,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 25,
+        "live": 284,
+        "err-ENOTFOUND": 1
+      },
+      "dossiers": 284,
+      "hostnameLane": 6,
+      "contentLane": 2,
+      "triaged": 8,
+      "confirmed": 1,
+      "canaryProbed": false,
+      "elapsedSec": 34.18
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 63,
+      "issuedBeforeFirstTrip": 30,
+      "trips": 2,
+      "finalRps": 1.5,
+      "abandoned": true
+    }
+  },
+  "takedowns": [],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 276.37,
+  "output": "drainers-2026-08-15T07-20Z.jsonl"
+}
