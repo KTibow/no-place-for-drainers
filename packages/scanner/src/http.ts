@@ -115,7 +115,7 @@ export async function request(url: string, opts: RequestOptions = {}): Promise<H
         continue;
       }
 
-      const body = opts.method === 'HEAD' ? new Uint8Array() : await readCapped(res, cap);
+      const body = await readCapped(res, cap);
       pace.report(url);
       return { status: res.status, body, headers: res.headers, url: res.url || url };
     } catch (err) {
