@@ -154,7 +154,27 @@ export const MAX_BUNDLES = 3;
  */
 export const MAX_CORPUS_CHARS = 250_000;
 /** Ceiling on the rendered dossier handed to the LLM. */
-export const DOSSIER_MAX_CHARS = 6000;
+export const DOSSIER_MAX_CHARS = 9000;
+/**
+ * Cap on shipping the page's own source to the classifier alongside the
+ * dossier.
+ *
+ * The dossier lists what a page asks for but not where the answer goes, and
+ * that is the question — a login whose password is read and discarded into
+ * localStorage is a hobby site, one that posts it to a webhook is a trap, and
+ * the two are indistinguishable from a field list. Rather than hand-rolling a
+ * dataflow analysis that would be confidently wrong, give the model the file:
+ * these pages are single-file and small (3-63 KB observed), and at V4 Flash
+ * prompt rates that is fractions of a cent per call.
+ *
+ * Bundled SPAs are excluded by size on purpose. A 468 KB bundle is ~95%
+ * library code, so it buys noise; the literal extraction already distils those
+ * and the dossier now labels bundle strings as such.
+ *
+ * This changes nothing before the LLM: rules still score `corpus`, so lane
+ * selection and thresholds are untouched.
+ */
+export const LLM_SOURCE_MAX_CHARS = 200_000;
 export const DOSSIER_MAX_EVIDENCE_LINES = 60;
 
 // ── stage 5: detection ──────────────────────────────────────────────────────

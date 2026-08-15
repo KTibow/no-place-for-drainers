@@ -53,6 +53,16 @@ export type Dossier = {
   visible: string;
   /** Full extracted signal surface: HTML essence + JS bundle literals. */
   corpus: string;
+  /**
+   * The bundle-derived half on its own, so evidence can be attributed. A page
+   * that bundles ethers.js contains "invalid mnemonic checksum" and "Expected
+   * 32 bytes of private key" because the library does, not because the page
+   * asks for either — and presenting those beside the page's own copy convicts
+   * every honest web3 tool that ships a signing library.
+   */
+  bundleCorpus: string;
+  /** The page itself, when small enough to hand to the classifier. */
+  source: string;
   htmlBytes: number;
   jsBytes: number;
   bundles: string[];

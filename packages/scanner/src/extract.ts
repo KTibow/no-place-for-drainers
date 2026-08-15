@@ -7,6 +7,20 @@
  */
 import { parse } from 'acorn';
 
+/**
+ * The page with the parts that carry no judgement removed: style blocks and
+ * comments. Everything else stays, scripts included — the handler that decides
+ * where a typed value goes is the whole point.
+ */
+export function readableSource(html: string): string {
+  return html
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<link[^>]+rel=["']stylesheet["'][^>]*>/gi, '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 export function stripTags(html: string): string {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')

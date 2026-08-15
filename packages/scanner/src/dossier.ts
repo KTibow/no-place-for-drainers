@@ -8,6 +8,7 @@
  */
 import {
   DOSSIER_MAX_CHARS,
+  LLM_SOURCE_MAX_CHARS,
   DOSSIER_MAX_EVIDENCE_LINES,
   FETCH_TIMEOUT_MS,
   MAX_BUNDLES,
@@ -22,6 +23,7 @@ import {
   hostsIn,
   jsLiterals,
   metasOf,
+  readableSource,
   stripTags,
   titleOf,
 } from './extract.ts';
@@ -40,7 +42,9 @@ export async function buildDossier(site: LiveSite, track: string): Promise<Dossi
   }
 
   const visible = stripTags(html);
-  let corpus = essence(html);
+  const pageCorpus = essence(html);
+  let bundleCorpus = '';
+  let corpus = pageCorpus;
   let jsBytes = 0;
   const bundles: string[] = [];
 
@@ -54,7 +58,8 @@ export async function buildDossier(site: LiveSite, track: string): Promise<Dossi
       bundles.push(url);
       // Scan the FULL literal set of each bundle: truncating per-bundle fills
       // the budget with framework internals before reaching the app's own copy.
-      corpus = `${corpus}\n${jsLiterals(decode(bundle.body))}`.slice(0, MAX_CORPUS_CHARS);
+      bundleCorpus = `${bundleCorpus}\n${jsLiterals(decode(bundle.body))}`.slice(0, MAX_CORPUS_CHARS);
+      corpus = `${pageCorpus}\n${bundleCorpus}`.slice(0, MAX_CORPUS_CHARS);
     }
   }
 
@@ -64,8 +69,16 @@ export async function buildDossier(site: LiveSite, track: string): Promise<Dossi
     metas: metasOf(html),
     fields: fieldsOf(html),
     hosts: hostsIn(corpus),
-    visible: visible.slice(0, 800),
+    visible: visible.slice(0, 2500),
     corpus,
+    bundleCorpus,
+    // Gate on whether the file is readable, not on whether it references a
+    // script. Nearly every page loads something, and the SPA-shell heuristic
+    // keys on *visible text* — so a 63 KB single-file page with its handlers
+    // inline and little prose looks like a shell and would be excluded, which
+    // is exactly the case this exists for. Bundles are never shipped either
+    // way; they stay distilled.
+    source: readableSource(html).length <= LLM_SOURCE_MAX_CHARS ? readableSource(html) : '',
     htmlBytes: html.length,
     jsBytes,
     bundles,
@@ -87,16 +100,23 @@ export async function buildDossier(site: LiveSite, track: string): Promise<Dossi
  * the LLM and what gets dumped to the console for a flagged site.
  */
 export function render(dossier: Dossier, classification: Classification): string {
-  const evidence: string[] = [];
-  const seen = new Set<string>();
-  for (const raw of dossier.corpus.split('\n')) {
-    const line = raw.trim();
-    if (line.length <= 8 || line.length >= 300) continue;
-    if (!ANY_RULE.test(line) || seen.has(line)) continue;
-    seen.add(line);
-    evidence.push(line);
-    if (evidence.length >= DOSSIER_MAX_EVIDENCE_LINES) break;
-  }
+  const pick = (corpus: string, limit: number, skip?: Set<string>) => {
+    const seen = new Set<string>();
+    const out: string[] = [];
+    for (const raw of corpus.split('\n')) {
+      const line = raw.trim();
+      if (line.length <= 8 || line.length >= 300) continue;
+      if (!ANY_RULE.test(line) || seen.has(line) || skip?.has(line)) continue;
+      seen.add(line);
+      out.push(line);
+      if (out.length >= limit) break;
+    }
+    return out;
+  };
+  // Bundle strings get their own section and a smaller share of the budget.
+  const bundleLines = new Set(dossier.bundleCorpus.split('\n').map((l) => l.trim()));
+  const pageEvidence = pick(dossier.corpus, DOSSIER_MAX_EVIDENCE_LINES, bundleLines);
+  const bundleEvidence = pick(dossier.bundleCorpus, 12);
 
   const lines = [
     `URL       ${dossier.site.url}`,
@@ -108,8 +128,14 @@ export function render(dossier: Dossier, classification: Classification): string
     `HOSTS     ${dossier.hosts.slice(0, 15).join(', ') || '(none)'}`,
     `BUNDLES   ${dossier.bundles.length} (${kb(dossier.jsBytes)})`,
     `SIGNALS   ${Object.keys(classification.hits).sort().join(', ') || '(none)'}  score=${classification.score}`,
-    'EVIDENCE',
-    ...evidence.map((line) => `  ${line}`),
+    'EVIDENCE FROM THE PAGE ITSELF',
+    ...pageEvidence.map((line) => `  ${line}`),
+    ...(bundleEvidence.length
+      ? [
+          'STRINGS FOUND IN BUNDLED JAVASCRIPT (may be library internals, not this page)',
+          ...bundleEvidence.map((line) => `  ${line}`),
+        ]
+      : []),
     'VISIBLE',
     `  ${dossier.visible}`,
   ];

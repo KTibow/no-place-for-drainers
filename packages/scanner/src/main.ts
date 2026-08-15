@@ -210,7 +210,7 @@ async function runOfflineCanary(): Promise<'caught' | 'missed'> {
     log.warn(log.MAIN, `offline canary scored ${classification.score} and reached no lane`);
     return 'missed';
   }
-  const verdict = await llm.triage(render(dossier, classification), 'offline-canary', log.MAIN);
+  const verdict = await llm.triage(render(dossier, classification), dossier.source, 'offline-canary', log.MAIN);
   log.site(
     log.MAIN,
     'offline-canary',
@@ -305,7 +305,7 @@ async function runTrack(
       const text = render(dossier, classification);
       log.block(name, label, 'dossier', text);
 
-      const verdict = await triageGate(() => llm.triage(text, label, name));
+      const verdict = await triageGate(() => llm.triage(text, dossier.source, label, name));
       log.site(
         name,
         label,
