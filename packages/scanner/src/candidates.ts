@@ -56,6 +56,26 @@ function earnsRequest(url: string, name: string): boolean {
   return !isPaced(url) || looksLikeLure(name);
 }
 
+/**
+ * Note on what this costs the deployment path, because it is easy to
+ * misattribute.
+ *
+ * The Deployments API supplies vercel.app URLs at ~4.7% of new repos (14 per
+ * 296 measured), which is thousands per run — far more than the 30-100 requests
+ * vercel actually grants us. Almost all of them are then dropped here, by our
+ * filter, not by any shortcoming of the API. Preview aliases like
+ * `name-o36ymav92-owner-projects.vercel.app` are live and perfectly scannable;
+ * being non-canonical does not matter to a scanner.
+ *
+ * Keeping the filter on them is still the right call, but only for a reason
+ * worth stating: with a fixed request budget the quantity to maximise is
+ * P(live) x P(abusive | live). A deployment URL has P(live) ~= 1 against ~0.15
+ * for a guess, so it dominates a guess at equal suspicion — which is why it
+ * sorts first. An *unfiltered* deployment URL trades that 6.7x liveness edge
+ * against however much the lure vocabulary raises P(abusive), and the
+ * vocabulary is worth more than 6.7x on a provider this starved.
+ */
+
 /** host + path, no scheme, no trailing slash. */
 export function labelOf(url: string): string {
   try {
