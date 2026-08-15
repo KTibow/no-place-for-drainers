@@ -13,6 +13,7 @@
  *   5  detection .................. hostname lane | content-rule lane
  *   6  LLM triage ................. the same dossier, a second opinion
  *   7  analyst queue .............. dated JSONL of what survived
+ *   8  handoff ................... urlscan for all of it, discord for vercel
  *
  * Stages 5 and 6 read the identical dossier built in stage 4, which is what
  * makes their disagreements meaningful instead of an artifact of what each one
@@ -46,6 +47,7 @@ import { AnalystQueue } from './output.ts';
 import { isPaced } from './pace.ts';
 import * as pace from './pace.ts';
 import { probeSite } from './probe.ts';
+import * as submit from './submit.ts';
 import type { Candidate, Finding, LiveSite } from './types.ts';
 import { hostOf, partition, pool, semaphore } from './util.ts';
 
@@ -55,6 +57,7 @@ requireToken();
 llm.requireKey();
 const queue = new AnalystQueue();
 log.info(log.MAIN, `analyst queue → ${basename(queue.path)}`);
+submit.announceSinks();
 
 // ── stage 1 ── /repositories walk ───────────────────────────────────────────
 log.stage(log.MAIN, 1, '/repositories walk', `every new public repo in the last ${WINDOW_HOURS}h`);
@@ -155,6 +158,7 @@ const summary = {
   // reported to different abuse desks.
   tracks: Object.fromEntries(tracks.map((t) => [t.name, t])),
   pace: pace.stats(),
+  handoff: submit.stats(),
   takedowns: tracks.flatMap((t) =>
     t.takedowns.map((site) => ({
       url: site.url,
@@ -337,9 +341,20 @@ async function runTrack(
       }
 
       // ── 7 ── straight to the analyst queue, on disk, now ──────────────────
+      // urlscan goes first, and it is the one place this pipeline makes a
+      // finding wait on the network before writing it down. The capture URL is
+      // a field on the record, and the record file is append-only — rewriting a
+      // line later to add it would break the one property everything
+      // downstream relies on. Bounded at ~30s by SUBMIT_TIMEOUT_MS, and
+      // submit.toUrlscan cannot throw, so the worst case is a slower append
+      // with a null link, never a lost finding.
       counts.confirmed++;
-      const record = queue.add({ dossier, classification, llm: verdict });
+      const urlscan = await submit.toUrlscan(dossier.site, verdict.category, name);
+      const record = queue.add({ dossier, classification, llm: verdict }, urlscan);
       log.site(name, label, 'pass', `-> ${basename(queue.path)}  ${record.category} (${record.brand ?? 'no brand'})`);
+
+      // ── 8 ── announce, vercel track only ──────────────────────────────────
+      await submit.toDiscord(record, name);
     } finally {
       if (++done % 500 === 0) {
         log.info(name, `${done}/${trackCandidates.length} — ${tally()} | live:${counts.live} triaged:${counts.triaged} confirmed:${counts.confirmed}`);

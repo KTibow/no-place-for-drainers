@@ -15,6 +15,16 @@ import { runStamp } from './util.ts';
 export type QueueRecord = {
   seen: string;
   url: string;
+  /**
+   * The urlscan.io capture of this URL, submitted at the moment it was
+   * confirmed. Null when the handoff is off or urlscan refused the URL.
+   *
+   * This is the only field here that outlives its subject. Everything else
+   * describes a page that is typically gone within days — taken down, or
+   * rewritten by its operator — and a line asserting that a page asked for a
+   * seed phrase is not evidence that it did. The capture is.
+   */
+  urlscan: string | null;
   host: string;
   label: string;
   repo: string;
@@ -61,11 +71,12 @@ export class AnalystQueue {
     writeFileSync(this.path, '');
   }
 
-  add(finding: Finding): QueueRecord {
+  add(finding: Finding, urlscan: string | null = null): QueueRecord {
     const { dossier, classification, llm } = finding;
     const record: QueueRecord = {
       seen: new Date().toISOString(),
       url: dossier.site.url,
+      urlscan,
       host: dossier.site.host,
       label: dossier.site.label,
       repo: dossier.site.repo,

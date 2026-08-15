@@ -17,6 +17,7 @@ anyone would think to submit it to urlscan.
 5  detection             hostname keyword lane  |  content rule lane
 6  LLM triage            the same dossier, a second opinion
 7  analyst queue         dated JSONL of what survived
+8  handoff               urlscan for all of it, discord for the vercel track
 ```
 
 **Scope is deliberately broad.** A page qualifies if it does something to whoever
@@ -48,6 +49,16 @@ out/                committed. this directory's history is the record
 - **`out/summary-<date>.json`** — run stats, plus every HTTP 451 seen. Those are
   the most interesting dead URLs we have: the host already agreed the
   deployment was abusive, and the repo behind it is still sitting there.
+- **[urlscan.io](https://urlscan.io/search/#tags%3Ano-place-for-drainers)** — every
+  confirmed URL is submitted the moment it is confirmed, public, tagged
+  `no-place-for-drainers` plus its provider track and category. That capture is
+  the only part of a finding that outlives it: these pages are usually gone
+  within days, and a JSONL line asserting a page asked for a seed phrase is not
+  evidence that it did. The result URL comes back on the record as `urlscan`.
+- **a Discord webhook** — the vercel track only. Vercel rations us to a few dozen
+  requests a run, so a vercel confirmation is a lead bought with that provider's
+  entire budget and worth interrupting someone for; the open track's two dozen a
+  run would bury it.
 - **the console log** — the detailed record, kept as a CI artifact for 90 days.
   Every per-site line is prefixed with the hostname, so `ctrl+f
   some-site.vercel.app` replays that site's whole life: where it came from,
@@ -58,7 +69,7 @@ out/                committed. this directory's history is the record
 
 ```sh
 pnpm install
-pnpm scan        # reads .env if present: GITHUB_PAT, CROF_KEY
+pnpm scan        # reads .env if present: GITHUB_PAT, CROF_KEY, URLSCAN_KEY, VERCEL_WEBHOOK
 pnpm dev         # the site, against whatever is in out/
 ```
 
@@ -67,6 +78,12 @@ Needs Node 24+ — the scanner is TypeScript run directly, with no build step.
 In CI the scan uses the automatic workflow token, which is capped at 1,000 REST
 requests/hour. Set a `GITHUB_PAT` secret to get 5,000/hour and proportionally
 more of the window. `CROF_KEY` is required for stage 6.
+
+Stage 8 is optional and each sink is independent — `URLSCAN_KEY` (a urlscan.io
+API key) turns on submission, `VERCEL_WEBHOOK` (a Discord webhook URL) turns on
+the vercel announcements. Neither being set is a valid run; the log says which
+sinks are live in its first few lines, and the summary's `handoff` block says
+what each one actually did.
 
 ## Tuning
 

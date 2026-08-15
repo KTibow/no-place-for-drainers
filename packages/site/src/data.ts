@@ -12,6 +12,8 @@ const OUT = resolve(process.cwd(), '../../out');
 export type QueueRecord = {
   seen: string;
   url: string;
+  /** urlscan.io capture. Absent on records from before the handoff existed. */
+  urlscan?: string | null;
   host: string;
   label?: string;
   repo: string;

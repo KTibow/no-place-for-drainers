@@ -46,6 +46,7 @@ const TAG_COLORS: Record<string, (s: string) => string> = {
   rules: cyan,
   llm: bold,
   pass: green,
+  submit: green,
   drop: dim,
   error: red,
   warn: yellow,

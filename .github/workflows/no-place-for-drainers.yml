@@ -34,6 +34,10 @@ jobs:
           # secret to get the 5,000/hr core limit instead of 1,000/hr.
           GITHUB_PAT: ${{ secrets.GITHUB_PAT || github.token }}
           CROF_KEY: ${{ secrets.CROF_KEY }}
+          # Stage 8, both optional. Unset just means that sink stays off and
+          # the run says so in its first few log lines.
+          URLSCAN_KEY: ${{ secrets.URLSCAN_KEY }}
+          VERCEL_WEBHOOK: ${{ secrets.VERCEL_WEBHOOK }}
           NODE_OPTIONS: --max-old-space-size=8192
         run: |
           set -o pipefail

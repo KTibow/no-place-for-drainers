@@ -233,6 +233,51 @@ export const LLM_MIN_CONFIDENCE = 0.7;
  */
 export const OUT_DIR = fileURLToPath(new URL('../../../out', import.meta.url));
 
+// ── stage 8: handoff ────────────────────────────────────────────────────────
+export const URLSCAN_ENDPOINT = 'https://urlscan.io/api/v1/scan/';
+/**
+ * public, not unlisted or private.
+ *
+ * The README's own pitch is that these pages are found "long before anyone
+ * would think to submit it to urlscan" — a private capture keeps that head
+ * start to ourselves, which defeats the point of having it. Public means the
+ * next person who searches the host, the repo owner's other deployments, or one
+ * of the exfil endpoints finds our capture waiting for them.
+ */
+export const URLSCAN_VISIBILITY = 'public';
+/**
+ * Tags on every submission, plus the LLM's `category` appended per site.
+ *
+ * These are public and permanent, and they are read by strangers browsing a
+ * result page with no idea who submitted it — which rules out anything that
+ * only means something inside this repo. The track name was the first casualty:
+ * a scan tagged `open` tells an outsider nothing, collides with every other
+ * use of a common English word in urlscan's tag search, and is derivable from
+ * the hostname anyway, since the split that defines it *is* vercel-or-not.
+ *
+ * What survives is a tag that identifies the source, a tag that says a machine
+ * decided this, and the category. The middle one is not decoration. The
+ * category is an accusation against somebody's site, published under their
+ * hostname forever, and it is made by a model at >= LLM_MIN_CONFIDENCE rather
+ * than by a person who looked — so the record should say so on its face rather
+ * than in a README nobody clicks through to.
+ */
+export const URLSCAN_TAGS = ['no-place-for-drainers', 'automated-triage'];
+/**
+ * Both sinks are one small POST per confirmed site, arriving a few dozen times
+ * across an hour-long run, so this is not throughput management — it is a cap
+ * on how much of a run can be sitting in a handoff at once.
+ */
+export const SUBMIT_CONCURRENCY = 2;
+/**
+ * Deliberately short, and shorter than a probe. A finding is not written to the
+ * analyst queue until its urlscan submission has resolved (see main.ts stage 8
+ * for why the link is worth that), so this timeout is the worst-case delay
+ * between confirming a site and having it durably on disk. Two tries at 15s
+ * bounds that at ~30s.
+ */
+export const SUBMIT_TIMEOUT_MS = 15_000;
+
 // ── misc ────────────────────────────────────────────────────────────────────
 export const USER_AGENT =
   'no-place-for-drainers/1.0 (defensive security research; abuse reporting)';
