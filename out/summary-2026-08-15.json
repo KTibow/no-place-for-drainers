@@ -1,28 +1,41 @@
 {
-  "generated": "2026-08-15T03:27:45.792Z",
+  "generated": "2026-08-15T03:57:33.949Z",
   "windowHours": 24,
-  "cutoff": "2026-08-14T03:01:47Z",
-  "repos": 47684,
-  "candidates": 37867,
-  "candidatesByName": 34742,
-  "candidatesByHomepage": 3124,
-  "live": 1901,
+  "cutoff": "2026-08-14T03:37:14Z",
+  "repos": 47884,
+  "candidates": 37174,
+  "candidatesByName": 33998,
+  "candidatesByHomepage": 3175,
+  "live": 1861,
+  "probeStatuses": {
+    "402": 1,
+    "404": 440,
+    "405": 3,
+    "429": 2,
+    "451": 1,
+    "500": 9,
+    "501": 1,
+    "503": 1,
+    "live": 1861,
+    "err": 34855
+  },
   "takedowns": [
     {
-      "url": "https://ai-invest.vercel.app",
-      "host": "ai-invest.vercel.app",
+      "url": "https://newkhangnghi19-5.vercel.app",
+      "host": "newkhangnghi19-5.vercel.app",
       "reason": "DEPLOYMENT_DISABLED",
-      "repoUrl": "https://github.com/huanggenghk/ai-invest",
-      "repoCreatedAt": "2026-08-14T09:00:32Z",
-      "source": "guess"
+      "repoUrl": "https://github.com/nizam99680-cyber/newkhangnghi19-5ssss",
+      "repoCreatedAt": "2026-08-14T22:53:32Z",
+      "source": "homepage"
     }
   ],
-  "dossiers": 810,
+  "dossiers": 789,
   "hostnameLane": 1,
-  "contentLane": 5,
-  "triaged": 6,
+  "contentLane": 4,
+  "triaged": 5,
   "confirmed": 0,
+  "llmFailures": 2,
   "canaryCaught": false,
-  "elapsedSec": 1557.88,
+  "elapsedSec": 1219.23,
   "output": "drainers-2026-08-15.jsonl"
 }
