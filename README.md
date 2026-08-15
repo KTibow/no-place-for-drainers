@@ -1,7 +1,7 @@
 # no place for drainers
 
-Wallet drainers and credential phishing kits need a host, and the free ones are
-one `git push` away. That push is the mistake: the deployment is anonymous, but
+Phishing kits, wallet drainers and tracking beacons need a host, and the free
+ones are one `git push` away. That push is the mistake: the deployment is anonymous, but
 the repo behind it is a public, timestamped, enumerable record. This walks every
 new public repo on GitHub, guesses or reads its deployment URL, and looks at
 what is actually being served — a few hours after it goes up, and long before
@@ -18,6 +18,14 @@ anyone would think to submit it to urlscan.
 6  LLM triage            the same dossier, a second opinion
 7  analyst queue         dated JSONL of what survived
 ```
+
+**Scope is deliberately broad.** A page qualifies if it does something to whoever
+opens it that they would object to if they understood it — credential harvesting,
+drainers, fake support and giveaways, covert exfiltration of the visitor
+themselves. Drainers are the flagship case, not the boundary; the acquisition
+walk is provider-shaped rather than topic-shaped, so narrowing the classifier
+below it would throw away pipeline already paid for. Every record carries a
+`category`, so consumers who only want drainers can filter for them.
 
 Stages 5 and 6 read the **identical** dossier built in stage 4. The rules are a
 keyword net — good at "this page contains 'seed phrase'", bad at "…because it is

@@ -10,12 +10,19 @@ const scanned = runs.reduce((total, run) => total + run.summary.repos, 0);
 ---
 
 <Page title="no place for drainers">
-  <h1>Drainers, hours old.</h1>
+  <h1>Abuse, hours old.</h1>
   <p class="lede">
-    A wallet drainer needs a host, and the free ones are one <code>git push</code> away. That push
+    A phishing page needs a host, and the free ones are one <code>git push</code> away. That push
     is the mistake: the deployment is anonymous, the repo behind it is not. This walks every new
     public repo on GitHub, works out where it deployed, and reads what is actually being served —
     long before anyone would think to submit it anywhere.
+
+  </p>
+  <p class="lede scope">
+    Wallet drainers are the flagship case, not the boundary. Anything that does something to
+    whoever opens it that they would object to if they understood it counts: credential
+    harvesting, fake support and giveaways, and pages that quietly report their visitors to a
+    channel the operator controls. Every entry says which.
   </p>
 
   <Meta current="index">
@@ -59,6 +66,10 @@ const scanned = runs.reduce((total, run) => total + run.summary.repos, 0);
     max-width: 44rem;
     color: var(--m3c-on-surface-variant);
     margin-block: 1rem 2.5rem;
+  }
+
+  .scope {
+    margin-top: -1.5rem;
   }
 
   .lede code {

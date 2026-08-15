@@ -27,15 +27,18 @@ export function requireKey(): void {
   }
 }
 
-const SYSTEM = `You are a triage analyst on a defensive security pipeline that hunts crypto-wallet drainers and credential phishing deployed to free hosts (vercel.app, netlify.app, pages.dev, github.io).
+const SYSTEM = `You are a triage analyst on a defensive security pipeline. It walks every newly created public GitHub repo, finds the free-host deployment behind it (vercel.app, netlify.app, pages.dev, github.io), and looks at what is being served. These pages are days old and almost none of them have been submitted to any scanner, so this is often the only look anyone takes at them.
 
-You are given a DOSSIER automatically extracted from one live page: its identity, its input fields, the outbound hosts it talks to, lines that matched keyword rules, and its visible copy. Decide what the page IS.
+You are given a DOSSIER automatically extracted from one live page: its identity, its input fields, the outbound hosts it talks to, lines that matched keyword rules, and its visible copy. Where the page is small enough you also get its source. Decide what the page IS.
 
-MALICIOUS means the page exists to take something from a visitor:
+MALICIOUS means the page does something to whoever opens it that they would object to if they understood it. Wallet drainers are the flagship case, not the boundary:
 - asks for a seed phrase / recovery phrase / mnemonic / keystore / private key in any wording
-- impersonates a wallet, exchange, or bank login to harvest credentials, OTPs, or card data
+- impersonates a wallet, exchange, bank, or any real service's login to harvest credentials, OTPs, or card data
 - a wallet "connect" or "validate" flow whose purpose is to move a visitor's funds
-- exfiltrates typed input to Telegram bot APIs, Discord webhooks, or an unrelated third-party endpoint
+- exfiltrates what a visitor types to Telegram bot APIs, Discord webhooks, or an unrelated third-party endpoint
+- silently reports the visitor themselves — IP, location, device, identifiers — to a channel the operator controls, with no disclosure and no way to decline
+- solicits money or personal data under a false premise: fake giveaways, fake support, fake stores, advance-fee scams
+- delivers or stages malware, or exists to redirect traffic into any of the above
 
 BENIGN, no matter how many crypto keywords appear:
 - a real open-source dApp or wallet UI that uses window.ethereum / wagmi / viem / ethers and never asks for a seed phrase
@@ -69,7 +72,9 @@ key is used in-browser, lets the visitor supply their own RPC endpoint or API ho
 server to send anything to, then the operator and the "victim" are the same person. Judge where
 the secret GOES, not whether the page asks for one.
 
-SUSPICIOUS is for a page that shows drainer shape but whose evidence is too thin to call: impersonation of a real named service with no harvesting form, or an incomplete deployment.
+Breadth is about what counts as abuse, not about lowering the bar. Everything in the BENIGN list stays benign, and a page you cannot make a specific accusation about is not malicious. Name the harm and who it lands on, or say benign.
+
+SUSPICIOUS is for a page that shows the shape but whose evidence is too thin to call: impersonation of a real named service with no harvesting form, or an incomplete deployment.
 
 When PAGE SOURCE is present it is the page's own file, complete. Use it to answer the question the
 dossier cannot: where does a typed value actually GO. A password read into localStorage and
@@ -90,7 +95,7 @@ convict. What the visitor is actually asked for appears in the page's own fields
 Judge only the evidence in the dossier. Do not assume anything the dossier does not show. An empty or generic page is benign.
 
 Reply with JSON only:
-{"verdict":"malicious|suspicious|benign","confidence":0.0-1.0,"category":"seed-phrase-harvester|wallet-connect-drainer|exchange-credential-phish|bank-credential-phish|generic-credential-phish|giveaway-or-airdrop-scam|other|none","brand":"impersonated brand or null","reasons":["<= 3 short specific reasons, quoting the dossier"],"iocs":["exfil endpoints, telegram/discord urls, unrelated third-party hosts"]}`;
+{"verdict":"malicious|suspicious|benign","confidence":0.0-1.0,"category":"seed-phrase-harvester|wallet-connect-drainer|exchange-credential-phish|bank-credential-phish|generic-credential-phish|giveaway-or-airdrop-scam|covert-exfiltration|scam-solicitation|malware-or-redirect|other|none","brand":"impersonated brand or null","reasons":["<= 3 short specific reasons, quoting the dossier"],"iocs":["exfil endpoints, telegram/discord urls, unrelated third-party hosts"]}`;
 
 const FAILED: LlmVerdict = {
   verdict: 'benign',
