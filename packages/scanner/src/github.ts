@@ -166,13 +166,19 @@ export async function walkNewRepos(): Promise<{ repos: Repo[]; cutoff: string }>
 
 /**
  * `deployments` is what Pages, Vercel and Netlify all write to when they
- * publish, so it names the real URL instead of us guessing one. It costs 2
- * extra rate-limit points per 300-repo batch (1 -> 3), which is nothing against
+ * publish, so it names the real URL instead of us guessing one.
+ *
+ * last:1, not last:3 — measured, both surface the same 54 URLs per 296 repos,
+ * but last:3 draws 504s from the API and a failed batch costs three attempts
+ * plus backoff and then loses 300 repos. Hydration is the slowest thing in the
+ * run at ~7.6s a batch before any of this, so the extra nodes are not free.
+ *
+ * Costs 2 extra rate-limit points per batch (1 -> 3), which is nothing against
  * the hourly budget. Do not raise HYDRATE_BATCH to compensate: 600 nodes with
  * deployments attached 502s.
  */
 const FIELDS = `databaseId nameWithOwner homepageUrl createdAt isFork
-  deployments(last:3){ nodes { latestStatus { environmentUrl } } }`;
+  deployments(last:1){ nodes { latestStatus { environmentUrl } } }`;
 
 /** 300 ids per call = 1 point. Deleted repos come back as nulls; drop them. */
 async function hydrate(nodeIds: string[]): Promise<Repo[]> {
@@ -184,6 +190,12 @@ async function hydrate(nodeIds: string[]): Promise<Repo[]> {
   const vars = Object.fromEntries(batches.map((b, i) => [`b${i}`, b]));
 
   const data = await graphql(`query(${decls}){ ${body} }`, vars);
+  if (!data?.data) {
+    // Silence here used to cost 300 repos a time with nothing in the log to
+    // show for it, which is indistinguishable from a quiet window.
+    log.warn(log.MAIN, `hydration failed for ${nodeIds.length} repos — dropped`);
+    return [];
+  }
   const out: Repo[] = [];
   for (const [key, value] of Object.entries<any>(data?.data ?? {})) {
     if (!key.startsWith('b') || !Array.isArray(value)) continue;
