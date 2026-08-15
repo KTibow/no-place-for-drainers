@@ -76,5 +76,12 @@ Widening it is the main lever on recall, and the main way to get blocked again.
 The probe tally on every progress line (`404:253 live:93 err-ECONNRESET:6`) is
 how you tell which is happening.
 
+`packages/scanner/src/pace.ts` is the other half of that. Vercel does not answer
+an over-eager scanner with 429 — it resets the connection and keeps doing so for
+minutes, which is invisible unless you are counting. Measured trips cluster near
+a few hundred requests rather than at a rate, so the limiter starts at 4 req/s,
+halves and pauses 90s whenever resets appear, and creeps back up while it is
+being answered. Where it settled is in each run summary as `paceRates`.
+
 `CANARY_URLS` is injected into every run. If the canary is not caught, the
 pipeline is broken — the summary says so, and the runs page says so louder.

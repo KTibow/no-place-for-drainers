@@ -1,5 +1,6 @@
 import { Agent, fetch, type Headers, type Response } from 'undici';
 import { MAX_BODY_BYTES, USER_AGENT } from './config.ts';
+import * as pace from './pace.ts';
 import { sleep } from './util.ts';
 
 /**
@@ -91,6 +92,7 @@ export async function request(url: string, opts: RequestOptions = {}): Promise<H
   const cap = opts.cap ?? MAX_BODY_BYTES;
 
   for (let attempt = 0; attempt < tries; attempt++) {
+    await pace.acquire(url);
     try {
       const res = await fetch(url, {
         method: opts.method ?? 'GET',
@@ -114,9 +116,12 @@ export async function request(url: string, opts: RequestOptions = {}): Promise<H
       }
 
       const body = opts.method === 'HEAD' ? new Uint8Array() : await readCapped(res, cap);
+      pace.report(url);
       return { status: res.status, body, headers: res.headers, url: res.url || url };
     } catch (err) {
-      if (attempt === tries - 1) return failed(causeOf(err));
+      const cause = causeOf(err);
+      pace.report(url, cause);
+      if (attempt === tries - 1) return failed(cause);
       await sleep(2 ** attempt * 500);
     }
   }

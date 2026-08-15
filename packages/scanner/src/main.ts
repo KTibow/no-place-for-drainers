@@ -26,6 +26,7 @@ import { requireToken, walkNewRepos } from './github.ts';
 import * as llm from './llm.ts';
 import * as log from './log.ts';
 import { AnalystQueue } from './output.ts';
+import * as pace from './pace.ts';
 import { probeLiveness } from './probe.ts';
 import type { Candidate, Finding } from './types.ts';
 import { hostOf, pool } from './util.ts';
@@ -162,6 +163,8 @@ const summary = {
   triaged: triageQueue.length,
   confirmed: findings.length,
   llmFailures: llm.failureCount(),
+  /** Where the adaptive limiter settled — a drop means we were being throttled. */
+  paceRates: pace.rates(),
   canaryCaught,
   elapsedSec: Math.round((Date.now() - startedAt) / 10) / 100,
   output: basename(queue.path),
