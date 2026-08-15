@@ -20,5 +20,6 @@
       "version": "26",
       "onFail": "download"
     }
-  }
+  },
+  "devDependencies": {}
 }

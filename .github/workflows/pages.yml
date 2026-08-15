@@ -36,12 +36,11 @@ jobs:
           # the whole point is to publish it.
           ref: ${{ github.ref_name }}
 
-      # pnpm and node in one step, both versions read from devEngines.
+      # pnpm, node, and the install, all in one step. Both versions come from
+      # devEngines in package.json.
       - uses: pnpm/setup@v2
         with:
           cache: true
-
-      - run: pnpm install --frozen-lockfile
 
       - run: pnpm build
 
