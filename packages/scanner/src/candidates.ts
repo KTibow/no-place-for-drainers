@@ -8,33 +8,16 @@
  *                   `wallet-restore-portal.vercel.app`. Free, and it reaches
  *                   the repos that never fill in a homepage.
  *
- * Vercel appends `-<color>`/`-<greek>` suffixes on name collisions; stripping
- * them recovers the original project name and collapses whole families of
- * copy-pasted kits onto one URL.
+ * The name is guessed literally. Vercel's `-<color>-<greek>` collision suffixes
+ * land on the *deployment* host, never on the repo name, so stripping them here
+ * fired on 0 of 1000 recent repo names — and on the rare hit it was wrong
+ * (`ruby`, `pi`, `tan` and `rose` are ordinary word endings) while replacing
+ * the correct guess rather than supplementing it. That regex belongs on
+ * observed hostnames as a kit-clustering key, if we ever want one.
  */
 import { FREE_HOSTS, GUESS_HOST_SUFFIX, MIN_GUESS_NAME_LENGTH } from './config.ts';
 import type { Candidate, Repo } from './types.ts';
 import { hostOf } from './util.ts';
-
-const COLORS =
-  'amber|azure|beige|black|blue|brown|coral|cyan|emerald|fuchsia|gold|gray|green|indigo|ivory|' +
-  'jade|lime|magenta|maroon|navy|olive|orange|pink|purple|red|rose|ruby|salmon|silver|slate|tan|' +
-  'teal|violet|white|yellow';
-const GREEK =
-  'alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|' +
-  'tau|upsilon|phi|chi|psi|omega';
-const NUMBERS = 'one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve';
-const SUFFIX = new RegExp(`-(?:${COLORS}|${GREEK}|${NUMBERS})(?:-(?:${COLORS}|${GREEK}|${NUMBERS}))*$`);
-
-function stripSuffix(name: string): string {
-  let prev = '';
-  let out = name;
-  while (prev !== out) {
-    prev = out;
-    out = out.replace(SUFFIX, '');
-  }
-  return out;
-}
 
 /** Same slug rules Vercel applies to a repo name. */
 function normalizeName(nameWithOwner: string): string {
@@ -81,7 +64,7 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
   }
 
   for (const repo of repos) {
-    const base = stripSuffix(normalizeName(repo.nameWithOwner));
+    const base = normalizeName(repo.nameWithOwner);
     if (base.length < MIN_GUESS_NAME_LENGTH) continue;
     const host = `${base}.${GUESS_HOST_SUFFIX}`;
     const url = `https://${host}`;

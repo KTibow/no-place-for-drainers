@@ -48,7 +48,14 @@ jobs:
           fi
           summary=$(ls -1 out/summary-*.json | tail -1)
           git commit -m "scan $(basename "$summary" .json | cut -d- -f2-): $(jq -r .confirmed "$summary") confirmed, $(jq -r '.takedowns | length' "$summary") already down"
-          git push
+          # A scan runs for the better part of an hour, so main may well have
+          # moved under it. Results are additive — replaying them on top is
+          # always the right merge.
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 5
+          done
+          exit 1
 
       # The console log is the detailed record — every line carries its
       # hostname, so one grep replays a site's whole life. Too big to commit,
