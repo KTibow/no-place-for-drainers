@@ -10,12 +10,13 @@ import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { OUT_DIR } from './config.ts';
 import type { Finding } from './types.ts';
-import { isoDate } from './util.ts';
+import { runStamp } from './util.ts';
 
 export type QueueRecord = {
   seen: string;
   url: string;
   host: string;
+  label: string;
   repo: string;
   repoUrl: string;
   repoCreatedAt: string;
@@ -36,13 +37,27 @@ export type QueueRecord = {
 
 export class AnalystQueue {
   readonly path: string;
-  readonly date: string;
+  readonly stamp: string;
   readonly records: QueueRecord[] = [];
 
-  constructor(date = isoDate()) {
-    this.date = date;
+  /**
+   * Named per run, not per date.
+   *
+   * These files used to be `drainers-<date>.jsonl`, truncated on construction.
+   * That quietly destroyed data twice over: a run that started and died wiped
+   * the previous run's findings before producing any of its own — which is
+   * exactly what happened when a cancelled run committed a 1-record file back
+   * as empty, with a commit message quoting the *previous* run's summary. And
+   * at three runs a day, two of every three summaries were overwritten before
+   * anyone read them.
+   *
+   * A run's output is immutable once written. Nothing else can be true of a
+   * directory whose git history is supposed to be the record.
+   */
+  constructor(stamp = runStamp()) {
+    this.stamp = stamp;
     mkdirSync(OUT_DIR, { recursive: true });
-    this.path = join(OUT_DIR, `drainers-${this.date}.jsonl`);
+    this.path = join(OUT_DIR, `drainers-${this.stamp}.jsonl`);
     writeFileSync(this.path, '');
   }
 
@@ -52,6 +67,7 @@ export class AnalystQueue {
       seen: new Date().toISOString(),
       url: dossier.site.url,
       host: dossier.site.host,
+      label: dossier.site.label,
       repo: dossier.site.repo,
       repoUrl: `https://github.com/${dossier.site.repo}`,
       repoCreatedAt: dossier.site.repoCreatedAt,
@@ -75,7 +91,7 @@ export class AnalystQueue {
   }
 
   writeSummary(summary: Record<string, unknown>): string {
-    const path = join(OUT_DIR, `summary-${this.date}.json`);
+    const path = join(OUT_DIR, `summary-${this.stamp}.json`);
     writeFileSync(path, `${JSON.stringify(summary, null, 2)}\n`);
     return path;
   }

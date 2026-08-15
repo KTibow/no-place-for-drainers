@@ -4,15 +4,16 @@ import Page from '../../layouts/Page.astro';
 import { loadRuns, loadSites, type Site } from '../../data';
 
 export async function getStaticPaths() {
-  return loadSites(loadRuns()).map((site) => ({ params: { host: site.host }, props: { site } }));
+  // Rest param, so `account.github.io/project` nests naturally in the URL.
+  return loadSites(loadRuns()).map((site) => ({ params: { site: site.label }, props: { site } }));
 }
 
 const { site } = Astro.props as { site: Site };
 const r = site.latest;
 ---
 
-<Page title={`${site.host} — no place for drainers`}>
-  <h1 class="mono">{site.host}</h1>
+<Page title={`${site.label} — no place for drainers`}>
+  <h1 class="mono">{site.label}</h1>
   <p class="verdict">
     {r.category}{r.brand ? <> · impersonating <b>{r.brand}</b></> : null} · {r.confidence.toFixed(2)} confidence
   </p>

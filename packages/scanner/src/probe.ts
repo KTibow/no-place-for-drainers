@@ -72,7 +72,7 @@ export async function probeLiveness(
     const finalHost = hostOf(res.url || candidate.url);
     if (finalHost !== candidate.host && PROTECTION_HOSTS.some((h) => finalHost.endsWith(h))) {
       statuses.set('protected', (statuses.get('protected') ?? 0) + 1);
-      log.site(track, candidate.host, 'drop', `deployment is protected — redirects to ${finalHost}`);
+      log.site(track, candidate.label, 'drop', `deployment is protected — redirects to ${finalHost}`);
       if (++done % 500 === 0) log.info(track, `probed ${done}/${candidates.length} — ${tally()}`);
       return;
     }
@@ -93,14 +93,14 @@ export async function probeLiveness(
     if (res.status === TAKEDOWN_STATUS) {
       takedowns.push(site);
       log.site(track, 
-        candidate.host,
+        candidate.label,
         'takedown',
         `451 ${note || 'no reason header'} src=${candidate.source} repo=github.com/${candidate.repo} created=${candidate.repoCreatedAt}`,
       );
     } else if (LIVE_STATUSES.has(res.status)) {
       live.push(site);
       log.site(track, 
-        candidate.host,
+        candidate.label,
         'live',
         `${res.status} src=${candidate.source} repo=${candidate.repo} created=${candidate.repoCreatedAt}`,
       );

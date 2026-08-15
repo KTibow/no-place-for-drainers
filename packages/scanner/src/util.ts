@@ -45,9 +45,17 @@ export function hostOf(url: string): string {
   }
 }
 
-/** ISO date (YYYY-MM-DD) in UTC — the stamp on the output file. */
+/** ISO date (YYYY-MM-DD) in UTC. */
 export function isoDate(d = new Date()): string {
   return d.toISOString().slice(0, 10);
+}
+
+/**
+ * ISO stamp to the minute, filename-safe: `2026-08-15T05-13Z`. Sorts
+ * lexically in run order, and stays readable as a date at a glance.
+ */
+export function runStamp(d = new Date()): string {
+  return `${d.toISOString().slice(0, 16).replace(':', '-')}Z`;
 }
 
 export function decode(bytes: Uint8Array): string {

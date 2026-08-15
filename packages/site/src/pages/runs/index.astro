@@ -1,7 +1,7 @@
 ---
 import Meta from '../../components/Meta.astro';
 import Page from '../../layouts/Page.astro';
-import { href, loadRuns } from '../../data';
+import { href, labelOf, loadRuns } from '../../data';
 
 const runs = loadRuns();
 ---
@@ -21,7 +21,7 @@ const runs = loadRuns();
     runs.map((run) => (
       <section>
         <h2>
-          {run.date}
+          {run.stamp.replace('T', ' ').replace('Z', ' UTC').replace(/-(\d\d) (\d\d)-/, '-$1 $2:')}
           {!run.summary.canaryCaught && <span class="broken"> canary missed</span>}
         </h2>
         <p class="funnel">
@@ -47,7 +47,7 @@ const runs = loadRuns();
           <ul class="hits">
             {run.records.map((record) => (
               <li>
-                <a href={href(`/s/${record.host}/`)} class="mono">{record.host}</a>
+                <a href={href(`/s/${labelOf(record)}/`)} class="mono">{labelOf(record)}</a>
                 <span> {record.category}</span>
               </li>
             ))}

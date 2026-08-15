@@ -39,8 +39,8 @@ const scanned = runs.reduce((total, run) => total + run.summary.repos, 0);
       <ol class="sites">
         {sites.map((site) => (
           <li>
-            <a href={href(`/s/${site.host}/`)}>
-              <span class="host mono">{site.host}</span>
+            <a href={href(`/s/${site.label}/`)}>
+              <span class="host mono">{site.label}</span>
               <span class="what">
                 {site.latest.category}
                 {site.latest.brand ? ` · ${site.latest.brand}` : ''}

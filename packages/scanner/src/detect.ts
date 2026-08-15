@@ -75,9 +75,11 @@ const BRANDS =
  * that make a name worth a request are the words that make it worth a second
  * look. It reads the repo name as well as the host: a repo called
  * `metamask-recovery-portal` whose homepage points at `neutral-name.vercel.app`
- * is exactly the case a host-only test misses.
+ * is exactly the case a host-only test misses. It reads the label rather than
+ * the host, so `account.github.io/wallet-restore` matches on the path — where
+ * a github.io project page keeps its actual name.
  */
-const lureLane = (host: string, repo: string) => looksLikeLure(`${host} ${repo}`);
+const lureLane = (label: string, repo: string) => looksLikeLure(`${label} ${repo}`);
 
 /** Union of every rule, used to pick the evidence lines that go in the dossier. */
 export const ANY_RULE = new RegExp(
@@ -108,7 +110,7 @@ export function classify(dossier: Dossier): Classification {
   }
 
   const lanes: Classification['lanes'] = [];
-  if (lureLane(dossier.site.host, dossier.site.repo)) lanes.push('hostname');
+  if (lureLane(dossier.site.label, dossier.site.repo)) lanes.push('hostname');
   if (score >= CONTENT_SCORE_THRESHOLD) lanes.push('content');
 
   return { score, hits, lanes };

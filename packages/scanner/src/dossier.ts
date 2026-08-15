@@ -57,7 +57,7 @@ async function buildDossier(site: LiveSite, track: string): Promise<Dossier | nu
   // request from here.
   const html = site.html;
   if (!html) {
-    log.site(track, site.host, 'drop', `live at ${site.status} but returned no body`);
+    log.site(track, site.label, 'drop', `live at ${site.status} but returned no body`);
     return null;
   }
 

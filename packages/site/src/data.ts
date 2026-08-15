@@ -13,6 +13,7 @@ export type QueueRecord = {
   seen: string;
   url: string;
   host: string;
+  label?: string;
   repo: string;
   repoUrl: string;
   repoCreatedAt: string;
@@ -63,10 +64,15 @@ export type Summary = {
   output: string;
 };
 
-export type Run = { date: string; summary: Summary; records: QueueRecord[] };
+export type Run = { stamp: string; date: string; summary: Summary; records: QueueRecord[] };
 
-/** One entry per host, carrying every time we have seen it confirmed. */
+/**
+ * One entry per site — keyed by host *and path*, not host alone. Two project
+ * pages under one github.io account are two different sites, and 73% of
+ * github.io candidates carry a path.
+ */
 export type Site = {
+  label: string;
   host: string;
   latest: QueueRecord;
   firstSeen: string;
@@ -84,17 +90,20 @@ function readJsonl(path: string): QueueRecord[] {
 /** Newest run first. */
 export function loadRuns(): Run[] {
   if (!existsSync(OUT)) return [];
-  const dates = readdirSync(OUT)
-    .map((name) => /^summary-(\d{4}-\d{2}-\d{2})\.json$/.exec(name)?.[1])
-    .filter((date): date is string => Boolean(date))
+  // One file per run, stamped to the minute. Older runs are date-only; both
+  // sort lexically in run order.
+  const stamps = readdirSync(OUT)
+    .map((name) => /^summary-(.+)\.json$/.exec(name)?.[1])
+    .filter((stamp): stamp is string => Boolean(stamp))
     .sort()
     .reverse();
 
-  return dates.map((date) => {
-    const queue = join(OUT, `drainers-${date}.jsonl`);
+  return stamps.map((stamp) => {
+    const queue = join(OUT, `drainers-${stamp}.jsonl`);
     return {
-      date,
-      summary: JSON.parse(readFileSync(join(OUT, `summary-${date}.json`), 'utf8')) as Summary,
+      stamp,
+      date: stamp.slice(0, 10),
+      summary: JSON.parse(readFileSync(join(OUT, `summary-${stamp}.json`), 'utf8')) as Summary,
       records: existsSync(queue) ? readJsonl(queue) : [],
     };
   });
@@ -105,18 +114,31 @@ export function loadRuns(): Run[] {
  * be. Collapse to one entry per host, newest verdict wins, but keep the dates
  * so the page can show how long it has been standing.
  */
+export function labelOf(record: QueueRecord): string {
+  if (record.label) return record.label;
+  // Records written before the label existed.
+  try {
+    const u = new URL(record.url);
+    return `${u.host.toLowerCase()}${u.pathname.replace(/\/+$/, '')}`;
+  } catch {
+    return record.host;
+  }
+}
+
 export function loadSites(runs: Run[]): Site[] {
-  const byHost = new Map<string, Site>();
+  const bySite = new Map<string, Site>();
 
   for (const run of [...runs].reverse()) {
     for (const record of run.records) {
-      const existing = byHost.get(record.host);
+      const label = labelOf(record);
+      const existing = bySite.get(label);
       if (existing) {
         existing.latest = record;
         existing.lastSeen = run.date;
         existing.seenOn.push(run.date);
       } else {
-        byHost.set(record.host, {
+        bySite.set(label, {
+          label,
           host: record.host,
           latest: record,
           firstSeen: run.date,
@@ -127,7 +149,7 @@ export function loadSites(runs: Run[]): Site[] {
     }
   }
 
-  return [...byHost.values()].sort((a, b) => b.lastSeen.localeCompare(a.lastSeen));
+  return [...bySite.values()].sort((a, b) => b.lastSeen.localeCompare(a.lastSeen));
 }
 
 const BASE = import.meta.env.BASE_URL;

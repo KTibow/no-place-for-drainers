@@ -35,6 +35,16 @@ function normalizeName(nameWithOwner: string): string {
     .replace(/^-|-$/g, '');
 }
 
+/** host + path, no scheme, no trailing slash. */
+export function labelOf(url: string): string {
+  try {
+    const u = new URL(url);
+    return `${u.host.toLowerCase()}${u.pathname.replace(/\/+$/, '')}`;
+  } catch {
+    return url;
+  }
+}
+
 function normalizeUrl(raw: string): string | null {
   try {
     const u = new URL(raw);
@@ -69,6 +79,7 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
       out.set(url, {
         url,
         host,
+        label: labelOf(url),
         source: 'homepage',
         repo: repo.nameWithOwner,
         repoCreatedAt: repo.createdAt,
@@ -95,6 +106,7 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
       out.set(url, {
         url,
         host,
+        label: host,
         source: 'guess',
         repo: repo.nameWithOwner,
         repoCreatedAt: repo.createdAt,

@@ -68,6 +68,7 @@ for (const url of CANARY_URLS) {
   candidates.push({
     url,
     host: hostOf(url),
+    label: hostOf(url),
     source: 'canary',
     repo: 'CANARY/known-bad',
     repoCreatedAt: new Date().toISOString(),
@@ -149,7 +150,7 @@ const summary = {
 const summaryPath = queue.writeSummary(summary);
 
 for (const record of [...queue.records].sort((a, b) => b.confidence - a.confidence)) {
-  log.site(log.MAIN, record.host, 'pass', `${record.confidence.toFixed(2)} ${record.category} — ${record.reasons[0] ?? ''}`);
+  log.site(log.MAIN, record.label, 'pass', `${record.confidence.toFixed(2)} ${record.category} — ${record.reasons[0] ?? ''}`);
 }
 log.info(log.MAIN, `summary → ${basename(summaryPath)}`);
 console.log(JSON.stringify(summary, null, 2));
@@ -197,7 +198,7 @@ async function runTrack(
   log.flow(name, 'live URLs', live.length, `${((live.length / trackCandidates.length) * 100).toFixed(1)}% of candidates`);
   log.flow(name, 'already taken down', takedowns.length, 'http 451 — someone got there first');
   for (const site of takedowns) {
-    log.site(name, site.host, 'takedown', `${site.note || '451'}  github.com/${site.repo}  created=${site.repoCreatedAt}  via ${site.source} path`);
+    log.site(name, site.label, 'takedown', `${site.note || '451'}  github.com/${site.repo}  created=${site.repoCreatedAt}  via ${site.source} path`);
   }
 
   // ── stage 4 ── dossier per live site ──────────────────────────────────────
@@ -215,7 +216,7 @@ async function runTrack(
         .join(' ') || 'none';
     log.site(
       name,
-      dossier.site.host,
+      dossier.site.label,
       'rules',
       `score=${classification.score} lanes=${classification.lanes.join('+') || '-'} ${signals}`,
     );
@@ -239,7 +240,7 @@ async function runTrack(
   let confirmed = 0;
 
   await pool(triageQueue, LLM_CONCURRENCY, async ({ dossier, classification }) => {
-    const host = dossier.site.host;
+    const host = dossier.site.label;
     const text = render(dossier, classification);
     log.block(name, host, 'dossier', text);
 

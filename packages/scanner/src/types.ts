@@ -12,7 +12,15 @@ export type CandidateSource = 'homepage' | 'guess' | 'canary';
 
 export type Candidate = {
   url: string;
+  /** Just the host — what pacing and provider decisions key on. */
   host: string;
+  /**
+   * How the site is identified everywhere a human reads it: host plus path,
+   * no scheme. For vercel that is the host; for github.io it is usually
+   * `account.github.io/project`, and 73% of github.io candidates carry a path,
+   * so the host alone names the account rather than the site.
+   */
+  label: string;
   source: CandidateSource;
   repo: string;
   repoCreatedAt: string;
