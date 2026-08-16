@@ -17,8 +17,6 @@ const r = site.latest;
   <p class="verdict">
     {r.category}{r.brand ? <> · impersonating <b>{r.brand}</b></> : null} · {r.confidence.toFixed(2)} confidence
   </p>
-  {r.title && <p class="pagetitle">Served as “{r.title}”</p>}
-
   <h2>Why</h2>
   <ul class="reasons">
     {r.reasons.map((reason) => <li>{reason}</li>)}
@@ -37,6 +35,29 @@ const r = site.latest;
   <dl>
     <dt>URL</dt>
     <dd class="mono url">{r.url}</dd>
+
+    {
+      r.title && (
+        <>
+          <dt>Served as</dt>
+          <dd>“{r.title}”</dd>
+        </>
+      )
+    }
+
+    {
+      r.urlscan && (
+        <>
+          <dt>Capture</dt>
+          <dd>
+            <a href={r.urlscan} rel="noreferrer">
+              urlscan.io
+            </a>{' '}
+            — the page as it was served, taken at the moment it was confirmed
+          </dd>
+        </>
+      )
+    }
 
     <dt>Repo</dt>
     <dd>
@@ -81,11 +102,6 @@ const r = site.latest;
 
   .verdict b {
     font-weight: 600;
-  }
-
-  .pagetitle {
-    color: var(--m3c-on-surface-variant);
-    font-size: 0.9rem;
   }
 
   h2 {
