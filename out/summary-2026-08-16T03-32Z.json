@@ -1,0 +1,141 @@
+{
+  "generated": "2026-08-16T03:42:14.020Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-15T23:32:53Z",
+  "repos": 35554,
+  "candidates": 4384,
+  "candidatesByName": 626,
+  "candidatesByHomepage": 43,
+  "candidatesByDeployment": 3713,
+  "live": 3530,
+  "dossiers": 3529,
+  "triaged": 270,
+  "confirmed": 10,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "404": 839,
+    "451": 2,
+    "500": 5,
+    "live": 3530,
+    "err-Too many redirects.https://vibe-trading.": 1,
+    "err-Too many redirects.https://snippetvault.": 1,
+    "protected": 3,
+    "err-ENOTFOUND": 2,
+    "err-UND_ERR_CONNECT_TIMEOUT": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 696,
+      "live": 160,
+      "takedowns": [
+        {
+          "url": "https://apple.vercel.app",
+          "host": "apple.vercel.app",
+          "label": "apple.vercel.app",
+          "source": "deployment",
+          "repo": "colecowGD/apple-pay",
+          "repoCreatedAt": "2026-08-16T00:39:16Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::gkvgj-1786851480207-9f2485e3ebc1</code></span></main></div>"
+        },
+        {
+          "url": "https://bhd-dovalidate.vercel.app",
+          "host": "bhd-dovalidate.vercel.app",
+          "label": "bhd-dovalidate.vercel.app",
+          "source": "deployment",
+          "repo": "CostelloUSDT/probando",
+          "repoCreatedAt": "2026-08-16T02:23:07Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::b66bh-1786851490920-c18b17e8b6e5</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "404": 524,
+        "451": 2,
+        "500": 5,
+        "live": 160,
+        "err-Too many redirects.https://vibe-trading.": 1,
+        "err-Too many redirects.https://snippetvault.": 1,
+        "protected": 3
+      },
+      "dossiers": 160,
+      "hostnameLane": 159,
+      "contentLane": 7,
+      "triaged": 159,
+      "confirmed": 4,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 249.29
+    },
+    "open": {
+      "name": "open",
+      "candidates": 3688,
+      "live": 3370,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 315,
+        "live": 3370,
+        "err-ENOTFOUND": 2,
+        "err-UND_ERR_CONNECT_TIMEOUT": 1
+      },
+      "dossiers": 3369,
+      "hostnameLane": 99,
+      "contentLane": 14,
+      "triaged": 111,
+      "confirmed": 6,
+      "canaryOutcomes": [],
+      "elapsedSec": 228.13
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 901,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 8,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 0,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://apple.vercel.app",
+      "host": "apple.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/colecowGD/apple-pay",
+      "repoCreatedAt": "2026-08-16T00:39:16Z",
+      "source": "deployment"
+    },
+    {
+      "url": "https://bhd-dovalidate.vercel.app",
+      "host": "bhd-dovalidate.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/CostelloUSDT/probando",
+      "repoCreatedAt": "2026-08-16T02:23:07Z",
+      "source": "deployment"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 561.02,
+  "output": "drainers-2026-08-16T03-32Z.jsonl"
+}
