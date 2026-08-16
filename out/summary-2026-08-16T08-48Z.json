@@ -1,0 +1,163 @@
+{
+  "generated": "2026-08-16T09:11:09.861Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-16T04:48:33Z",
+  "repos": 54769,
+  "candidates": 7136,
+  "candidatesByName": 1087,
+  "candidatesByHomepage": 106,
+  "candidatesByDeployment": 5941,
+  "live": 5703,
+  "dossiers": 5697,
+  "triaged": 563,
+  "confirmed": 18,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 3,
+    "404": 1404,
+    "451": 3,
+    "500": 13,
+    "503": 1,
+    "live": 5703,
+    "protected": 5,
+    "err-Too many redirects.https://support-board": 1,
+    "err-Too many redirects.https://walletly.verc": 1,
+    "err-ENOTFOUND": 2
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1278,
+      "live": 398,
+      "takedowns": [
+        {
+          "url": "https://securepay.vercel.app",
+          "host": "securepay.vercel.app",
+          "label": "securepay.vercel.app",
+          "source": "guess",
+          "repo": "RishiRaj0128/SecurePay",
+          "repoCreatedAt": "2026-08-16T06:43:54Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::nj4qh-1786871171357-514c636e1842</code></span></main></div>"
+        },
+        {
+          "url": "https://security-bridge.vercel.app",
+          "host": "security-bridge.vercel.app",
+          "label": "security-bridge.vercel.app",
+          "source": "guess",
+          "repo": "ezhilraghavan20/Security-bridge",
+          "repoCreatedAt": "2026-08-16T05:52:16Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::qnw22-1786871174090-d1ee0e235a90</code></span></main></div>"
+        },
+        {
+          "url": "https://verifcation.vercel.app",
+          "host": "verifcation.vercel.app",
+          "label": "verifcation.vercel.app",
+          "source": "guess",
+          "repo": "syamilmuzaffar15-boop/Verifcation",
+          "repoCreatedAt": "2026-08-16T07:26:21Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::2stk4-1786871330720-d3c431a34caa</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 3,
+        "404": 853,
+        "451": 3,
+        "500": 13,
+        "503": 1,
+        "live": 398,
+        "protected": 5,
+        "err-Too many redirects.https://support-board": 1,
+        "err-Too many redirects.https://walletly.verc": 1
+      },
+      "dossiers": 398,
+      "hostnameLane": 392,
+      "contentLane": 12,
+      "triaged": 392,
+      "confirmed": 10,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 618.53
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5858,
+      "live": 5305,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 551,
+        "live": 5305,
+        "err-ENOTFOUND": 2
+      },
+      "dossiers": 5299,
+      "hostnameLane": 147,
+      "contentLane": 27,
+      "triaged": 171,
+      "confirmed": 8,
+      "canaryOutcomes": [],
+      "elapsedSec": 307.1
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1721,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 16,
+    "urlscanFailed": 0,
+    "discord": 5,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 3,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://securepay.vercel.app",
+      "host": "securepay.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/RishiRaj0128/SecurePay",
+      "repoCreatedAt": "2026-08-16T06:43:54Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://security-bridge.vercel.app",
+      "host": "security-bridge.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/ezhilraghavan20/Security-bridge",
+      "repoCreatedAt": "2026-08-16T05:52:16Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://verifcation.vercel.app",
+      "host": "verifcation.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/syamilmuzaffar15-boop/Verifcation",
+      "repoCreatedAt": "2026-08-16T07:26:21Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1356.77,
+  "output": "drainers-2026-08-16T08-48Z.jsonl"
+}
