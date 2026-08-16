@@ -38,6 +38,19 @@ jobs:
           # the run says so in its first few log lines.
           URLSCAN_KEY: ${{ secrets.URLSCAN_KEY }}
           VERCEL_WEBHOOK: ${{ secrets.VERCEL_WEBHOOK }}
+          # Fetch rate-limited providers from Cloudflare's edge instead of this
+          # runner's address — see packages/fetch-proxy. Unset both and the
+          # scanner goes direct, which is the behaviour every measurement in
+          # pace.ts describes. The URL is a secret only to keep the endpoint off
+          # a public log; the token is what actually guards it.
+          FETCH_PROXY: ${{ secrets.FETCH_PROXY }}
+          FETCH_PROXY_TOKEN: ${{ secrets.FETCH_PROXY_TOKEN }}
+          # Both only bind on the paced track, and both are here rather than in
+          # config.ts because they describe the *proxy's* ceiling, which is not
+          # the one pace.ts measured. Plain env, not secrets: the whole point is
+          # to be able to read what a run was tuned to from its diff.
+          PACE_RPS: 20
+          PACED_CONCURRENCY: 24
           NODE_OPTIONS: --max-old-space-size=8192
         run: |
           set -o pipefail

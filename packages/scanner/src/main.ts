@@ -44,7 +44,8 @@ import { requireToken, walkNewRepos } from './github.ts';
 import * as llm from './llm.ts';
 import * as log from './log.ts';
 import { AnalystQueue } from './output.ts';
-import { isPaced } from './pace.ts';
+import { proxyEnabled } from './http.ts';
+import { isPaced, RPS as PACE_RPS } from './pace.ts';
 import * as pace from './pace.ts';
 import { probeSite } from './probe.ts';
 import * as submit from './submit.ts';
@@ -89,6 +90,15 @@ log.flow(log.MAIN, 'candidates', candidates.length, `deduped (+${CANARY_URLS.len
 // ── split ── one track per provider class, run to completion independently ──
 const [pacedCandidates, freeCandidates] = partition(candidates, (c) => isPaced(c.url));
 log.flow(log.MAIN, 'rate-limited providers', pacedCandidates.length, 'vercel track');
+// Which address the paced track leaves from decides what its budget is, so the
+// log has to say — otherwise a run with 60 requests and a run with 600 look
+// like the same scanner having a different day.
+log.info(
+  log.MAIN,
+  proxyEnabled
+    ? `vercel track via fetch proxy at ${PACE_RPS}/s, ${PACED_CONCURRENCY} workers`
+    : 'vercel track direct from this runner (no FETCH_PROXY set)',
+);
 log.flow(log.MAIN, 'everything else', freeCandidates.length, 'open track');
 
 type TrackResult = {

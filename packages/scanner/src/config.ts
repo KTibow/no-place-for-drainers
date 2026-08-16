@@ -151,8 +151,13 @@ export const PROBE_CONCURRENCY = 64;
  * not by this, so it only needs enough in flight to keep the bucket drained —
  * and it runs as a separate lane so a paced provider cannot stall an unpaced
  * one. github.io is the bulk of the candidates and has never rationed anything.
+ *
+ * Overridable alongside PACE_RPS, and for the same reason: through FETCH_PROXY
+ * every request carries a Cloudflare round trip on top of the target's own
+ * latency, so keeping a raised rate limit actually saturated needs more in
+ * flight than talking to the target directly did.
  */
-export const PACED_CONCURRENCY = 12;
+export const PACED_CONCURRENCY = Number(process.env.PACED_CONCURRENCY) || 12;
 export const PROBE_TIMEOUT_MS = 20_000;
 
 // ── stage 4: dossier ────────────────────────────────────────────────────────

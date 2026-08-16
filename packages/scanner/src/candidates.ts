@@ -76,6 +76,56 @@ function earnsRequest(url: string, name: string): boolean {
  * vocabulary is worth more than 6.7x on a provider this starved.
  */
 
+/**
+ * Preview alias → production alias.
+ *
+ * The Deployments API hands us the *immutable* deployment URL —
+ * `rev-recover-dkzhfqb3b-franker24s-projects.vercel.app` — and Vercel turns
+ * Deployment Protection on for preview deployments by default. So every one of
+ * those redirects to an SSO login and the probe correctly drops it as
+ * `protected`, after spending a request it can never get anything back for.
+ * Measured on run 31920222624: 43 of the 64 requests Vercel let through that
+ * run — 67% of the entire budget — went to preview aliases, and all 43 were
+ * protected. Zero real findings came out of the track.
+ *
+ * The production alias for the same project is `<project>.vercel.app` and is
+ * public. Probing 20 of those 43 rewritten by hand: 10 × 200, 1 × 451
+ * (DEPLOYMENT_DISABLED — free takedown ground truth), 9 × 404, 0 protected.
+ * Same information from GitHub, same request cost, ~55% live instead of 0%.
+ *
+ * Parsing it: the alias is `<project>-<id>-<scope>` or `<project>-<id>`, where
+ * `<id>` is exactly nine of [a-z0-9] and both `<project>` and `<scope>` may
+ * contain hyphens. That is ambiguous, in both directions — a project word can
+ * be nine letters (`https-h5-workorder-support-m5j7qbnmm`) and so can a scope
+ * slug (`claimflow-…-10wqu10sy-jaskirat1`). What separates them is that an id
+ * is base36 random while the other two are language: pick the nine-character
+ * segment with the most digits. `10wqu10sy` has four and `jaskirat1` has one;
+ * `m5j7qbnmm` has two and `workorder` has none. Never the first segment, since
+ * the project name cannot be empty — which is also what keeps a genuine
+ * production host like `bitcoin24-wallet.vercel.app` intact.
+ *
+ * Verified against all 50 vercel hostnames run 31920222624 reached. Ties are
+ * unobserved; the leftmost wins them, because the id precedes the scope and a
+ * project word with as many digits as a random id is the rarer accident.
+ */
+export function productionAlias(host: string): string | null {
+  const match = /^(.+)\.vercel\.app$/.exec(host.toLowerCase());
+  if (!match) return null;
+  const parts = match[1]!.split('-');
+  let pick = -1;
+  let best = -1;
+  for (let i = 1; i < parts.length; i++) {
+    if (!/^[a-z0-9]{9}$/.test(parts[i]!)) continue;
+    const digits = parts[i]!.replace(/\D/g, '').length;
+    if (digits > best) {
+      best = digits;
+      pick = i;
+    }
+  }
+  if (pick === -1) return null;
+  return `${parts.slice(0, pick).join('-')}.vercel.app`;
+}
+
 /** host + path, no scheme, no trailing slash. */
 export function labelOf(url: string): string {
   try {
@@ -109,8 +159,14 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
   // exactly that reason — a fork's homepage comes from its parent, but its
   // deployments are its own.
   for (const repo of repos) {
-    const url = normalizeUrl(repo.deploymentUrl ?? '');
-    if (!url) continue;
+    const raw = normalizeUrl(repo.deploymentUrl ?? '');
+    if (!raw) continue;
+    // A vercel preview alias is a request we cannot win — see productionAlias.
+    // The rewrite keeps the repo attribution, which is the part that matters:
+    // GitHub told us this repo deployed to this project, and the production
+    // host of that project is the one a visitor would ever be sent to.
+    const production = productionAlias(hostOf(raw));
+    const url = production ? `https://${production}` : raw;
     const host = hostOf(url);
     if (!FREE_HOSTS.test(host)) continue;
     if (!earnsRequest(url, `${labelOf(url)} ${repo.nameWithOwner}`)) continue;

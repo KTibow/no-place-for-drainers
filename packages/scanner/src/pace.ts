@@ -32,8 +32,14 @@ import { sleep } from './util.ts';
  * it buys. Measured: 4-12/s sustained 1,750 requests with zero errors, and the
  * run died ~150 requests after the ramp touched 16/s (locally, 16/s tripped at
  * request 267). We do not need to know the exact ceiling. We need to finish.
+ *
+ * PACE_RPS overrides it for one reason: every number above was measured against
+ * a GitHub runner's own address, and FETCH_PROXY changes which address these
+ * requests leave from. A different egress pool has a different ceiling, so the
+ * constant encoding the old one has to be movable. Everything below it — the
+ * halving, the cooldowns, the early bail — applies unchanged either way.
  */
-const RPS = 6;
+export const RPS = Number(process.env.PACE_RPS) || 6;
 const MIN_RPS = 0.5;
 /** Requests that may go out back to back before pacing bites. */
 const BURST = 20;

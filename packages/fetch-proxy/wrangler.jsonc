@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "npfd-fetch-proxy",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-01",
+  "account_id": "dbeb50c60a3a8939ca01c69a271f6159",
+  // The scanner reaches this over workers.dev. There is no zone involved and no
+  // custom domain worth registering for a service only one caller ever talks to.
+  "workers_dev": true,
+  "observability": { "enabled": true }
+}
