@@ -237,6 +237,16 @@ export const LLM_MIN_CONFIDENCE = 0.7;
  * of this directory *is* the record, and the site is built from it.
  */
 export const OUT_DIR = fileURLToPath(new URL('../../../out', import.meta.url));
+/**
+ * Everywhere a finding has ever been written down. Only the first is written
+ * to; the second is where records are moved to drop them from the site, and it
+ * is read here because "did we already announce this" is a different question
+ * from "is it still on the site". Hiding a record does not unsend the ping.
+ */
+export const RECORD_DIRS = [
+  OUT_DIR,
+  fileURLToPath(new URL('../../../out-archive', import.meta.url)),
+];
 
 // ── stage 8: handoff ────────────────────────────────────────────────────────
 export const URLSCAN_ENDPOINT = 'https://urlscan.io/api/v1/scan/';

@@ -23,11 +23,22 @@
  *                and the site, where they are read on purpose rather than
  *                pushed; routing them here would bury the two that matter.
  *
- * Nothing here deduplicates against previous runs. Resubmitting is not waste:
- * these pages are edited under their operators and taken down without notice,
- * so a second capture of the same URL is a second dated observation of a
- * changing thing, and urlscan's quota is measured in thousands a day against
- * our couple of dozen a run.
+ * The two sinks deduplicate differently, because a repeat means opposite things
+ * to them.
+ *
+ * urlscan does not deduplicate at all. Resubmitting is not waste: these pages
+ * are edited under their operators and taken down without notice, so a second
+ * capture of the same URL is a second dated observation of a changing thing,
+ * and urlscan's quota is measured in thousands a day against our couple of
+ * dozen a run.
+ *
+ * discord announces a host once, ever. A ping is an interruption addressed to a
+ * person, and its entire value is that it is news — the second one about the
+ * same site is not a second observation, it is the same lead again, and it
+ * teaches the reader that the channel can be skimmed. This is not hypothetical:
+ * the window is 4h against a 2h cadence, so every repo is seen twice by
+ * construction and every confirmed vercel host was therefore announced twice.
+ * securevault.vercel.app went out both times.
  *
  * Nothing here can fail a finding either. Both calls swallow everything and
  * return — a handoff is a copy of the record, and losing a copy must never cost
@@ -42,7 +53,7 @@ import {
 } from './config.ts';
 import { request } from './http.ts';
 import * as log from './log.ts';
-import type { QueueRecord } from './output.ts';
+import { AnalystQueue, type QueueRecord } from './output.ts';
 import type { LiveSite } from './types.ts';
 import { decode, semaphore } from './util.ts';
 
@@ -55,7 +66,25 @@ const DISCORD_WEBHOOK = process.env.VERCEL_WEBHOOK ?? '';
  */
 const gate = semaphore(SUBMIT_CONCURRENCY);
 
-const counts = { urlscan: 0, urlscanFailed: 0, discord: 0, discordFailed: 0, skippedCanary: 0 };
+const counts = {
+  urlscan: 0,
+  urlscanFailed: 0,
+  discord: 0,
+  discordFailed: 0,
+  skippedCanary: 0,
+  skippedSeen: 0,
+};
+
+/**
+ * Hosts some previous run already announced, loaded once at startup.
+ *
+ * Held here rather than passed through main.ts because it is a property of this
+ * sink, not of the pipeline: nothing upstream should have to know that discord
+ * has a memory. Labels are added as they go out, so a host cannot be announced
+ * twice within one run either — cheap insurance against a candidate list that
+ * ever stops deduplicating by URL.
+ */
+let announced = new Set<string>();
 
 /** For the run summary — a handoff that silently did nothing is the failure mode. */
 export function stats(): Record<string, unknown> {
@@ -81,11 +110,17 @@ export function announceSinks(): void {
       ? `urlscan handoff on (${URLSCAN_VISIBILITY}, tags ${URLSCAN_TAGS.join('+')})`
       : 'urlscan handoff OFF — set URLSCAN_KEY to submit confirmed URLs',
   );
+  if (!DISCORD_WEBHOOK) {
+    log.info(log.MAIN, 'discord handoff OFF — set VERCEL_WEBHOOK to announce vercel findings');
+    return;
+  }
+  // Loaded here, not lazily on the first finding: a run that confirms nothing
+  // should still say how much history it is holding, because "0 announced" then
+  // reads as a quiet night rather than as a sink that silently forgot.
+  announced = AnalystQueue.previouslyRecorded();
   log.info(
     log.MAIN,
-    DISCORD_WEBHOOK
-      ? 'discord handoff on for the vercel track'
-      : 'discord handoff OFF — set VERCEL_WEBHOOK to announce vercel findings',
+    `discord handoff on for the vercel track, novel hosts only (${announced.size} already announced)`,
   );
 }
 
@@ -179,6 +214,14 @@ export async function toDiscord(record: QueueRecord, track: string): Promise<voi
     counts.skippedCanary++;
     return;
   }
+  // Novel only. The record is still written, still submitted to urlscan and
+  // still published — this suppresses the interruption, not the finding.
+  if (announced.has(record.label)) {
+    counts.skippedSeen++;
+    log.site(track, record.label, 'submit', 'discord → skipped, announced by an earlier run');
+    return;
+  }
+  announced.add(record.label);
 
   await gate(async () => {
     const res = await request(DISCORD_WEBHOOK, {

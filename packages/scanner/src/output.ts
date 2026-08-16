@@ -6,9 +6,9 @@
  * (urlscan, a report form, a Pages build) actually needs. Records are appended
  * as they are confirmed, so a run that dies halfway still leaves its findings.
  */
-import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { appendFileSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { OUT_DIR } from './config.ts';
+import { OUT_DIR, RECORD_DIRS } from './config.ts';
 import type { Finding } from './types.ts';
 import { runStamp } from './util.ts';
 
@@ -99,6 +99,46 @@ export class AnalystQueue {
     this.records.push(record);
     appendFileSync(this.path, `${JSON.stringify(record)}\n`);
     return record;
+  }
+
+  /**
+   * Every label any previous run has already written down.
+   *
+   * Read from the files rather than kept in a state file, because the JSONL
+   * *is* the state — it is committed, it is append-only, and a separate index
+   * would be a second source of truth that can drift from it.
+   *
+   * Both directories count. out-archive/ is where records are moved to hide
+   * them from the site, which says nothing about whether we announced them:
+   * the question here is "have we told anyone about this host before", and a
+   * record that was published and later hidden was still published.
+   *
+   * Unparseable lines are skipped rather than thrown on. A malformed line in a
+   * two-week-old file must not be able to stop today's run.
+   */
+  static previouslyRecorded(): Set<string> {
+    const labels = new Set<string>();
+    for (const dir of RECORD_DIRS) {
+      let entries: string[];
+      try {
+        entries = readdirSync(dir);
+      } catch {
+        continue; // out-archive/ need not exist
+      }
+      for (const file of entries) {
+        if (!file.startsWith('drainers-') || !file.endsWith('.jsonl')) continue;
+        for (const line of readFileSync(join(dir, file), 'utf8').split('\n')) {
+          if (!line) continue;
+          try {
+            const label = JSON.parse(line).label;
+            if (typeof label === 'string') labels.add(label);
+          } catch {
+            // skip
+          }
+        }
+      }
+    }
+    return labels;
   }
 
   writeSummary(summary: Record<string, unknown>): string {
