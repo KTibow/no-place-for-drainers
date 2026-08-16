@@ -151,7 +151,8 @@ export function loadSites(runs: Run[]): Site[] {
     }
   }
 
-  return [...bySite.values()].sort((a, b) => b.lastSeen.localeCompare(a.lastSeen));
+  // Oldest first, so the most recently seen sites land at the bottom.
+  return [...bySite.values()].sort((a, b) => a.lastSeen.localeCompare(b.lastSeen));
 }
 
 const BASE = import.meta.env.BASE_URL;
