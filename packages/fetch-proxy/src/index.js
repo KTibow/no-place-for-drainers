@@ -42,11 +42,18 @@ function meta(fields, body = null, status = 200) {
 }
 
 /**
- * Only what the scanner reads: it needs `server` and the provider's own error
- * header, and it must not inherit the upstream's content-encoding or
+ * Only what the scanner reads, and it must not inherit content-encoding or
  * transfer-encoding, which describe a body this Response is not sending.
+ *
+ * `server` is deliberately absent. A subrequest comes back with Cloudflare's
+ * own `server: cloudflare` in place of the origin's, so forwarding it would
+ * report every Vercel deployment as Cloudflare-hosted — into the one line of
+ * the dossier that states where a site lives, which then goes to the
+ * classifier as evidence. An empty server renders as "unknown server", which
+ * is true. `x-vercel-error` survives the hop and is the header that actually
+ * carries information anyway: it is how a 451 says DEPLOYMENT_DISABLED.
  */
-const FORWARD_HEADERS = ['server', 'content-type', 'x-vercel-error', 'x-nf-error', 'location'];
+const FORWARD_HEADERS = ['content-type', 'x-vercel-error', 'x-nf-error', 'location'];
 
 /**
  * Speak the scanner's error vocabulary, not the Workers runtime's.

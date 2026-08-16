@@ -26,15 +26,43 @@ import { isPaced } from './pace.ts';
 import type { Candidate, Repo } from './types.ts';
 import { hostOf } from './util.ts';
 
-/** Same slug rules Vercel applies to a repo name. */
+/**
+ * Same slug rules Vercel applies to a repo name.
+ *
+ * `.` and `_` collapse to `-` like everything else, which they did not used to.
+ * Keeping the dot meant a repo named after its own site — `gitopener.vercel.app`
+ * is a whole genre, people name the repo for the domain — guessed
+ * `gitopener.vercel.app.vercel.app`, two labels deep under a wildcard that
+ * covers one. Vercel's cert does not match, so the handshake fails, and a
+ * failed handshake arrives at undici as ECONNRESET.
+ *
+ * That is the same symbol Vercel's rate limiter speaks in, and pace.ts counts
+ * it as a trip. So every dotted repo name was a self-inflicted strike against a
+ * provider that abandons us after two of them — we were generating hostnames
+ * that could not exist and then reading their failure as being throttled.
+ * Reproduced directly: two dotted hosts, and the limiter announced "resetting
+ * connections after 3 requests".
+ */
 function normalizeName(nameWithOwner: string): string {
   return nameWithOwner
     .split('/')
     .pop()!
     .toLowerCase()
-    .replace(/[^a-z0-9._-]+/g, '-')
+    .replace(/[^a-z0-9-]+/g, '-')
     .replace(/-{2,}/g, '-')
     .replace(/^-|-$/g, '');
+}
+
+/**
+ * A hostname DNS can actually answer for. Labels are capped at 63 octets, and a
+ * repo name long enough to overflow one is not rare — the guess path built 18
+ * of them last run. Over the cap the name cannot resolve at all: ENOTFOUND
+ * direct, 530 through the fetch proxy. Either way it is a request spent on a
+ * host that does not exist, which on the paced track is a request not spent on
+ * one that might.
+ */
+function resolvableHost(host: string): boolean {
+  return host.length <= 253 && host.split('.').every((l) => l.length >= 1 && l.length <= 63);
 }
 
 /**
@@ -168,8 +196,14 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
     const production = productionAlias(hostOf(raw));
     const url = production ? `https://${production}` : raw;
     const host = hostOf(url);
-    if (!FREE_HOSTS.test(host)) continue;
-    if (!earnsRequest(url, `${labelOf(url)} ${repo.nameWithOwner}`)) continue;
+    if (!FREE_HOSTS.test(host) || !resolvableHost(host)) continue;
+    // Judge the alias we were given, probe the one that answers. Rewriting
+    // throws away the scope slug, and the scope slug is the Vercel account —
+    // `cove-cbz9bfvnk-crypto-rican-queens-projects` earns its request on
+    // `crypto`, which survives nowhere else once the host becomes `cove`.
+    // Losing that would quietly narrow the filter as a side effect of a change
+    // about protection, on the one provider where coverage is scarcest.
+    if (!earnsRequest(url, `${labelOf(raw)} ${labelOf(url)} ${repo.nameWithOwner}`)) continue;
     if (!out.has(url)) {
       out.set(url, {
         url,
@@ -194,7 +228,7 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
     const url = normalizeUrl(repo.homepageUrl ?? '');
     if (!url) continue;
     const host = hostOf(url);
-    if (!FREE_HOSTS.test(host)) continue;
+    if (!FREE_HOSTS.test(host) || !resolvableHost(host)) continue;
     if (!earnsRequest(url, `${labelOf(url)} ${repo.nameWithOwner}`)) continue;
     if (!out.has(url)) {
       out.set(url, {
@@ -237,6 +271,7 @@ export function buildCandidates(repos: Repo[]): Candidate[] {
     if (repo.isFork) continue;
     const base = normalizeName(repo.nameWithOwner);
     if (base.length < MIN_GUESS_NAME_LENGTH) continue;
+    if (!resolvableHost(`${base}.${GUESS_HOST_SUFFIX}`)) continue;
     // Guesses are all on the rationed provider, so the same rule applies:
     // measured on live repo names it keeps ~2%, which is ~880 guessed hosts per
     // 50k-repo run instead of ~34,700.

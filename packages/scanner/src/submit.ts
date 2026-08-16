@@ -211,11 +211,20 @@ export async function toDiscord(record: QueueRecord, track: string): Promise<voi
  * sits in a code span: copyable, greppable, inert.
  */
 function embedFor(record: QueueRecord) {
+  // Two rows of inline fields, and Discord packs three to a row — so the three
+  // verdict fields fill the first and title/source get the second to
+  // themselves. Both used to live in the footer, in grey six-point type under
+  // everything else. The page's own title is how you recognise a kit you have
+  // seen before, and the path is the only thing in the message that says how
+  // much the find cost: a guess is a name we bet a rationed request on, a
+  // deployment is one GitHub handed us. Neither is footnote material.
   const fields = [
     { name: 'url', value: `\`${cap(record.url, 1000)}\`` },
     { name: 'category', value: record.category, inline: true },
     { name: 'confidence', value: record.confidence.toFixed(2), inline: true },
     { name: 'brand', value: record.brand ?? '—', inline: true },
+    { name: 'title', value: cap(record.title || 'no title', 200), inline: true },
+    { name: 'source', value: `${record.source} path`, inline: true },
     { name: 'repo', value: `[${record.repo}](${record.repoUrl}) · created ${record.repoCreatedAt}` },
   ];
   if (record.iocs.length) {
@@ -235,8 +244,11 @@ function embedFor(record: QueueRecord) {
         color: 0xdc2626,
         description: cap(record.reasons.map((r) => `• ${r}`).join('\n'), 3000),
         fields,
-        footer: { text: `${record.title || 'no title'} · ${record.source} path` },
-        timestamp: record.seen,
+        // No timestamp. Discord already stamps the message, and a finding is
+        // announced seconds after it is confirmed — so the embed's own stamp
+        // rendered a second copy of the same minute. The date that means
+        // something is the repo's, and it is in the repo field where it can be
+        // read against the announcement time.
       },
     ],
   };
