@@ -1,0 +1,96 @@
+{
+  "generated": "2026-08-16T01:58:33.240Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-15T21:43:55Z",
+  "repos": 44903,
+  "candidates": 4466,
+  "candidatesByName": 664,
+  "candidatesByHomepage": 62,
+  "candidatesByDeployment": 3738,
+  "live": 3387,
+  "dossiers": 3386,
+  "triaged": 121,
+  "confirmed": 10,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "404": 341,
+    "410": 1,
+    "live": 3387,
+    "protected": 43,
+    "err-ECONNRESET": 3,
+    "err-provider-blocked": 689,
+    "err-EAI_AGAIN": 1,
+    "err-UND_ERR_CONNECT_TIMEOUT": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 756,
+      "live": 7,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 13,
+        "410": 1,
+        "live": 7,
+        "protected": 43,
+        "err-ECONNRESET": 3,
+        "err-provider-blocked": 689
+      },
+      "dossiers": 7,
+      "hostnameLane": 7,
+      "contentLane": 3,
+      "triaged": 7,
+      "confirmed": 2,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 153.17
+    },
+    "open": {
+      "name": "open",
+      "candidates": 3710,
+      "live": 3380,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 328,
+        "live": 3380,
+        "err-EAI_AGAIN": 1,
+        "err-UND_ERR_CONNECT_TIMEOUT": 1
+      },
+      "dossiers": 3379,
+      "hostnameLane": 92,
+      "contentLane": 24,
+      "triaged": 114,
+      "confirmed": 8,
+      "canaryOutcomes": [],
+      "elapsedSec": 283.72
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 75,
+      "issuedBeforeFirstTrip": 59,
+      "trips": 2,
+      "finalRps": 1.5,
+      "abandoned": true
+    }
+  },
+  "handoff": {
+    "urlscan": 8,
+    "urlscanFailed": 0,
+    "discord": 0,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 878.12,
+  "output": "drainers-2026-08-16T01-43Z.jsonl"
+}
