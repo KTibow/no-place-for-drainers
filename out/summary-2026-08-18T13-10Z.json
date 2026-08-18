@@ -1,0 +1,164 @@
+{
+  "generated": "2026-08-18T13:51:35.950Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-18T09:10:23Z",
+  "repos": 75359,
+  "candidates": 10076,
+  "candidatesByName": 1505,
+  "candidatesByHomepage": 117,
+  "candidatesByDeployment": 8452,
+  "live": 7958,
+  "dossiers": 7952,
+  "triaged": 667,
+  "confirmed": 19,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 3,
+    "404": 2092,
+    "451": 3,
+    "500": 7,
+    "503": 5,
+    "530": 1,
+    "live": 7958,
+    "protected": 4,
+    "err-ENOTFOUND": 2,
+    "err-EAI_AGAIN": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1686,
+      "live": 427,
+      "takedowns": [
+        {
+          "url": "https://supporthub.vercel.app",
+          "host": "supporthub.vercel.app",
+          "label": "supporthub.vercel.app",
+          "source": "guess",
+          "repo": "arshiya-21/SupportHub",
+          "repoCreatedAt": "2026-08-18T11:41:38Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::zd2rf-1787059986139-0b702e8a896d</code></span></main></div>"
+        },
+        {
+          "url": "https://razorpay-payment-integration.vercel.app",
+          "host": "razorpay-payment-integration.vercel.app",
+          "label": "razorpay-payment-integration.vercel.app",
+          "source": "guess",
+          "repo": "dharmiksoni15/Razorpay-Payment-Integration",
+          "repoCreatedAt": "2026-08-18T10:01:07Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::x9mj2-1787060308521-5a9e320897ff</code></span></main></div>"
+        },
+        {
+          "url": "https://insta-login.vercel.app",
+          "host": "insta-login.vercel.app",
+          "label": "insta-login.vercel.app",
+          "source": "guess",
+          "repo": "Abdulsamadsadhayo/insta_login",
+          "repoCreatedAt": "2026-08-18T12:45:32Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::6cjrj-1787060675283-73a390e53504</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 3,
+        "404": 1240,
+        "451": 3,
+        "500": 7,
+        "503": 1,
+        "530": 1,
+        "live": 427,
+        "protected": 4
+      },
+      "dossiers": 427,
+      "hostnameLane": 422,
+      "contentLane": 11,
+      "triaged": 422,
+      "confirmed": 6,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1520.45
+    },
+    "open": {
+      "name": "open",
+      "candidates": 8390,
+      "live": 7531,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 852,
+        "503": 4,
+        "live": 7531,
+        "err-ENOTFOUND": 2,
+        "err-EAI_AGAIN": 1
+      },
+      "dossiers": 7525,
+      "hostnameLane": 198,
+      "contentLane": 51,
+      "triaged": 245,
+      "confirmed": 13,
+      "canaryOutcomes": [],
+      "elapsedSec": 847.39
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2226,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 17,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 2,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://supporthub.vercel.app",
+      "host": "supporthub.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/arshiya-21/SupportHub",
+      "repoCreatedAt": "2026-08-18T11:41:38Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://razorpay-payment-integration.vercel.app",
+      "host": "razorpay-payment-integration.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/dharmiksoni15/Razorpay-Payment-Integration",
+      "repoCreatedAt": "2026-08-18T10:01:07Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://insta-login.vercel.app",
+      "host": "insta-login.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Abdulsamadsadhayo/insta_login",
+      "repoCreatedAt": "2026-08-18T12:45:32Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2472.62,
+  "output": "drainers-2026-08-18T13-10Z.jsonl"
+}
