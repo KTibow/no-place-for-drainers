@@ -1,0 +1,166 @@
+{
+  "generated": "2026-08-18T15:40:24.775Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-18T10:54:21Z",
+  "repos": 82226,
+  "candidates": 10897,
+  "candidatesByName": 1630,
+  "candidatesByHomepage": 131,
+  "candidatesByDeployment": 9134,
+  "live": 8639,
+  "dossiers": 8631,
+  "triaged": 721,
+  "confirmed": 21,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 5,
+    "404": 2222,
+    "451": 3,
+    "500": 12,
+    "503": 6,
+    "live": 8639,
+    "protected": 3,
+    "err-Too many redirects.https://projectbridge": 1,
+    "err-ENOTFOUND": 4,
+    "err-EAI_AGAIN": 1,
+    "err-23": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1816,
+      "live": 460,
+      "takedowns": [
+        {
+          "url": "https://supporthub.vercel.app",
+          "host": "supporthub.vercel.app",
+          "label": "supporthub.vercel.app",
+          "source": "guess",
+          "repo": "arshiya-21/SupportHub",
+          "repoCreatedAt": "2026-08-18T11:41:38Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::qfbw7-1787066518956-fed2df8e8c82</code></span></main></div>"
+        },
+        {
+          "url": "https://insta-login.vercel.app",
+          "host": "insta-login.vercel.app",
+          "label": "insta-login.vercel.app",
+          "source": "guess",
+          "repo": "Abdulsamadsadhayo/insta_login",
+          "repoCreatedAt": "2026-08-18T12:45:32Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::pp2ks-1787066890590-03ef60430b55</code></span></main></div>"
+        },
+        {
+          "url": "https://home-auth.vercel.app",
+          "host": "home-auth.vercel.app",
+          "label": "home-auth.vercel.app",
+          "source": "guess",
+          "repo": "velppa/home-auth",
+          "repoCreatedAt": "2026-08-18T14:37:01Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::6wgtb-1787067184789-e7305fb7896c</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 5,
+        "404": 1331,
+        "451": 3,
+        "500": 12,
+        "503": 1,
+        "live": 460,
+        "protected": 3,
+        "err-Too many redirects.https://projectbridge": 1
+      },
+      "dossiers": 460,
+      "hostnameLane": 455,
+      "contentLane": 13,
+      "triaged": 455,
+      "confirmed": 9,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1712.66
+    },
+    "open": {
+      "name": "open",
+      "candidates": 9081,
+      "live": 8179,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 891,
+        "503": 5,
+        "live": 8179,
+        "err-ENOTFOUND": 4,
+        "err-EAI_AGAIN": 1,
+        "err-23": 1
+      },
+      "dossiers": 8171,
+      "hostnameLane": 227,
+      "contentLane": 42,
+      "triaged": 266,
+      "confirmed": 12,
+      "canaryOutcomes": [],
+      "elapsedSec": 1007.06
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2385,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 19,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 5,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://supporthub.vercel.app",
+      "host": "supporthub.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/arshiya-21/SupportHub",
+      "repoCreatedAt": "2026-08-18T11:41:38Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://insta-login.vercel.app",
+      "host": "insta-login.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Abdulsamadsadhayo/insta_login",
+      "repoCreatedAt": "2026-08-18T12:45:32Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://home-auth.vercel.app",
+      "host": "home-auth.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/velppa/home-auth",
+      "repoCreatedAt": "2026-08-18T14:37:01Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2763.09,
+  "output": "drainers-2026-08-18T14-54Z.jsonl"
+}
