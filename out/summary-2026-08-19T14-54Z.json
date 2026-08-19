@@ -1,0 +1,185 @@
+{
+  "generated": "2026-08-19T15:51:14.988Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-19T10:54:30Z",
+  "repos": 93140,
+  "candidates": 10871,
+  "candidatesByName": 1607,
+  "candidatesByHomepage": 124,
+  "candidatesByDeployment": 9138,
+  "live": 8596,
+  "dossiers": 8572,
+  "triaged": 724,
+  "confirmed": 12,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 4,
+    "404": 2238,
+    "451": 4,
+    "500": 11,
+    "live": 8596,
+    "protected": 11,
+    "err-Too many redirects.https://demo-assets.v": 1,
+    "err-Too many redirects.https://ai-help-desk.": 1,
+    "err-Too many redirects.https://assets-dashbo": 1,
+    "err-Too many redirects.https://front-ai-chat": 1,
+    "err-ENOTFOUND": 3
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1817,
+      "live": 479,
+      "takedowns": [
+        {
+          "url": "https://real-time-chat.vercel.app",
+          "host": "real-time-chat.vercel.app",
+          "label": "real-time-chat.vercel.app",
+          "source": "guess",
+          "repo": "Anuradha-Jena/real_time_chat",
+          "repoCreatedAt": "2026-08-19T14:15:05Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::fv7bb-1787153029545-2c6fb77cfe76</code></span></main></div>"
+        },
+        {
+          "url": "https://secureauthentication.vercel.app",
+          "host": "secureauthentication.vercel.app",
+          "label": "secureauthentication.vercel.app",
+          "source": "guess",
+          "repo": "Anuradha-Jena/SecureAuthentication",
+          "repoCreatedAt": "2026-08-19T13:10:00Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::8j7gt-1787154023704-14ab8bbc3949</code></span></main></div>"
+        },
+        {
+          "url": "https://fuzzy-winner.vercel.app",
+          "host": "fuzzy-winner.vercel.app",
+          "label": "fuzzy-winner.vercel.app",
+          "source": "guess",
+          "repo": "12DoDo2/fuzzy-winner",
+          "repoCreatedAt": "2026-08-19T13:11:36Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::plh6t-1787154024846-36db3fc083e5</code></span></main></div>"
+        },
+        {
+          "url": "https://login-facebook.vercel.app",
+          "host": "login-facebook.vercel.app",
+          "label": "login-facebook.vercel.app",
+          "source": "guess",
+          "repo": "pratamapratama8408-pixel/Login-Facebook-",
+          "repoCreatedAt": "2026-08-19T12:35:08Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::ttnn8-1787154200743-b26299a32f3a</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 4,
+        "404": 1304,
+        "451": 4,
+        "500": 11,
+        "live": 479,
+        "protected": 11,
+        "err-Too many redirects.https://demo-assets.v": 1,
+        "err-Too many redirects.https://ai-help-desk.": 1,
+        "err-Too many redirects.https://assets-dashbo": 1,
+        "err-Too many redirects.https://front-ai-chat": 1
+      },
+      "dossiers": 478,
+      "hostnameLane": 470,
+      "contentLane": 11,
+      "triaged": 470,
+      "confirmed": 7,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2124.58
+    },
+    "open": {
+      "name": "open",
+      "candidates": 9054,
+      "live": 8117,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 934,
+        "live": 8117,
+        "err-ENOTFOUND": 3
+      },
+      "dossiers": 8094,
+      "hostnameLane": 224,
+      "contentLane": 31,
+      "triaged": 254,
+      "confirmed": 5,
+      "canaryOutcomes": [],
+      "elapsedSec": 1273.53
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2466,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 10,
+    "urlscanFailed": 0,
+    "discord": 3,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 2,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://real-time-chat.vercel.app",
+      "host": "real-time-chat.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Anuradha-Jena/real_time_chat",
+      "repoCreatedAt": "2026-08-19T14:15:05Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://secureauthentication.vercel.app",
+      "host": "secureauthentication.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Anuradha-Jena/SecureAuthentication",
+      "repoCreatedAt": "2026-08-19T13:10:00Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://fuzzy-winner.vercel.app",
+      "host": "fuzzy-winner.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/12DoDo2/fuzzy-winner",
+      "repoCreatedAt": "2026-08-19T13:11:36Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://login-facebook.vercel.app",
+      "host": "login-facebook.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/pratamapratama8408-pixel/Login-Facebook-",
+      "repoCreatedAt": "2026-08-19T12:35:08Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 3404.29,
+  "output": "drainers-2026-08-19T14-54Z.jsonl"
+}
