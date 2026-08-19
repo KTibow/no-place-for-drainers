@@ -1,0 +1,145 @@
+{
+  "generated": "2026-08-19T05:21:24.288Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-19T00:53:34Z",
+  "repos": 54016,
+  "candidates": 6591,
+  "candidatesByName": 862,
+  "candidatesByHomepage": 69,
+  "candidatesByDeployment": 5658,
+  "live": 5294,
+  "dossiers": 5285,
+  "triaged": 380,
+  "confirmed": 5,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 3,
+    "404": 1275,
+    "451": 2,
+    "500": 5,
+    "live": 5294,
+    "protected": 1,
+    "err-Too many redirects.https://ideasvault.ve": 1,
+    "err-ENOTFOUND": 2,
+    "err-UND_ERR_CONNECT_TIMEOUT": 1,
+    "err-ECONNRESET": 5,
+    "err-EAI_AGAIN": 2
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 958,
+      "live": 246,
+      "takedowns": [
+        {
+          "url": "https://revolutcrypto.vercel.app",
+          "host": "revolutcrypto.vercel.app",
+          "label": "revolutcrypto.vercel.app",
+          "source": "guess",
+          "repo": "bhanuexcalibur/RevolutCrypto",
+          "repoCreatedAt": "2026-08-19T03:36:52Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::lrnfp-1787116424539-c56320cfd4de</code></span></main></div>"
+        },
+        {
+          "url": "https://maybank.vercel.app",
+          "host": "maybank.vercel.app",
+          "label": "maybank.vercel.app",
+          "source": "guess",
+          "repo": "202301159/MayBank",
+          "repoCreatedAt": "2026-08-19T03:49:52Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::hsm7d-1787116471451-5a7e10be44a2</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 3,
+        "404": 700,
+        "451": 2,
+        "500": 5,
+        "live": 246,
+        "protected": 1,
+        "err-Too many redirects.https://ideasvault.ve": 1
+      },
+      "dossiers": 245,
+      "hostnameLane": 244,
+      "contentLane": 12,
+      "triaged": 244,
+      "confirmed": 2,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 912.52
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5633,
+      "live": 5048,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 575,
+        "live": 5048,
+        "err-ENOTFOUND": 2,
+        "err-UND_ERR_CONNECT_TIMEOUT": 1,
+        "err-ECONNRESET": 5,
+        "err-EAI_AGAIN": 2
+      },
+      "dossiers": 5040,
+      "hostnameLane": 123,
+      "contentLane": 14,
+      "triaged": 136,
+      "confirmed": 3,
+      "canaryOutcomes": [],
+      "elapsedSec": 443.34
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1265,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 5,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 0,
+    "skippedSeen": 0,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://revolutcrypto.vercel.app",
+      "host": "revolutcrypto.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/bhanuexcalibur/RevolutCrypto",
+      "repoCreatedAt": "2026-08-19T03:36:52Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://maybank.vercel.app",
+      "host": "maybank.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/202301159/MayBank",
+      "repoCreatedAt": "2026-08-19T03:49:52Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "missed"
+  },
+  "canaryCaught": false,
+  "elapsedSec": 1670.21,
+  "output": "drainers-2026-08-19T04-53Z.jsonl"
+}
