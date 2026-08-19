@@ -1,0 +1,229 @@
+{
+  "generated": "2026-08-19T19:53:10.344Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-19T14:55:14Z",
+  "repos": 80857,
+  "candidates": 11143,
+  "candidatesByName": 1673,
+  "candidatesByHomepage": 141,
+  "candidatesByDeployment": 9327,
+  "live": 8864,
+  "dossiers": 8855,
+  "triaged": 781,
+  "confirmed": 22,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 7,
+    "404": 2236,
+    "451": 6,
+    "500": 17,
+    "504": 1,
+    "live": 8864,
+    "err-Too many redirects.https://finchwire-cha": 1,
+    "protected": 4,
+    "err-Too many redirects.https://design-vault.": 1,
+    "err-Too many redirects.https://sol-shop.verc": 1,
+    "err-redirect count exceeded": 1,
+    "err-ENOTFOUND": 3,
+    "err-ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1893,
+      "live": 512,
+      "takedowns": [
+        {
+          "url": "https://uniswap.vercel.app",
+          "host": "uniswap.vercel.app",
+          "label": "uniswap.vercel.app",
+          "source": "deployment",
+          "repo": "pyaeaung0259-commits/uniswap_app",
+          "repoCreatedAt": "2026-08-19T16:53:42Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::r8vft-1787167014582-0f2c581eb9fc</code></span></main></div>"
+        },
+        {
+          "url": "https://chainvault.vercel.app",
+          "host": "chainvault.vercel.app",
+          "label": "chainvault.vercel.app",
+          "source": "guess",
+          "repo": "Matteorinaldi-Web3/ChainVault",
+          "repoCreatedAt": "2026-08-19T17:22:46Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::tfpfd-1787167193484-49cad064a168</code></span></main></div>"
+        },
+        {
+          "url": "https://supportflow.vercel.app",
+          "host": "supportflow.vercel.app",
+          "label": "supportflow.vercel.app",
+          "source": "guess",
+          "repo": "farhadkhan-oss/SupportFlow",
+          "repoCreatedAt": "2026-08-19T17:44:47Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::rjcdt-1787167466892-f7c44f98b743</code></span></main></div>"
+        },
+        {
+          "url": "https://helpdeskx.vercel.app",
+          "host": "helpdeskx.vercel.app",
+          "label": "helpdeskx.vercel.app",
+          "source": "guess",
+          "repo": "jadhavadarsh27/helpdeskx",
+          "repoCreatedAt": "2026-08-19T15:03:17Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::ht5lb-1787168252055-35d9f262bd62</code></span></main></div>"
+        },
+        {
+          "url": "https://financialforecast.vercel.app",
+          "host": "financialforecast.vercel.app",
+          "label": "financialforecast.vercel.app",
+          "source": "guess",
+          "repo": "hallmartin-code/FinancialForecast",
+          "repoCreatedAt": "2026-08-19T16:15:12Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::5zhw5-1787168332159-65fc58da577f</code></span></main></div>"
+        },
+        {
+          "url": "https://help-center-article.vercel.app",
+          "host": "help-center-article.vercel.app",
+          "label": "help-center-article.vercel.app",
+          "source": "guess",
+          "repo": "appwrite-community/help-center-article",
+          "repoCreatedAt": "2026-08-19T15:36:34Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::2ctgv-1787168732753-6d3e5c54f07f</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 7,
+        "404": 1343,
+        "451": 6,
+        "500": 17,
+        "504": 1,
+        "live": 512,
+        "err-Too many redirects.https://finchwire-cha": 1,
+        "protected": 4,
+        "err-Too many redirects.https://design-vault.": 1,
+        "err-Too many redirects.https://sol-shop.verc": 1
+      },
+      "dossiers": 512,
+      "hostnameLane": 506,
+      "contentLane": 13,
+      "triaged": 506,
+      "confirmed": 8,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2358.25
+    },
+    "open": {
+      "name": "open",
+      "candidates": 9250,
+      "live": 8352,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 893,
+        "live": 8352,
+        "err-redirect count exceeded": 1,
+        "err-ENOTFOUND": 3,
+        "err-ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE": 1
+      },
+      "dossiers": 8343,
+      "hostnameLane": 235,
+      "contentLane": 42,
+      "triaged": 275,
+      "confirmed": 14,
+      "canaryOutcomes": [],
+      "elapsedSec": 1280.61
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2526,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 21,
+    "urlscanFailed": 0,
+    "discord": 4,
+    "discordFailed": 0,
+    "skippedCanary": 2,
+    "skippedSeen": 3,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://uniswap.vercel.app",
+      "host": "uniswap.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/pyaeaung0259-commits/uniswap_app",
+      "repoCreatedAt": "2026-08-19T16:53:42Z",
+      "source": "deployment"
+    },
+    {
+      "url": "https://chainvault.vercel.app",
+      "host": "chainvault.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Matteorinaldi-Web3/ChainVault",
+      "repoCreatedAt": "2026-08-19T17:22:46Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://supportflow.vercel.app",
+      "host": "supportflow.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/farhadkhan-oss/SupportFlow",
+      "repoCreatedAt": "2026-08-19T17:44:47Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://helpdeskx.vercel.app",
+      "host": "helpdeskx.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/jadhavadarsh27/helpdeskx",
+      "repoCreatedAt": "2026-08-19T15:03:17Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://financialforecast.vercel.app",
+      "host": "financialforecast.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/hallmartin-code/FinancialForecast",
+      "repoCreatedAt": "2026-08-19T16:15:12Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://help-center-article.vercel.app",
+      "host": "help-center-article.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/appwrite-community/help-center-article",
+      "repoCreatedAt": "2026-08-19T15:36:34Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 3475.68,
+  "output": "drainers-2026-08-19T18-55Z.jsonl"
+}
