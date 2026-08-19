@@ -1,0 +1,150 @@
+{
+  "generated": "2026-08-19T13:48:12.983Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-19T09:11:10Z",
+  "repos": 95971,
+  "candidates": 10290,
+  "candidatesByName": 1473,
+  "candidatesByHomepage": 115,
+  "candidatesByDeployment": 8700,
+  "live": 8142,
+  "dossiers": 8131,
+  "triaged": 699,
+  "confirmed": 24,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 2,
+    "404": 2110,
+    "451": 2,
+    "500": 11,
+    "503": 4,
+    "live": 8142,
+    "err-Too many redirects.https://ai-help-desk.": 1,
+    "err-Too many redirects.https://chat-with-pdf": 1,
+    "err-Too many redirects.https://movie-sync-ap": 1,
+    "protected": 8,
+    "err-Too many redirects.https://assets-dashbo": 1,
+    "err-Too many redirects.https://front-ai-chat": 1,
+    "err-ENOTFOUND": 6
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1681,
+      "live": 445,
+      "takedowns": [
+        {
+          "url": "https://insta-login.vercel.app",
+          "host": "insta-login.vercel.app",
+          "label": "insta-login.vercel.app",
+          "source": "guess",
+          "repo": "muhammadshehzad9725-byte/insta-login-",
+          "repoCreatedAt": "2026-08-19T09:37:47Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::jwjtp-1787147002427-efbe671c89a1</code></span></main></div>"
+        },
+        {
+          "url": "https://login-facebook.vercel.app",
+          "host": "login-facebook.vercel.app",
+          "label": "login-facebook.vercel.app",
+          "source": "guess",
+          "repo": "pratamapratama8408-pixel/Login-Facebook-",
+          "repoCreatedAt": "2026-08-19T12:35:08Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::zk5sm-1787147153156-6ced67e9d29e</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 2,
+        "404": 1206,
+        "451": 2,
+        "500": 11,
+        "503": 2,
+        "live": 445,
+        "err-Too many redirects.https://ai-help-desk.": 1,
+        "err-Too many redirects.https://chat-with-pdf": 1,
+        "err-Too many redirects.https://movie-sync-ap": 1,
+        "protected": 8,
+        "err-Too many redirects.https://assets-dashbo": 1,
+        "err-Too many redirects.https://front-ai-chat": 1
+      },
+      "dossiers": 444,
+      "hostnameLane": 439,
+      "contentLane": 11,
+      "triaged": 439,
+      "confirmed": 7,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 895.9
+    },
+    "open": {
+      "name": "open",
+      "candidates": 8609,
+      "live": 7697,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 904,
+        "503": 2,
+        "live": 7697,
+        "err-ENOTFOUND": 6
+      },
+      "dossiers": 7687,
+      "hostnameLane": 222,
+      "contentLane": 40,
+      "triaged": 260,
+      "confirmed": 17,
+      "canaryOutcomes": [],
+      "elapsedSec": 732.64
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2248,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 22,
+    "urlscanFailed": 0,
+    "discord": 4,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 1,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://insta-login.vercel.app",
+      "host": "insta-login.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/muhammadshehzad9725-byte/insta-login-",
+      "repoCreatedAt": "2026-08-19T09:37:47Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://login-facebook.vercel.app",
+      "host": "login-facebook.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/pratamapratama8408-pixel/Login-Facebook-",
+      "repoCreatedAt": "2026-08-19T12:35:08Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2222.72,
+  "output": "drainers-2026-08-19T13-11Z.jsonl"
+}
