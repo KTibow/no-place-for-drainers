@@ -1,0 +1,172 @@
+{
+  "generated": "2026-08-19T11:23:26.278Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-19T06:47:57Z",
+  "repos": 119761,
+  "candidates": 9872,
+  "candidatesByName": 1436,
+  "candidatesByHomepage": 98,
+  "candidatesByDeployment": 8336,
+  "live": 7842,
+  "dossiers": 7837,
+  "triaged": 691,
+  "confirmed": 28,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 2,
+    "404": 1999,
+    "451": 3,
+    "500": 10,
+    "503": 4,
+    "530": 1,
+    "live": 7842,
+    "err-Too many redirects.https://chat-with-pdf": 1,
+    "err-Too many redirects.https://movie-sync-ap": 1,
+    "protected": 4,
+    "err-Too many redirects.https://cryptolab.ver": 1,
+    "err-Too many redirects.https://myfinancial.v": 1,
+    "err-Too many redirects.https://snippetvault.": 1,
+    "err-ENOTFOUND": 2
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1620,
+      "live": 433,
+      "takedowns": [
+        {
+          "url": "https://insta-login.vercel.app",
+          "host": "insta-login.vercel.app",
+          "label": "insta-login.vercel.app",
+          "source": "guess",
+          "repo": "muhammadshehzad9725-byte/insta-login-",
+          "repoCreatedAt": "2026-08-19T09:37:47Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::rs8kz-1787138177857-0195c59f73b8</code></span></main></div>"
+        },
+        {
+          "url": "https://real-time-chat.vercel.app",
+          "host": "real-time-chat.vercel.app",
+          "label": "real-time-chat.vercel.app",
+          "source": "guess",
+          "repo": "pratikmkalokhe/Real-Time-Chat",
+          "repoCreatedAt": "2026-08-19T07:03:57Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::9bmzj-1787138270253-483124a013fd</code></span></main></div>"
+        },
+        {
+          "url": "https://merchant-pay.vercel.app",
+          "host": "merchant-pay.vercel.app",
+          "label": "merchant-pay.vercel.app",
+          "source": "guess",
+          "repo": "dharaneesh179/merchant_pay",
+          "repoCreatedAt": "2026-08-19T08:15:32Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::75gzm-1787138285068-929d6c6f0a37</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 2,
+        "404": 1160,
+        "451": 3,
+        "500": 10,
+        "503": 2,
+        "530": 1,
+        "live": 433,
+        "err-Too many redirects.https://chat-with-pdf": 1,
+        "err-Too many redirects.https://movie-sync-ap": 1,
+        "protected": 4,
+        "err-Too many redirects.https://cryptolab.ver": 1,
+        "err-Too many redirects.https://myfinancial.v": 1,
+        "err-Too many redirects.https://snippetvault.": 1
+      },
+      "dossiers": 433,
+      "hostnameLane": 427,
+      "contentLane": 9,
+      "triaged": 427,
+      "confirmed": 9,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 576.36
+    },
+    "open": {
+      "name": "open",
+      "candidates": 8252,
+      "live": 7409,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 839,
+        "503": 2,
+        "live": 7409,
+        "err-ENOTFOUND": 2
+      },
+      "dossiers": 7404,
+      "hostnameLane": 234,
+      "contentLane": 33,
+      "triaged": 264,
+      "confirmed": 19,
+      "canaryOutcomes": [],
+      "elapsedSec": 359.37
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2193,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 26,
+    "urlscanFailed": 0,
+    "discord": 5,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 2,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://insta-login.vercel.app",
+      "host": "insta-login.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/muhammadshehzad9725-byte/insta-login-",
+      "repoCreatedAt": "2026-08-19T09:37:47Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://real-time-chat.vercel.app",
+      "host": "real-time-chat.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/pratikmkalokhe/Real-Time-Chat",
+      "repoCreatedAt": "2026-08-19T07:03:57Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://merchant-pay.vercel.app",
+      "host": "merchant-pay.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/dharaneesh179/merchant_pay",
+      "repoCreatedAt": "2026-08-19T08:15:32Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2128.97,
+  "output": "drainers-2026-08-19T10-47Z.jsonl"
+}
