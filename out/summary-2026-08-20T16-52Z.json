@@ -1,0 +1,230 @@
+{
+  "generated": "2026-08-20T17:40:03.787Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-20T12:52:51Z",
+  "repos": 83359,
+  "candidates": 11474,
+  "candidatesByName": 1701,
+  "candidatesByHomepage": 144,
+  "candidatesByDeployment": 9627,
+  "live": 9088,
+  "dossiers": 9080,
+  "triaged": 780,
+  "confirmed": 13,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 5,
+    "404": 2342,
+    "429": 1,
+    "451": 6,
+    "500": 18,
+    "503": 2,
+    "530": 1,
+    "live": 9088,
+    "err-23": 1,
+    "protected": 6,
+    "err-Too many redirects.https://nim-chat.verc": 1,
+    "err-Too many redirects.https://financeai.ver": 1,
+    "err-ENOTFOUND": 2
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1894,
+      "live": 489,
+      "takedowns": [
+        {
+          "url": "https://helpdeskpro.vercel.app",
+          "host": "helpdeskpro.vercel.app",
+          "label": "helpdeskpro.vercel.app",
+          "source": "guess",
+          "repo": "Chukwuma-oz/HelpDeskPro",
+          "repoCreatedAt": "2026-08-20T14:48:44Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::wkpgx-1787246706641-bcc708c842c4</code></span></main></div>"
+        },
+        {
+          "url": "https://ticket-support-system.vercel.app",
+          "host": "ticket-support-system.vercel.app",
+          "label": "ticket-support-system.vercel.app",
+          "source": "guess",
+          "repo": "hasankorkmazdev/ticket-support-system",
+          "repoCreatedAt": "2026-08-20T14:13:20Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::grr5z-1787246805379-c4d786b81d90</code></span></main></div>"
+        },
+        {
+          "url": "https://mi-trading-bot.vercel.app",
+          "host": "mi-trading-bot.vercel.app",
+          "label": "mi-trading-bot.vercel.app",
+          "source": "guess",
+          "repo": "guillermosemola/mi-trading-bot",
+          "repoCreatedAt": "2026-08-20T14:31:51Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::5j2lx-1787246911332-bf0a9f4c3f7b</code></span></main></div>"
+        },
+        {
+          "url": "https://finance-news.vercel.app",
+          "host": "finance-news.vercel.app",
+          "label": "finance-news.vercel.app",
+          "source": "guess",
+          "repo": "YY19961227/finance-news",
+          "repoCreatedAt": "2026-08-20T16:26:46Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::8pwh4-1787247209632-4f814db3584e</code></span></main></div>"
+        },
+        {
+          "url": "https://binance.vercel.app",
+          "host": "binance.vercel.app",
+          "label": "binance.vercel.app",
+          "source": "guess",
+          "repo": "oscarbrendonn/binance",
+          "repoCreatedAt": "2026-08-20T16:27:41Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::tst66-1787247210107-78b7d1979058</code></span></main></div>"
+        },
+        {
+          "url": "https://syncbridge.vercel.app",
+          "host": "syncbridge.vercel.app",
+          "label": "syncbridge.vercel.app",
+          "source": "guess",
+          "repo": "eudollyn/SyncBridge-",
+          "repoCreatedAt": "2026-08-20T16:34:00Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::spkhk-1787247232840-ad9ba86cdeca</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 5,
+        "404": 1365,
+        "429": 1,
+        "451": 6,
+        "500": 18,
+        "503": 1,
+        "live": 489,
+        "err-23": 1,
+        "protected": 6,
+        "err-Too many redirects.https://nim-chat.verc": 1,
+        "err-Too many redirects.https://financeai.ver": 1
+      },
+      "dossiers": 489,
+      "hostnameLane": 486,
+      "contentLane": 12,
+      "triaged": 486,
+      "confirmed": 3,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1759.21
+    },
+    "open": {
+      "name": "open",
+      "candidates": 9580,
+      "live": 8599,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 977,
+        "503": 1,
+        "530": 1,
+        "live": 8599,
+        "err-ENOTFOUND": 2
+      },
+      "dossiers": 8591,
+      "hostnameLane": 255,
+      "contentLane": 42,
+      "triaged": 294,
+      "confirmed": 10,
+      "canaryOutcomes": [],
+      "elapsedSec": 1008.82
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2521,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 12,
+    "urlscanFailed": 0,
+    "discord": 1,
+    "discordFailed": 0,
+    "skippedCanary": 2,
+    "skippedSeen": 1,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://helpdeskpro.vercel.app",
+      "host": "helpdeskpro.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Chukwuma-oz/HelpDeskPro",
+      "repoCreatedAt": "2026-08-20T14:48:44Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://ticket-support-system.vercel.app",
+      "host": "ticket-support-system.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/hasankorkmazdev/ticket-support-system",
+      "repoCreatedAt": "2026-08-20T14:13:20Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://mi-trading-bot.vercel.app",
+      "host": "mi-trading-bot.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/guillermosemola/mi-trading-bot",
+      "repoCreatedAt": "2026-08-20T14:31:51Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://finance-news.vercel.app",
+      "host": "finance-news.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/YY19961227/finance-news",
+      "repoCreatedAt": "2026-08-20T16:26:46Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://binance.vercel.app",
+      "host": "binance.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/oscarbrendonn/binance",
+      "repoCreatedAt": "2026-08-20T16:27:41Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://syncbridge.vercel.app",
+      "host": "syncbridge.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/eudollyn/SyncBridge-",
+      "repoCreatedAt": "2026-08-20T16:34:00Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2831.85,
+  "output": "drainers-2026-08-20T16-52Z.jsonl"
+}
