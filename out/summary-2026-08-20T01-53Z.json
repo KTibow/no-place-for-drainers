@@ -1,0 +1,159 @@
+{
+  "generated": "2026-08-20T02:20:04.656Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-19T21:53:16Z",
+  "repos": 42178,
+  "candidates": 5768,
+  "candidatesByName": 778,
+  "candidatesByHomepage": 48,
+  "candidatesByDeployment": 4940,
+  "live": 4628,
+  "dossiers": 4620,
+  "triaged": 375,
+  "confirmed": 8,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 1,
+    "404": 1125,
+    "451": 3,
+    "500": 7,
+    "live": 4628,
+    "protected": 1,
+    "err-redirect count exceeded": 1,
+    "err-ENOTFOUND": 2
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 863,
+      "live": 205,
+      "takedowns": [
+        {
+          "url": "https://greeninvest.vercel.app",
+          "host": "greeninvest.vercel.app",
+          "label": "greeninvest.vercel.app",
+          "source": "guess",
+          "repo": "sofiacoria-afk/GreenInvest",
+          "repoCreatedAt": "2026-08-19T22:31:16Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::49n6f-1787191583371-d96b7bf937c5</code></span></main></div>"
+        },
+        {
+          "url": "https://it-help-desk.vercel.app",
+          "host": "it-help-desk.vercel.app",
+          "label": "it-help-desk.vercel.app",
+          "source": "guess",
+          "repo": "luqman-zahoor/IT-Help-Desk",
+          "repoCreatedAt": "2026-08-20T00:29:01Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::mzfqm-1787191937500-87d590e46b1d</code></span></main></div>"
+        },
+        {
+          "url": "https://docusigninstaller.vercel.app",
+          "host": "docusigninstaller.vercel.app",
+          "label": "docusigninstaller.vercel.app",
+          "source": "guess",
+          "repo": "dadrefugee-droid/Docusigninstaller",
+          "repoCreatedAt": "2026-08-20T01:04:50Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::bfgxn-1787192164255-16e984f0613c</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 1,
+        "404": 646,
+        "451": 3,
+        "500": 7,
+        "live": 205,
+        "protected": 1
+      },
+      "dossiers": 205,
+      "hostnameLane": 202,
+      "contentLane": 6,
+      "triaged": 203,
+      "confirmed": 4,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1030.09
+    },
+    "open": {
+      "name": "open",
+      "candidates": 4905,
+      "live": 4423,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 479,
+        "live": 4423,
+        "err-redirect count exceeded": 1,
+        "err-ENOTFOUND": 2
+      },
+      "dossiers": 4415,
+      "hostnameLane": 158,
+      "contentLane": 18,
+      "triaged": 172,
+      "confirmed": 4,
+      "canaryOutcomes": [],
+      "elapsedSec": 823
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1166,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 6,
+    "urlscanFailed": 0,
+    "discord": 1,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 1,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://greeninvest.vercel.app",
+      "host": "greeninvest.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/sofiacoria-afk/GreenInvest",
+      "repoCreatedAt": "2026-08-19T22:31:16Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://it-help-desk.vercel.app",
+      "host": "it-help-desk.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/luqman-zahoor/IT-Help-Desk",
+      "repoCreatedAt": "2026-08-20T00:29:01Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://docusigninstaller.vercel.app",
+      "host": "docusigninstaller.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/dadrefugee-droid/Docusigninstaller",
+      "repoCreatedAt": "2026-08-20T01:04:50Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1607.85,
+  "output": "drainers-2026-08-20T01-53Z.jsonl"
+}
