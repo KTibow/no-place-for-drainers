@@ -1,0 +1,165 @@
+{
+  "generated": "2026-08-21T21:22:28.681Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-21T16:42:57Z",
+  "repos": 63376,
+  "candidates": 8840,
+  "candidatesByName": 1422,
+  "candidatesByHomepage": 119,
+  "candidatesByDeployment": 7297,
+  "live": 7003,
+  "dossiers": 6997,
+  "triaged": 654,
+  "confirmed": 19,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 11,
+    "404": 1799,
+    "451": 3,
+    "500": 13,
+    "504": 2,
+    "live": 7003,
+    "err-Too many redirects.https://design-vault.": 1,
+    "err-Too many redirects.https://academi-sync-": 1,
+    "protected": 3,
+    "err-ENOTFOUND": 1,
+    "err-23": 3
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1619,
+      "live": 451,
+      "takedowns": [
+        {
+          "url": "https://metamask-verify.vercel.app",
+          "host": "metamask-verify.vercel.app",
+          "label": "metamask-verify.vercel.app",
+          "source": "guess",
+          "repo": "g3oxsapa/metamask-verify",
+          "repoCreatedAt": "2026-08-21T20:13:23Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::tfvw2-1787346061857-679fb7609e53</code></span></main></div>"
+        },
+        {
+          "url": "https://securepay.vercel.app",
+          "host": "securepay.vercel.app",
+          "label": "securepay.vercel.app",
+          "source": "guess",
+          "repo": "shruthilaya-lala/securepay",
+          "repoCreatedAt": "2026-08-21T17:44:28Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::jxckk-1787346651781-b235d9ada367</code></span></main></div>"
+        },
+        {
+          "url": "https://automation-chat.vercel.app",
+          "host": "automation-chat.vercel.app",
+          "label": "automation-chat.vercel.app",
+          "source": "guess",
+          "repo": "Biswajit-Sahoo-13/automation-chat",
+          "repoCreatedAt": "2026-08-21T17:55:53Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::9cz5r-1787346705842-70b35badf9c5</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 11,
+        "404": 1134,
+        "451": 3,
+        "500": 13,
+        "504": 2,
+        "live": 451,
+        "err-Too many redirects.https://design-vault.": 1,
+        "err-Too many redirects.https://academi-sync-": 1,
+        "protected": 3
+      },
+      "dossiers": 451,
+      "hostnameLane": 445,
+      "contentLane": 14,
+      "triaged": 445,
+      "confirmed": 2,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1550.84
+    },
+    "open": {
+      "name": "open",
+      "candidates": 7221,
+      "live": 6552,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 665,
+        "live": 6552,
+        "err-ENOTFOUND": 1,
+        "err-23": 3
+      },
+      "dossiers": 6546,
+      "hostnameLane": 175,
+      "contentLane": 40,
+      "triaged": 209,
+      "confirmed": 17,
+      "canaryOutcomes": [],
+      "elapsedSec": 754.11
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2231,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 17,
+    "urlscanFailed": 0,
+    "discord": 0,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 0,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://metamask-verify.vercel.app",
+      "host": "metamask-verify.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/g3oxsapa/metamask-verify",
+      "repoCreatedAt": "2026-08-21T20:13:23Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://securepay.vercel.app",
+      "host": "securepay.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/shruthilaya-lala/securepay",
+      "repoCreatedAt": "2026-08-21T17:44:28Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://automation-chat.vercel.app",
+      "host": "automation-chat.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Biswajit-Sahoo-13/automation-chat",
+      "repoCreatedAt": "2026-08-21T17:55:53Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2370.82,
+  "output": "drainers-2026-08-21T20-42Z.jsonl"
+}
