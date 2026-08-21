@@ -1,0 +1,153 @@
+{
+  "generated": "2026-08-21T15:50:20.516Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-21T10:55:21Z",
+  "repos": 83118,
+  "candidates": 10364,
+  "candidatesByName": 1563,
+  "candidatesByHomepage": 119,
+  "candidatesByDeployment": 8680,
+  "live": 8202,
+  "dossiers": 8193,
+  "triaged": 785,
+  "confirmed": 21,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 7,
+    "404": 2118,
+    "429": 3,
+    "451": 2,
+    "500": 16,
+    "503": 3,
+    "504": 1,
+    "live": 8202,
+    "err-Too many redirects.https://account-dashb": 1,
+    "protected": 5,
+    "err-Too many redirects.https://chat-with-pdf": 1,
+    "err-Too many redirects.https://vault-expense": 1,
+    "err-redirect count exceeded": 1,
+    "err-ENOTFOUND": 2,
+    "err-23": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1785,
+      "live": 515,
+      "takedowns": [
+        {
+          "url": "https://dex-frontend.vercel.app",
+          "host": "dex-frontend.vercel.app",
+          "label": "dex-frontend.vercel.app",
+          "source": "guess",
+          "repo": "sntecxdeveloper/dex_frontend",
+          "repoCreatedAt": "2026-08-21T12:55:06Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::l8s2g-1787325710755-a21990cdf273</code></span></main></div>"
+        },
+        {
+          "url": "https://ticket-support-system.vercel.app",
+          "host": "ticket-support-system.vercel.app",
+          "label": "ticket-support-system.vercel.app",
+          "source": "guess",
+          "repo": "TomandJerry0811/Ticket-Support-System",
+          "repoCreatedAt": "2026-08-21T11:07:35Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::6pmgz-1787327052911-5588a1a55dd8</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 7,
+        "404": 1230,
+        "429": 3,
+        "451": 2,
+        "500": 16,
+        "503": 3,
+        "504": 1,
+        "live": 515,
+        "err-Too many redirects.https://account-dashb": 1,
+        "protected": 5,
+        "err-Too many redirects.https://chat-with-pdf": 1,
+        "err-Too many redirects.https://vault-expense": 1
+      },
+      "dossiers": 515,
+      "hostnameLane": 511,
+      "contentLane": 12,
+      "triaged": 511,
+      "confirmed": 8,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2202.61
+    },
+    "open": {
+      "name": "open",
+      "candidates": 8579,
+      "live": 7687,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 888,
+        "live": 7687,
+        "err-redirect count exceeded": 1,
+        "err-ENOTFOUND": 2,
+        "err-23": 1
+      },
+      "dossiers": 7678,
+      "hostnameLane": 234,
+      "contentLane": 42,
+      "triaged": 274,
+      "confirmed": 13,
+      "canaryOutcomes": [],
+      "elapsedSec": 1164.32
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2449,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 20,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 2,
+    "skippedSeen": 5,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://dex-frontend.vercel.app",
+      "host": "dex-frontend.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/sntecxdeveloper/dex_frontend",
+      "repoCreatedAt": "2026-08-21T12:55:06Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://ticket-support-system.vercel.app",
+      "host": "ticket-support-system.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/TomandJerry0811/Ticket-Support-System",
+      "repoCreatedAt": "2026-08-21T11:07:35Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 3299.2,
+  "output": "drainers-2026-08-21T14-55Z.jsonl"
+}
