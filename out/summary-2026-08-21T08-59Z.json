@@ -1,0 +1,151 @@
+{
+  "generated": "2026-08-21T09:44:27.866Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-21T04:59:41Z",
+  "repos": 73898,
+  "candidates": 8786,
+  "candidatesByName": 1352,
+  "candidatesByHomepage": 93,
+  "candidatesByDeployment": 7339,
+  "live": 6814,
+  "dossiers": 6809,
+  "triaged": 560,
+  "confirmed": 10,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 6,
+    "404": 1928,
+    "451": 2,
+    "500": 14,
+    "503": 2,
+    "530": 1,
+    "live": 6814,
+    "err-Too many redirects.https://interview-vau": 1,
+    "err-Too many redirects.https://investment-ma": 1,
+    "protected": 5,
+    "err-Too many redirects.https://chat-memory.v": 1,
+    "err-23": 1,
+    "err-Too many redirects.https://school-assist": 1,
+    "err-ENOTFOUND": 9
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1517,
+      "live": 383,
+      "takedowns": [
+        {
+          "url": "https://bridgelink.vercel.app",
+          "host": "bridgelink.vercel.app",
+          "label": "bridgelink.vercel.app",
+          "source": "guess",
+          "repo": "muntazir-mehdii/BridgeLink",
+          "repoCreatedAt": "2026-08-21T07:52:19Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::g5qfs-1787304033499-ea3c671178e8</code></span></main></div>"
+        },
+        {
+          "url": "https://car-insurance-claim.vercel.app",
+          "host": "car-insurance-claim.vercel.app",
+          "label": "car-insurance-claim.vercel.app",
+          "source": "guess",
+          "repo": "MohabAllam/Car-Insurance-Claim",
+          "repoCreatedAt": "2026-08-21T08:37:08Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::xk9kg-1787304299787-59cf1e30999b</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 6,
+        "404": 1099,
+        "451": 2,
+        "500": 14,
+        "503": 2,
+        "530": 1,
+        "live": 383,
+        "err-Too many redirects.https://interview-vau": 1,
+        "err-Too many redirects.https://investment-ma": 1,
+        "protected": 5,
+        "err-Too many redirects.https://chat-memory.v": 1,
+        "err-23": 1,
+        "err-Too many redirects.https://school-assist": 1
+      },
+      "dossiers": 383,
+      "hostnameLane": 364,
+      "contentLane": 13,
+      "triaged": 368,
+      "confirmed": 5,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1674.2
+    },
+    "open": {
+      "name": "open",
+      "candidates": 7269,
+      "live": 6431,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 829,
+        "live": 6431,
+        "err-ENOTFOUND": 9
+      },
+      "dossiers": 6426,
+      "hostnameLane": 168,
+      "contentLane": 27,
+      "triaged": 192,
+      "confirmed": 5,
+      "canaryOutcomes": [],
+      "elapsedSec": 845.8
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2039,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 8,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 1,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://bridgelink.vercel.app",
+      "host": "bridgelink.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/muntazir-mehdii/BridgeLink",
+      "repoCreatedAt": "2026-08-21T07:52:19Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://car-insurance-claim.vercel.app",
+      "host": "car-insurance-claim.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/MohabAllam/Car-Insurance-Claim",
+      "repoCreatedAt": "2026-08-21T08:37:08Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2686.21,
+  "output": "drainers-2026-08-21T08-59Z.jsonl"
+}
