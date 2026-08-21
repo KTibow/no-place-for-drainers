@@ -1,0 +1,199 @@
+{
+  "generated": "2026-08-21T05:25:57.655Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-21T00:55:52Z",
+  "repos": 54992,
+  "candidates": 6587,
+  "candidatesByName": 917,
+  "candidatesByHomepage": 64,
+  "candidatesByDeployment": 5604,
+  "live": 5283,
+  "dossiers": 5282,
+  "triaged": 449,
+  "confirmed": 13,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 7,
+    "404": 1278,
+    "451": 5,
+    "500": 9,
+    "live": 5283,
+    "protected": 2,
+    "err-ENOTFOUND": 2,
+    "err-EAI_AGAIN": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1037,
+      "live": 279,
+      "takedowns": [
+        {
+          "url": "https://verifywallet.vercel.app",
+          "host": "verifywallet.vercel.app",
+          "label": "verifywallet.vercel.app",
+          "source": "guess",
+          "repo": "amirxoo13/verifywallet",
+          "repoCreatedAt": "2026-08-21T04:31:10Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::p7fmp-1787289057459-f7f94c32073d</code></span></main></div>"
+        },
+        {
+          "url": "https://app-rewards.vercel.app",
+          "host": "app-rewards.vercel.app",
+          "label": "app-rewards.vercel.app",
+          "source": "guess",
+          "repo": "JJimenezz0/APP-Rewards",
+          "repoCreatedAt": "2026-08-21T02:08:43Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::ddgtt-1787289350277-5caddf7e1fc5</code></span></main></div>"
+        },
+        {
+          "url": "https://bitbank.vercel.app",
+          "host": "bitbank.vercel.app",
+          "label": "bitbank.vercel.app",
+          "source": "guess",
+          "repo": "taot94681-source/BitBank",
+          "repoCreatedAt": "2026-08-21T03:34:04Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::gwqmq-1787289410138-24a98d54395d</code></span></main></div>"
+        },
+        {
+          "url": "https://digital-verification.vercel.app",
+          "host": "digital-verification.vercel.app",
+          "label": "digital-verification.vercel.app",
+          "source": "guess",
+          "repo": "192525012simats-prethepa/digital-verification",
+          "repoCreatedAt": "2026-08-21T04:04:32Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::b76tr-1787289704309-b400075fc400</code></span></main></div>"
+        },
+        {
+          "url": "https://supportd.vercel.app",
+          "host": "supportd.vercel.app",
+          "label": "supportd.vercel.app",
+          "source": "guess",
+          "repo": "vaughanthompson/supportd",
+          "repoCreatedAt": "2026-08-21T04:07:49Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::kf2cq-1787289709027-99a6e491344d</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 7,
+        "404": 735,
+        "451": 5,
+        "500": 9,
+        "live": 279,
+        "protected": 2
+      },
+      "dossiers": 279,
+      "hostnameLane": 276,
+      "contentLane": 9,
+      "triaged": 276,
+      "confirmed": 8,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1050.38
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5550,
+      "live": 5004,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 543,
+        "live": 5004,
+        "err-ENOTFOUND": 2,
+        "err-EAI_AGAIN": 1
+      },
+      "dossiers": 5003,
+      "hostnameLane": 153,
+      "contentLane": 21,
+      "triaged": 173,
+      "confirmed": 5,
+      "canaryOutcomes": [],
+      "elapsedSec": 623.75
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1382,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 12,
+    "urlscanFailed": 0,
+    "discord": 4,
+    "discordFailed": 0,
+    "skippedCanary": 2,
+    "skippedSeen": 3,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://verifywallet.vercel.app",
+      "host": "verifywallet.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/amirxoo13/verifywallet",
+      "repoCreatedAt": "2026-08-21T04:31:10Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://app-rewards.vercel.app",
+      "host": "app-rewards.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/JJimenezz0/APP-Rewards",
+      "repoCreatedAt": "2026-08-21T02:08:43Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://bitbank.vercel.app",
+      "host": "bitbank.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/taot94681-source/BitBank",
+      "repoCreatedAt": "2026-08-21T03:34:04Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://digital-verification.vercel.app",
+      "host": "digital-verification.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/192525012simats-prethepa/digital-verification",
+      "repoCreatedAt": "2026-08-21T04:04:32Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://supportd.vercel.app",
+      "host": "supportd.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/vaughanthompson/supportd",
+      "repoCreatedAt": "2026-08-21T04:07:49Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1804.9,
+  "output": "drainers-2026-08-21T04-55Z.jsonl"
+}
