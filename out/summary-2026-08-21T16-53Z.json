@@ -1,0 +1,189 @@
+{
+  "generated": "2026-08-21T17:48:34.717Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-21T12:53:37Z",
+  "repos": 86478,
+  "candidates": 10839,
+  "candidatesByName": 1600,
+  "candidatesByHomepage": 117,
+  "candidatesByDeployment": 9120,
+  "live": 8648,
+  "dossiers": 8636,
+  "triaged": 740,
+  "confirmed": 16,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 7,
+    "404": 2150,
+    "429": 3,
+    "451": 4,
+    "500": 10,
+    "503": 2,
+    "504": 1,
+    "530": 1,
+    "live": 8648,
+    "protected": 5,
+    "err-Too many redirects.https://vault-expense": 1,
+    "err-ENOTFOUND": 6,
+    "err-redirect count exceeded": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1781,
+      "live": 484,
+      "takedowns": [
+        {
+          "url": "https://dex-frontend.vercel.app",
+          "host": "dex-frontend.vercel.app",
+          "label": "dex-frontend.vercel.app",
+          "source": "guess",
+          "repo": "sntecxdeveloper/dex_frontend",
+          "repoCreatedAt": "2026-08-21T12:55:06Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::cv7bz-1787332717739-7795caad2547</code></span></main></div>"
+        },
+        {
+          "url": "https://cambridge.vercel.app",
+          "host": "cambridge.vercel.app",
+          "label": "cambridge.vercel.app",
+          "source": "guess",
+          "repo": "yonas-be/CamBridge",
+          "repoCreatedAt": "2026-08-21T16:00:13Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::xbg7q-1787333207557-3eb5590a4640</code></span></main></div>"
+        },
+        {
+          "url": "https://studious-octo-winner.vercel.app",
+          "host": "studious-octo-winner.vercel.app",
+          "label": "studious-octo-winner.vercel.app",
+          "source": "guess",
+          "repo": "AAAAA206196/studious-octo-winner",
+          "repoCreatedAt": "2026-08-21T14:55:27Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::swdsv-1787333924279-f9712f5673ad</code></span></main></div>"
+        },
+        {
+          "url": "https://admin-support.vercel.app",
+          "host": "admin-support.vercel.app",
+          "label": "admin-support.vercel.app",
+          "source": "guess",
+          "repo": "nabodipd199-boop/admin-support",
+          "repoCreatedAt": "2026-08-21T15:07:35Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::z42bd-1787334023960-c9d2b3d05719</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 7,
+        "404": 1263,
+        "429": 3,
+        "451": 4,
+        "500": 10,
+        "503": 2,
+        "504": 1,
+        "530": 1,
+        "live": 484,
+        "protected": 5,
+        "err-Too many redirects.https://vault-expense": 1
+      },
+      "dossiers": 484,
+      "hostnameLane": 480,
+      "contentLane": 10,
+      "triaged": 481,
+      "confirmed": 8,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2077.92
+    },
+    "open": {
+      "name": "open",
+      "candidates": 9058,
+      "live": 8164,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 887,
+        "live": 8164,
+        "err-ENOTFOUND": 6,
+        "err-redirect count exceeded": 1
+      },
+      "dossiers": 8152,
+      "hostnameLane": 224,
+      "contentLane": 36,
+      "triaged": 259,
+      "confirmed": 8,
+      "canaryOutcomes": [],
+      "elapsedSec": 1096.18
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2393,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 14,
+    "urlscanFailed": 0,
+    "discord": 4,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 2,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://dex-frontend.vercel.app",
+      "host": "dex-frontend.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/sntecxdeveloper/dex_frontend",
+      "repoCreatedAt": "2026-08-21T12:55:06Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://cambridge.vercel.app",
+      "host": "cambridge.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/yonas-be/CamBridge",
+      "repoCreatedAt": "2026-08-21T16:00:13Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://studious-octo-winner.vercel.app",
+      "host": "studious-octo-winner.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/AAAAA206196/studious-octo-winner",
+      "repoCreatedAt": "2026-08-21T14:55:27Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://admin-support.vercel.app",
+      "host": "admin-support.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/nabodipd199-boop/admin-support",
+      "repoCreatedAt": "2026-08-21T15:07:35Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 3297.17,
+  "output": "drainers-2026-08-21T16-53Z.jsonl"
+}
