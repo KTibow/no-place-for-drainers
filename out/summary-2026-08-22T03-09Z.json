@@ -1,0 +1,147 @@
+{
+  "generated": "2026-08-22T03:28:30.640Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-21T23:09:15Z",
+  "repos": 37501,
+  "candidates": 4852,
+  "candidatesByName": 688,
+  "candidatesByHomepage": 66,
+  "candidatesByDeployment": 4096,
+  "live": 3914,
+  "dossiers": 3908,
+  "triaged": 295,
+  "confirmed": 7,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 2,
+    "404": 915,
+    "451": 2,
+    "500": 8,
+    "503": 1,
+    "504": 1,
+    "live": 3914,
+    "protected": 5,
+    "err-Too many redirects.https://financeai.ver": 1,
+    "err-Too many redirects.https://unisecure.ver": 1,
+    "err-Too many redirects.https://ease-de-fi.ve": 1,
+    "err-ENOTFOUND": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 762,
+      "live": 184,
+      "takedowns": [
+        {
+          "url": "https://wallets.vercel.app",
+          "host": "wallets.vercel.app",
+          "label": "wallets.vercel.app",
+          "source": "guess",
+          "repo": "oriworks/wallets",
+          "repoCreatedAt": "2026-08-21T23:27:41Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::nqfj2-1787368861446-b7a857a976be</code></span></main></div>"
+        },
+        {
+          "url": "https://chainvault.vercel.app",
+          "host": "chainvault.vercel.app",
+          "label": "chainvault.vercel.app",
+          "source": "guess",
+          "repo": "IamGiftDev/Chainvault",
+          "repoCreatedAt": "2026-08-22T02:18:30Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::s8x6w-1787369085568-be9c671ab22c</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 2,
+        "404": 556,
+        "451": 2,
+        "500": 8,
+        "503": 1,
+        "504": 1,
+        "live": 184,
+        "protected": 5,
+        "err-Too many redirects.https://financeai.ver": 1,
+        "err-Too many redirects.https://unisecure.ver": 1,
+        "err-Too many redirects.https://ease-de-fi.ve": 1
+      },
+      "dossiers": 184,
+      "hostnameLane": 181,
+      "contentLane": 4,
+      "triaged": 181,
+      "confirmed": 2,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 662.3
+    },
+    "open": {
+      "name": "open",
+      "candidates": 4090,
+      "live": 3730,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 359,
+        "live": 3730,
+        "err-ENOTFOUND": 1
+      },
+      "dossiers": 3724,
+      "hostnameLane": 97,
+      "contentLane": 17,
+      "triaged": 114,
+      "confirmed": 5,
+      "canaryOutcomes": [],
+      "elapsedSec": 422.6
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1015,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 5,
+    "urlscanFailed": 0,
+    "discord": 0,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 0,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://wallets.vercel.app",
+      "host": "wallets.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/oriworks/wallets",
+      "repoCreatedAt": "2026-08-21T23:27:41Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://chainvault.vercel.app",
+      "host": "chainvault.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/IamGiftDev/Chainvault",
+      "repoCreatedAt": "2026-08-22T02:18:30Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1155.32,
+  "output": "drainers-2026-08-22T03-09Z.jsonl"
+}
