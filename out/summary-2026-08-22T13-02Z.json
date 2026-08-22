@@ -1,0 +1,153 @@
+{
+  "generated": "2026-08-22T13:49:28.815Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-22T09:02:38Z",
+  "repos": 87307,
+  "candidates": 8694,
+  "candidatesByName": 1348,
+  "candidatesByHomepage": 141,
+  "candidatesByDeployment": 7203,
+  "live": 6878,
+  "dossiers": 6875,
+  "triaged": 708,
+  "confirmed": 19,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 8,
+    "404": 1776,
+    "451": 2,
+    "500": 13,
+    "503": 1,
+    "530": 1,
+    "999": 1,
+    "live": 6878,
+    "err-Too many redirects.https://walletly.verc": 1,
+    "protected": 7,
+    "err-Too many redirects.https://docvault-app.": 1,
+    "err-Too many redirects.https://financeai.ver": 1,
+    "err-Too many redirects.https://ai-trading-jo": 1,
+    "err-UND_ERR_CONNECT_TIMEOUT": 1,
+    "err-ENOTFOUND": 2
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1570,
+      "live": 480,
+      "takedowns": [
+        {
+          "url": "https://community-trust.vercel.app",
+          "host": "community-trust.vercel.app",
+          "label": "community-trust.vercel.app",
+          "source": "guess",
+          "repo": "monad-abuja/community-trust",
+          "repoCreatedAt": "2026-08-22T11:24:20Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::jtz92-1787404793155-349dae93fac5</code></span></main></div>"
+        },
+        {
+          "url": "https://real-time-chat.vercel.app",
+          "host": "real-time-chat.vercel.app",
+          "label": "real-time-chat.vercel.app",
+          "source": "guess",
+          "repo": "shivam-yadav989/Real-time-chat",
+          "repoCreatedAt": "2026-08-22T11:18:33Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::jw8wk-1787405370259-bcc0c5f25aeb</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 8,
+        "404": 1054,
+        "451": 2,
+        "500": 13,
+        "503": 1,
+        "530": 1,
+        "live": 480,
+        "err-Too many redirects.https://walletly.verc": 1,
+        "protected": 7,
+        "err-Too many redirects.https://docvault-app.": 1,
+        "err-Too many redirects.https://financeai.ver": 1,
+        "err-Too many redirects.https://ai-trading-jo": 1
+      },
+      "dossiers": 480,
+      "hostnameLane": 474,
+      "contentLane": 11,
+      "triaged": 474,
+      "confirmed": 5,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2144.85
+    },
+    "open": {
+      "name": "open",
+      "candidates": 7124,
+      "live": 6398,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 722,
+        "999": 1,
+        "live": 6398,
+        "err-UND_ERR_CONNECT_TIMEOUT": 1,
+        "err-ENOTFOUND": 2
+      },
+      "dossiers": 6395,
+      "hostnameLane": 193,
+      "contentLane": 44,
+      "triaged": 234,
+      "confirmed": 14,
+      "canaryOutcomes": [],
+      "elapsedSec": 1184.97
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2214,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 18,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 2,
+    "skippedSeen": 2,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://community-trust.vercel.app",
+      "host": "community-trust.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/monad-abuja/community-trust",
+      "repoCreatedAt": "2026-08-22T11:24:20Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://real-time-chat.vercel.app",
+      "host": "real-time-chat.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/shivam-yadav989/Real-time-chat",
+      "repoCreatedAt": "2026-08-22T11:18:33Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2810.56,
+  "output": "drainers-2026-08-22T13-02Z.jsonl"
+}
