@@ -1,0 +1,213 @@
+{
+  "generated": "2026-08-22T09:42:00.391Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-22T04:49:20Z",
+  "repos": 84695,
+  "candidates": 7476,
+  "candidatesByName": 1310,
+  "candidatesByHomepage": 122,
+  "candidatesByDeployment": 6042,
+  "live": 5844,
+  "dossiers": 5840,
+  "triaged": 639,
+  "confirmed": 10,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 5,
+    "404": 1597,
+    "451": 5,
+    "500": 8,
+    "live": 5844,
+    "err-Too many redirects.https://rain-guard.ve": 1,
+    "err-Too many redirects.https://audio-vault.v": 1,
+    "err-Too many redirects.https://snippetvault.": 1,
+    "err-Too many redirects.https://account-dashb": 1,
+    "err-Too many redirects.https://financeai.ver": 1,
+    "protected": 5,
+    "err-23": 2,
+    "err-Too many redirects.https://rag-pdf-chat.": 1,
+    "err-ENOTFOUND": 3,
+    "err-redirect count exceeded": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1504,
+      "live": 455,
+      "takedowns": [
+        {
+          "url": "https://meta-account.vercel.app",
+          "host": "meta-account.vercel.app",
+          "label": "meta-account.vercel.app",
+          "source": "guess",
+          "repo": "cnayeem810-ship-it/Meta-Account",
+          "repoCreatedAt": "2026-08-22T05:30:50Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::qzjqv-1787390352877-e861dfb939b8</code></span></main></div>"
+        },
+        {
+          "url": "https://studious-octo-winner.vercel.app",
+          "host": "studious-octo-winner.vercel.app",
+          "label": "studious-octo-winner.vercel.app",
+          "source": "guess",
+          "repo": "bighugeelephant/studious-octo-winner",
+          "repoCreatedAt": "2026-08-22T06:57:52Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::dqmth-1787390781317-17e45fbdb3f5</code></span></main></div>"
+        },
+        {
+          "url": "https://exchangetest.vercel.app",
+          "host": "exchangetest.vercel.app",
+          "label": "exchangetest.vercel.app",
+          "source": "guess",
+          "repo": "weme1105/exchangeTest",
+          "repoCreatedAt": "2026-08-22T07:38:29Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::j2r9w-1787391032410-62398245e747</code></span></main></div>"
+        },
+        {
+          "url": "https://supportticket.vercel.app",
+          "host": "supportticket.vercel.app",
+          "label": "supportticket.vercel.app",
+          "source": "guess",
+          "repo": "Harshithak1904/SupportTicket",
+          "repoCreatedAt": "2026-08-22T08:04:15Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::7nww6-1787391193394-f7f1d2f6cd16</code></span></main></div>"
+        },
+        {
+          "url": "https://helpdeskx.vercel.app",
+          "host": "helpdeskx.vercel.app",
+          "label": "helpdeskx.vercel.app",
+          "source": "guess",
+          "repo": "jadhavadarsh27/-helpdeskx-.",
+          "repoCreatedAt": "2026-08-22T08:31:43Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::lcf2l-1787391308326-1c7b082f1ad8</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 5,
+        "404": 1018,
+        "451": 5,
+        "500": 8,
+        "live": 455,
+        "err-Too many redirects.https://rain-guard.ve": 1,
+        "err-Too many redirects.https://audio-vault.v": 1,
+        "err-Too many redirects.https://snippetvault.": 1,
+        "err-Too many redirects.https://account-dashb": 1,
+        "err-Too many redirects.https://financeai.ver": 1,
+        "protected": 5,
+        "err-23": 2,
+        "err-Too many redirects.https://rag-pdf-chat.": 1
+      },
+      "dossiers": 455,
+      "hostnameLane": 452,
+      "contentLane": 13,
+      "triaged": 452,
+      "confirmed": 7,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2017.47
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5972,
+      "live": 5389,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 579,
+        "live": 5389,
+        "err-ENOTFOUND": 3,
+        "err-redirect count exceeded": 1
+      },
+      "dossiers": 5385,
+      "hostnameLane": 163,
+      "contentLane": 31,
+      "triaged": 187,
+      "confirmed": 3,
+      "canaryOutcomes": [],
+      "elapsedSec": 848.74
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2097,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 8,
+    "urlscanFailed": 0,
+    "discord": 3,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 2,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://meta-account.vercel.app",
+      "host": "meta-account.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/cnayeem810-ship-it/Meta-Account",
+      "repoCreatedAt": "2026-08-22T05:30:50Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://studious-octo-winner.vercel.app",
+      "host": "studious-octo-winner.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/bighugeelephant/studious-octo-winner",
+      "repoCreatedAt": "2026-08-22T06:57:52Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://exchangetest.vercel.app",
+      "host": "exchangetest.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/weme1105/exchangeTest",
+      "repoCreatedAt": "2026-08-22T07:38:29Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://supportticket.vercel.app",
+      "host": "supportticket.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Harshithak1904/SupportTicket",
+      "repoCreatedAt": "2026-08-22T08:04:15Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://helpdeskx.vercel.app",
+      "host": "helpdeskx.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/jadhavadarsh27/-helpdeskx-.",
+      "repoCreatedAt": "2026-08-22T08:31:43Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 3160.13,
+  "output": "drainers-2026-08-22T08-49Z.jsonl"
+}
