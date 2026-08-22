@@ -1,0 +1,193 @@
+{
+  "generated": "2026-08-22T21:25:15.636Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-22T16:42:06Z",
+  "repos": 68627,
+  "candidates": 8263,
+  "candidatesByName": 1405,
+  "candidatesByHomepage": 131,
+  "candidatesByDeployment": 6725,
+  "live": 6511,
+  "dossiers": 6506,
+  "triaged": 693,
+  "confirmed": 15,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 6,
+    "404": 1720,
+    "451": 4,
+    "500": 9,
+    "503": 1,
+    "504": 1,
+    "530": 1,
+    "live": 6511,
+    "err-Too many redirects.https://snippetvault.": 1,
+    "err-Too many redirects.https://appfinance.ve": 1,
+    "protected": 4,
+    "err-Too many redirects.https://finance-ai-da": 1,
+    "err-Too many redirects.https://proyecto-trad": 1,
+    "err-Too many redirects.https://smart-finance": 1,
+    "err-23": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1595,
+      "live": 482,
+      "takedowns": [
+        {
+          "url": "https://securepay.vercel.app",
+          "host": "securepay.vercel.app",
+          "label": "securepay.vercel.app",
+          "source": "guess",
+          "repo": "ansi9/SecurePay",
+          "repoCreatedAt": "2026-08-22T19:48:06Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::gr7xl-1787432667353-41864652cd87</code></span></main></div>"
+        },
+        {
+          "url": "https://insta-login.vercel.app",
+          "host": "insta-login.vercel.app",
+          "label": "insta-login.vercel.app",
+          "source": "guess",
+          "repo": "aallnewupdate-web/Insta-login",
+          "repoCreatedAt": "2026-08-22T20:19:20Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::pfnsd-1787432800375-fc070a860932</code></span></main></div>"
+        },
+        {
+          "url": "https://it-support-hub.vercel.app",
+          "host": "it-support-hub.vercel.app",
+          "label": "it-support-hub.vercel.app",
+          "source": "guess",
+          "repo": "doganutku/it-support-hub",
+          "repoCreatedAt": "2026-08-22T18:31:13Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::jtzg8-1787433002826-ccef8523f42c</code></span></main></div>"
+        },
+        {
+          "url": "https://uniswap-v2.vercel.app",
+          "host": "uniswap-v2.vercel.app",
+          "label": "uniswap-v2.vercel.app",
+          "source": "guess",
+          "repo": "nightswatchhq/uniswap-v2",
+          "repoCreatedAt": "2026-08-22T18:06:50Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::gr4xx-1787433175533-b425ed4e6e50</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 6,
+        "404": 1082,
+        "451": 4,
+        "500": 9,
+        "503": 1,
+        "504": 1,
+        "530": 1,
+        "live": 482,
+        "err-Too many redirects.https://snippetvault.": 1,
+        "err-Too many redirects.https://appfinance.ve": 1,
+        "protected": 4,
+        "err-Too many redirects.https://finance-ai-da": 1,
+        "err-Too many redirects.https://proyecto-trad": 1,
+        "err-Too many redirects.https://smart-finance": 1
+      },
+      "dossiers": 481,
+      "hostnameLane": 476,
+      "contentLane": 22,
+      "triaged": 476,
+      "confirmed": 7,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1705.47
+    },
+    "open": {
+      "name": "open",
+      "candidates": 6668,
+      "live": 6029,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 638,
+        "live": 6029,
+        "err-23": 1
+      },
+      "dossiers": 6025,
+      "hostnameLane": 192,
+      "contentLane": 25,
+      "triaged": 217,
+      "confirmed": 8,
+      "canaryOutcomes": [],
+      "elapsedSec": 856
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2209,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 13,
+    "urlscanFailed": 0,
+    "discord": 0,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 5,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://securepay.vercel.app",
+      "host": "securepay.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/ansi9/SecurePay",
+      "repoCreatedAt": "2026-08-22T19:48:06Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://insta-login.vercel.app",
+      "host": "insta-login.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/aallnewupdate-web/Insta-login",
+      "repoCreatedAt": "2026-08-22T20:19:20Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://it-support-hub.vercel.app",
+      "host": "it-support-hub.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/doganutku/it-support-hub",
+      "repoCreatedAt": "2026-08-22T18:31:13Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://uniswap-v2.vercel.app",
+      "host": "uniswap-v2.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/nightswatchhq/uniswap-v2",
+      "repoCreatedAt": "2026-08-22T18:06:50Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2589.57,
+  "output": "drainers-2026-08-22T20-42Z.jsonl"
+}
