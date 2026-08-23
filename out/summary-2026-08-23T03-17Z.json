@@ -1,0 +1,139 @@
+{
+  "generated": "2026-08-23T03:35:26.680Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-22T23:17:07Z",
+  "repos": 33561,
+  "candidates": 4483,
+  "candidatesByName": 694,
+  "candidatesByHomepage": 50,
+  "candidatesByDeployment": 3737,
+  "live": 3509,
+  "dossiers": 3508,
+  "triaged": 283,
+  "confirmed": 8,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "404": 962,
+    "451": 2,
+    "500": 5,
+    "live": 3509,
+    "protected": 1,
+    "err-Too many redirects.https://cryptolab.ver": 1,
+    "err-Too many redirects.https://nexuscrypto.v": 1,
+    "err-ENOTFOUND": 2
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 757,
+      "live": 177,
+      "takedowns": [
+        {
+          "url": "https://walletconnect.vercel.app",
+          "host": "walletconnect.vercel.app",
+          "label": "walletconnect.vercel.app",
+          "source": "deployment",
+          "repo": "olamiji111/walletcoonnect-filedownload",
+          "repoCreatedAt": "2026-08-23T02:49:15Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::zn52j-1787455463173-585a11d2fa61</code></span></main></div>"
+        },
+        {
+          "url": "https://aerovault.vercel.app",
+          "host": "aerovault.vercel.app",
+          "label": "aerovault.vercel.app",
+          "source": "guess",
+          "repo": "ajaniobatofolasewa-dev/Aerovault",
+          "repoCreatedAt": "2026-08-23T01:15:45Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::4nlgb-1787455694890-c3cdf267629e</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "404": 570,
+        "451": 2,
+        "500": 5,
+        "live": 177,
+        "protected": 1,
+        "err-Too many redirects.https://cryptolab.ver": 1,
+        "err-Too many redirects.https://nexuscrypto.v": 1
+      },
+      "dossiers": 177,
+      "hostnameLane": 174,
+      "contentLane": 9,
+      "triaged": 174,
+      "confirmed": 6,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 670.19
+    },
+    "open": {
+      "name": "open",
+      "candidates": 3726,
+      "live": 3332,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 392,
+        "live": 3332,
+        "err-ENOTFOUND": 2
+      },
+      "dossiers": 3331,
+      "hostnameLane": 95,
+      "contentLane": 14,
+      "triaged": 109,
+      "confirmed": 2,
+      "canaryOutcomes": [],
+      "elapsedSec": 416.14
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1003,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 6,
+    "urlscanFailed": 0,
+    "discord": 1,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 3,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://walletconnect.vercel.app",
+      "host": "walletconnect.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/olamiji111/walletcoonnect-filedownload",
+      "repoCreatedAt": "2026-08-23T02:49:15Z",
+      "source": "deployment"
+    },
+    {
+      "url": "https://aerovault.vercel.app",
+      "host": "aerovault.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/ajaniobatofolasewa-dev/Aerovault",
+      "repoCreatedAt": "2026-08-23T01:15:45Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1098.82,
+  "output": "drainers-2026-08-23T03-17Z.jsonl"
+}
