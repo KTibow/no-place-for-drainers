@@ -1,0 +1,185 @@
+{
+  "generated": "2026-08-23T23:11:32.134Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-23T18:40:42Z",
+  "repos": 70010,
+  "candidates": 6869,
+  "candidatesByName": 1171,
+  "candidatesByHomepage": 64,
+  "candidatesByDeployment": 5632,
+  "live": 5364,
+  "dossiers": 5363,
+  "triaged": 463,
+  "confirmed": 18,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 6,
+    "404": 1473,
+    "429": 1,
+    "451": 4,
+    "500": 14,
+    "530": 2,
+    "live": 5364,
+    "err-Too many redirects.https://clientbridge.": 1,
+    "protected": 2,
+    "err-Too many redirects.https://cryptolab.ver": 1,
+    "err-ENOTFOUND": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1270,
+      "live": 279,
+      "takedowns": [
+        {
+          "url": "https://solana-dapps.vercel.app",
+          "host": "solana-dapps.vercel.app",
+          "label": "solana-dapps.vercel.app",
+          "source": "guess",
+          "repo": "ArturBieniek4/solana-dapps",
+          "repoCreatedAt": "2026-08-23T18:51:45Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::gvnp6-1787525892839-e09d5688f6a6</code></span></main></div>"
+        },
+        {
+          "url": "https://navigation-node.vercel.app",
+          "host": "navigation-node.vercel.app",
+          "label": "navigation-node.vercel.app",
+          "source": "guess",
+          "repo": "vi-k/navigation_node",
+          "repoCreatedAt": "2026-08-23T22:17:43Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::48g9v-1787526005550-d16bff183977</code></span></main></div>"
+        },
+        {
+          "url": "https://super-duper-winner.vercel.app",
+          "host": "super-duper-winner.vercel.app",
+          "label": "super-duper-winner.vercel.app",
+          "source": "guess",
+          "repo": "Eugene5538/super-duper-winner",
+          "repoCreatedAt": "2026-08-23T20:48:40Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::gffc8-1787526089084-b42da92a884a</code></span></main></div>"
+        },
+        {
+          "url": "https://securepay.vercel.app",
+          "host": "securepay.vercel.app",
+          "label": "securepay.vercel.app",
+          "source": "guess",
+          "repo": "ansi9/SecurePay",
+          "repoCreatedAt": "2026-08-23T19:27:33Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::8n2dg-1787526090381-1273cd370ff9</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 6,
+        "404": 960,
+        "429": 1,
+        "451": 4,
+        "500": 14,
+        "530": 2,
+        "live": 279,
+        "err-Too many redirects.https://clientbridge.": 1,
+        "protected": 2,
+        "err-Too many redirects.https://cryptolab.ver": 1
+      },
+      "dossiers": 279,
+      "hostnameLane": 279,
+      "contentLane": 10,
+      "triaged": 279,
+      "confirmed": 6,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 890.48
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5599,
+      "live": 5085,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 513,
+        "live": 5085,
+        "err-ENOTFOUND": 1
+      },
+      "dossiers": 5084,
+      "hostnameLane": 149,
+      "contentLane": 40,
+      "triaged": 184,
+      "confirmed": 12,
+      "canaryOutcomes": [],
+      "elapsedSec": 594.19
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1636,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 16,
+    "urlscanFailed": 0,
+    "discord": 1,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 3,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://solana-dapps.vercel.app",
+      "host": "solana-dapps.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/ArturBieniek4/solana-dapps",
+      "repoCreatedAt": "2026-08-23T18:51:45Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://navigation-node.vercel.app",
+      "host": "navigation-node.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/vi-k/navigation_node",
+      "repoCreatedAt": "2026-08-23T22:17:43Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://super-duper-winner.vercel.app",
+      "host": "super-duper-winner.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Eugene5538/super-duper-winner",
+      "repoCreatedAt": "2026-08-23T20:48:40Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://securepay.vercel.app",
+      "host": "securepay.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/ansi9/SecurePay",
+      "repoCreatedAt": "2026-08-23T19:27:33Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1849.45,
+  "output": "drainers-2026-08-23T22-40Z.jsonl"
+}
