@@ -1,0 +1,244 @@
+{
+  "generated": "2026-08-24T11:49:19.046Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-24T06:55:35Z",
+  "repos": 82404,
+  "candidates": 9616,
+  "candidatesByName": 1518,
+  "candidatesByHomepage": 121,
+  "candidatesByDeployment": 7975,
+  "live": 7533,
+  "dossiers": 7527,
+  "triaged": 654,
+  "confirmed": 11,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 6,
+    "404": 2045,
+    "451": 7,
+    "500": 17,
+    "503": 2,
+    "504": 1,
+    "live": 7533,
+    "err-Too many redirects.https://skill-sync-ai": 1,
+    "protected": 3,
+    "err-ENOTFOUND": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1701,
+      "live": 433,
+      "takedowns": [
+        {
+          "url": "https://paypalsupport.vercel.app",
+          "host": "paypalsupport.vercel.app",
+          "label": "paypalsupport.vercel.app",
+          "source": "deployment",
+          "repo": "RichtheCypher/paypalsupport",
+          "repoCreatedAt": "2026-08-24T09:23:45Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::2ntp8-1787570011505-6709fce2343c</code></span></main></div>"
+        },
+        {
+          "url": "https://meta-ledger.vercel.app",
+          "host": "meta-ledger.vercel.app",
+          "label": "meta-ledger.vercel.app",
+          "source": "deployment",
+          "repo": "SriHariJagan/metaLedger",
+          "repoCreatedAt": "2026-08-24T09:19:10Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::m2wx9-1787570209777-a944d8e0b396</code></span></main></div>"
+        },
+        {
+          "url": "https://ledger-webapp.vercel.app",
+          "host": "ledger-webapp.vercel.app",
+          "label": "ledger-webapp.vercel.app",
+          "source": "deployment",
+          "repo": "plawanhub-netizen/ledger-webapp",
+          "repoCreatedAt": "2026-08-24T09:36:53Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::vwkqj-1787570244906-9550e0ad94d0</code></span></main></div>"
+        },
+        {
+          "url": "https://open-exchange.vercel.app",
+          "host": "open-exchange.vercel.app",
+          "label": "open-exchange.vercel.app",
+          "source": "guess",
+          "repo": "urwizzu-oss/open-exchange",
+          "repoCreatedAt": "2026-08-24T10:13:54Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::xnxjs-1787570425227-3df0128ed2b2</code></span></main></div>"
+        },
+        {
+          "url": "https://helpdeskpro.vercel.app",
+          "host": "helpdeskpro.vercel.app",
+          "label": "helpdeskpro.vercel.app",
+          "source": "guess",
+          "repo": "ShyamCSE/helpdeskpro",
+          "repoCreatedAt": "2026-08-24T08:10:40Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::6vp8x-1787570746277-c4ebff842111</code></span></main></div>"
+        },
+        {
+          "url": "https://metaledger.vercel.app",
+          "host": "metaledger.vercel.app",
+          "label": "metaledger.vercel.app",
+          "source": "guess",
+          "repo": "SriHariJagan/metaLedger",
+          "repoCreatedAt": "2026-08-24T09:19:10Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::chpqq-1787571397236-25943c9280df</code></span></main></div>"
+        },
+        {
+          "url": "https://smartwallet.vercel.app",
+          "host": "smartwallet.vercel.app",
+          "label": "smartwallet.vercel.app",
+          "source": "guess",
+          "repo": "tophuongtoan223/smartwallet",
+          "repoCreatedAt": "2026-08-24T08:35:29Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::cfch2-1787571602649-12d1b5423c43</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 6,
+        "404": 1232,
+        "451": 7,
+        "500": 17,
+        "503": 1,
+        "504": 1,
+        "live": 433,
+        "err-Too many redirects.https://skill-sync-ai": 1,
+        "protected": 3
+      },
+      "dossiers": 432,
+      "hostnameLane": 426,
+      "contentLane": 10,
+      "triaged": 426,
+      "confirmed": 6,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2133.22
+    },
+    "open": {
+      "name": "open",
+      "candidates": 7915,
+      "live": 7100,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 813,
+        "503": 1,
+        "live": 7100,
+        "err-ENOTFOUND": 1
+      },
+      "dossiers": 7095,
+      "hostnameLane": 209,
+      "contentLane": 19,
+      "triaged": 228,
+      "confirmed": 5,
+      "canaryOutcomes": [],
+      "elapsedSec": 1130.28
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2296,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 9,
+    "urlscanFailed": 0,
+    "discord": 1,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 3,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://paypalsupport.vercel.app",
+      "host": "paypalsupport.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/RichtheCypher/paypalsupport",
+      "repoCreatedAt": "2026-08-24T09:23:45Z",
+      "source": "deployment"
+    },
+    {
+      "url": "https://meta-ledger.vercel.app",
+      "host": "meta-ledger.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/SriHariJagan/metaLedger",
+      "repoCreatedAt": "2026-08-24T09:19:10Z",
+      "source": "deployment"
+    },
+    {
+      "url": "https://ledger-webapp.vercel.app",
+      "host": "ledger-webapp.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/plawanhub-netizen/ledger-webapp",
+      "repoCreatedAt": "2026-08-24T09:36:53Z",
+      "source": "deployment"
+    },
+    {
+      "url": "https://open-exchange.vercel.app",
+      "host": "open-exchange.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/urwizzu-oss/open-exchange",
+      "repoCreatedAt": "2026-08-24T10:13:54Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://helpdeskpro.vercel.app",
+      "host": "helpdeskpro.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/ShyamCSE/helpdeskpro",
+      "repoCreatedAt": "2026-08-24T08:10:40Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://metaledger.vercel.app",
+      "host": "metaledger.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/SriHariJagan/metaLedger",
+      "repoCreatedAt": "2026-08-24T09:19:10Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://smartwallet.vercel.app",
+      "host": "smartwallet.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/tophuongtoan223/smartwallet",
+      "repoCreatedAt": "2026-08-24T08:35:29Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 3223.6,
+  "output": "drainers-2026-08-24T10-55Z.jsonl"
+}
