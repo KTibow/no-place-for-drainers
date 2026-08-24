@@ -1,0 +1,141 @@
+{
+  "generated": "2026-08-24T08:13:48.562Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-24T03:30:18Z",
+  "repos": 78644,
+  "candidates": 7739,
+  "candidatesByName": 1285,
+  "candidatesByHomepage": 78,
+  "candidatesByDeployment": 6374,
+  "live": 6102,
+  "dossiers": 6096,
+  "triaged": 563,
+  "confirmed": 12,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 6,
+    "404": 1612,
+    "429": 1,
+    "451": 2,
+    "500": 10,
+    "530": 1,
+    "live": 6102,
+    "protected": 4,
+    "err-Too many redirects.https://trading-alert": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1452,
+      "live": 380,
+      "takedowns": [
+        {
+          "url": "https://account-s.vercel.app",
+          "host": "account-s.vercel.app",
+          "label": "account-s.vercel.app",
+          "source": "guess",
+          "repo": "thamanteja091-png/Account-s-",
+          "repoCreatedAt": "2026-08-24T05:10:36Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::556lm-1787558215216-56008a292d7b</code></span></main></div>"
+        },
+        {
+          "url": "https://phantomfix.vercel.app",
+          "host": "phantomfix.vercel.app",
+          "label": "phantomfix.vercel.app",
+          "source": "guess",
+          "repo": "cruddierosprey/PhantomFix",
+          "repoCreatedAt": "2026-08-24T05:18:45Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::cjwbq-1787558242279-875d4f492ddd</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 6,
+        "404": 1047,
+        "429": 1,
+        "451": 2,
+        "500": 10,
+        "530": 1,
+        "live": 380,
+        "protected": 4,
+        "err-Too many redirects.https://trading-alert": 1
+      },
+      "dossiers": 380,
+      "hostnameLane": 376,
+      "contentLane": 12,
+      "triaged": 376,
+      "confirmed": 9,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2080.77
+    },
+    "open": {
+      "name": "open",
+      "candidates": 6287,
+      "live": 5722,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 565,
+        "live": 5722
+      },
+      "dossiers": 5716,
+      "hostnameLane": 161,
+      "contentLane": 30,
+      "triaged": 187,
+      "confirmed": 3,
+      "canaryOutcomes": [],
+      "elapsedSec": 988.96
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1921,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 10,
+    "urlscanFailed": 0,
+    "discord": 1,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 6,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://account-s.vercel.app",
+      "host": "account-s.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/thamanteja091-png/Account-s-",
+      "repoCreatedAt": "2026-08-24T05:10:36Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://phantomfix.vercel.app",
+      "host": "phantomfix.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/cruddierosprey/PhantomFix",
+      "repoCreatedAt": "2026-08-24T05:18:45Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2610.28,
+  "output": "drainers-2026-08-24T07-30Z.jsonl"
+}
