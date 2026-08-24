@@ -1,0 +1,191 @@
+{
+  "generated": "2026-08-24T10:01:18.778Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-24T05:06:43Z",
+  "repos": 77755,
+  "candidates": 8745,
+  "candidatesByName": 1461,
+  "candidatesByHomepage": 101,
+  "candidatesByDeployment": 7181,
+  "live": 6818,
+  "dossiers": 6812,
+  "triaged": 622,
+  "confirmed": 11,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 7,
+    "404": 1887,
+    "409": 1,
+    "451": 4,
+    "500": 17,
+    "503": 1,
+    "504": 1,
+    "live": 6818,
+    "protected": 3,
+    "err-Too many redirects.https://skill-sync-ai": 1,
+    "err-Too many redirects.https://trading-alert": 1,
+    "err-ENOTFOUND": 2,
+    "err-EAI_AGAIN": 1,
+    "err-23": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1622,
+      "live": 407,
+      "takedowns": [
+        {
+          "url": "https://smartwallet.vercel.app",
+          "host": "smartwallet.vercel.app",
+          "label": "smartwallet.vercel.app",
+          "source": "guess",
+          "repo": "tophuongtoan223/smartwallet",
+          "repoCreatedAt": "2026-08-24T08:35:29Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::mnlt7-1787564072191-33e9feb6f1a7</code></span></main></div>"
+        },
+        {
+          "url": "https://helpdeskpro.vercel.app",
+          "host": "helpdeskpro.vercel.app",
+          "label": "helpdeskpro.vercel.app",
+          "source": "guess",
+          "repo": "ShyamCSE/helpdeskpro",
+          "repoCreatedAt": "2026-08-24T08:10:40Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::nw47j-1787564233270-6019ff582738</code></span></main></div>"
+        },
+        {
+          "url": "https://account-s.vercel.app",
+          "host": "account-s.vercel.app",
+          "label": "account-s.vercel.app",
+          "source": "guess",
+          "repo": "thamanteja091-png/Account-s-",
+          "repoCreatedAt": "2026-08-24T05:10:36Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::9c8m4-1787565117924-e73d9324446b</code></span></main></div>"
+        },
+        {
+          "url": "https://phantomfix.vercel.app",
+          "host": "phantomfix.vercel.app",
+          "label": "phantomfix.vercel.app",
+          "source": "guess",
+          "repo": "cruddierosprey/PhantomFix",
+          "repoCreatedAt": "2026-08-24T05:18:45Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::4p7ls-1787565165865-dc49512ad36a</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 7,
+        "404": 1180,
+        "451": 4,
+        "500": 17,
+        "503": 1,
+        "504": 1,
+        "live": 407,
+        "protected": 3,
+        "err-Too many redirects.https://skill-sync-ai": 1,
+        "err-Too many redirects.https://trading-alert": 1
+      },
+      "dossiers": 407,
+      "hostnameLane": 402,
+      "contentLane": 10,
+      "triaged": 402,
+      "confirmed": 6,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 2223.86
+    },
+    "open": {
+      "name": "open",
+      "candidates": 7123,
+      "live": 6411,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 707,
+        "409": 1,
+        "live": 6411,
+        "err-ENOTFOUND": 2,
+        "err-EAI_AGAIN": 1,
+        "err-23": 1
+      },
+      "dossiers": 6405,
+      "hostnameLane": 197,
+      "contentLane": 26,
+      "triaged": 220,
+      "confirmed": 5,
+      "canaryOutcomes": [],
+      "elapsedSec": 1322.44
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2156,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 10,
+    "urlscanFailed": 0,
+    "discord": 1,
+    "discordFailed": 1,
+    "skippedCanary": 2,
+    "skippedSeen": 3,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://smartwallet.vercel.app",
+      "host": "smartwallet.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/tophuongtoan223/smartwallet",
+      "repoCreatedAt": "2026-08-24T08:35:29Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://helpdeskpro.vercel.app",
+      "host": "helpdeskpro.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/ShyamCSE/helpdeskpro",
+      "repoCreatedAt": "2026-08-24T08:10:40Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://account-s.vercel.app",
+      "host": "account-s.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/thamanteja091-png/Account-s-",
+      "repoCreatedAt": "2026-08-24T05:10:36Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://phantomfix.vercel.app",
+      "host": "phantomfix.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/cruddierosprey/PhantomFix",
+      "repoCreatedAt": "2026-08-24T05:18:45Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 3275.42,
+  "output": "drainers-2026-08-24T09-06Z.jsonl"
+}
