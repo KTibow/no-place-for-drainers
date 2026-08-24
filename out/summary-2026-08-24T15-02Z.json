@@ -1,0 +1,170 @@
+{
+  "generated": "2026-08-24T15:49:56.092Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-24T11:02:55Z",
+  "repos": 82611,
+  "candidates": 11350,
+  "candidatesByName": 1748,
+  "candidatesByHomepage": 166,
+  "candidatesByDeployment": 9434,
+  "live": 8914,
+  "dossiers": 8911,
+  "triaged": 695,
+  "confirmed": 22,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "400": 1,
+    "402": 3,
+    "404": 2409,
+    "405": 1,
+    "451": 3,
+    "500": 8,
+    "503": 3,
+    "504": 1,
+    "live": 8914,
+    "protected": 4,
+    "err-Too many redirects.https://ai-job-assist": 1,
+    "err-Too many redirects.https://chat-with-pdf": 1,
+    "err-ENOTFOUND": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1926,
+      "live": 446,
+      "takedowns": [
+        {
+          "url": "https://customer-account.vercel.app",
+          "host": "customer-account.vercel.app",
+          "label": "customer-account.vercel.app",
+          "source": "guess",
+          "repo": "Venky-1990/Customer-account",
+          "repoCreatedAt": "2026-08-24T13:04:48Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::f9dcd-1787585645432-3c990765e928</code></span></main></div>"
+        },
+        {
+          "url": "https://binance.vercel.app",
+          "host": "binance.vercel.app",
+          "label": "binance.vercel.app",
+          "source": "guess",
+          "repo": "binanceofficial673-cmd/binance",
+          "repoCreatedAt": "2026-08-24T13:14:41Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::gb2t6-1787585677559-571a6250bc71</code></span></main></div>"
+        },
+        {
+          "url": "https://idfc-bank.vercel.app",
+          "host": "idfc-bank.vercel.app",
+          "label": "idfc-bank.vercel.app",
+          "source": "guess",
+          "repo": "trainer-techpanda/idfc_bank",
+          "repoCreatedAt": "2026-08-24T12:31:06Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::fkpbr-1787586006905-1906e37859dc</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "400": 1,
+        "402": 3,
+        "404": 1455,
+        "405": 1,
+        "451": 3,
+        "500": 8,
+        "503": 2,
+        "504": 1,
+        "live": 446,
+        "protected": 4,
+        "err-Too many redirects.https://ai-job-assist": 1,
+        "err-Too many redirects.https://chat-with-pdf": 1
+      },
+      "dossiers": 446,
+      "hostnameLane": 440,
+      "contentLane": 18,
+      "triaged": 440,
+      "confirmed": 10,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1734.67
+    },
+    "open": {
+      "name": "open",
+      "candidates": 9424,
+      "live": 8468,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 954,
+        "503": 1,
+        "live": 8468,
+        "err-ENOTFOUND": 1
+      },
+      "dossiers": 8465,
+      "hostnameLane": 226,
+      "contentLane": 33,
+      "triaged": 255,
+      "confirmed": 12,
+      "canaryOutcomes": [],
+      "elapsedSec": 971.35
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2510,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 20,
+    "urlscanFailed": 0,
+    "discord": 3,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 5,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://customer-account.vercel.app",
+      "host": "customer-account.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Venky-1990/Customer-account",
+      "repoCreatedAt": "2026-08-24T13:04:48Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://binance.vercel.app",
+      "host": "binance.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/binanceofficial673-cmd/binance",
+      "repoCreatedAt": "2026-08-24T13:14:41Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://idfc-bank.vercel.app",
+      "host": "idfc-bank.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/trainer-techpanda/idfc_bank",
+      "repoCreatedAt": "2026-08-24T12:31:06Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2820.51,
+  "output": "drainers-2026-08-24T15-02Z.jsonl"
+}
