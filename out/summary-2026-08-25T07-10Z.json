@@ -1,0 +1,141 @@
+{
+  "generated": "2026-08-25T07:50:47.471Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-25T03:10:22Z",
+  "repos": 81992,
+  "candidates": 8190,
+  "candidatesByName": 1274,
+  "candidatesByHomepage": 106,
+  "candidatesByDeployment": 6808,
+  "live": 6383,
+  "dossiers": 6372,
+  "triaged": 549,
+  "confirmed": 14,
+  "llmFailures": 1,
+  "probeStatuses": {
+    "402": 6,
+    "404": 1783,
+    "451": 2,
+    "500": 8,
+    "504": 1,
+    "live": 6383,
+    "protected": 5,
+    "err-Too many redirects.https://chat-with-pdf": 1,
+    "err-ENOTFOUND": 1
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1460,
+      "live": 384,
+      "takedowns": [
+        {
+          "url": "https://microsoft-login-page.vercel.app",
+          "host": "microsoft-login-page.vercel.app",
+          "label": "microsoft-login-page.vercel.app",
+          "source": "guess",
+          "repo": "Mikegm19/Microsoft-Login-Page",
+          "repoCreatedAt": "2026-08-25T03:15:31Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::pjwj5-1787643730773-5dded694c28b</code></span></main></div>"
+        },
+        {
+          "url": "https://businessvault.vercel.app",
+          "host": "businessvault.vercel.app",
+          "label": "businessvault.vercel.app",
+          "source": "guess",
+          "repo": "nawalkhann/BusinessVault",
+          "repoCreatedAt": "2026-08-25T05:20:25Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::t57h6-1787643913186-d1b781727b62</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 6,
+        "404": 1053,
+        "451": 2,
+        "500": 8,
+        "504": 1,
+        "live": 384,
+        "protected": 5,
+        "err-Too many redirects.https://chat-with-pdf": 1
+      },
+      "dossiers": 383,
+      "hostnameLane": 380,
+      "contentLane": 9,
+      "triaged": 380,
+      "confirmed": 9,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1345.57
+    },
+    "open": {
+      "name": "open",
+      "candidates": 6730,
+      "live": 5999,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 730,
+        "live": 5999,
+        "err-ENOTFOUND": 1
+      },
+      "dossiers": 5989,
+      "hostnameLane": 157,
+      "contentLane": 13,
+      "triaged": 169,
+      "confirmed": 5,
+      "canaryOutcomes": [],
+      "elapsedSec": 1003.22
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1935,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 12,
+    "urlscanFailed": 0,
+    "discord": 6,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 1,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://microsoft-login-page.vercel.app",
+      "host": "microsoft-login-page.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/Mikegm19/Microsoft-Login-Page",
+      "repoCreatedAt": "2026-08-25T03:15:31Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://businessvault.vercel.app",
+      "host": "businessvault.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/nawalkhann/BusinessVault",
+      "repoCreatedAt": "2026-08-25T05:20:25Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2424.63,
+  "output": "drainers-2026-08-25T07-10Z.jsonl"
+}
