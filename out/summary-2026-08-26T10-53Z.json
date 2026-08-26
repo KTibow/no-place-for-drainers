@@ -1,0 +1,127 @@
+{
+  "generated": "2026-08-26T11:22:55.250Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-26T06:53:06Z",
+  "repos": 77008,
+  "candidates": 9972,
+  "candidatesByName": 1614,
+  "candidatesByHomepage": 100,
+  "candidatesByDeployment": 8256,
+  "live": 7813,
+  "dossiers": 7812,
+  "triaged": 667,
+  "confirmed": 23,
+  "llmFailures": 2,
+  "probeStatuses": {
+    "402": 3,
+    "404": 2131,
+    "429": 1,
+    "451": 1,
+    "500": 10,
+    "504": 1,
+    "live": 7813,
+    "protected": 4,
+    "err-Too many redirects.https://demo-assets.v": 1,
+    "err-ENOTFOUND": 3,
+    "err-EAI_AGAIN": 1,
+    "err-23": 3
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1776,
+      "live": 449,
+      "takedowns": [
+        {
+          "url": "https://real-time-chat.vercel.app",
+          "host": "real-time-chat.vercel.app",
+          "label": "real-time-chat.vercel.app",
+          "source": "guess",
+          "repo": "shivam-yadav989/Real-time-chat",
+          "repoCreatedAt": "2026-08-26T09:36:56Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>pdx1::zq6js-1787742890282-a82f1c612e21</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 3,
+        "404": 1306,
+        "429": 1,
+        "451": 1,
+        "500": 10,
+        "504": 1,
+        "live": 449,
+        "protected": 4,
+        "err-Too many redirects.https://demo-assets.v": 1
+      },
+      "dossiers": 449,
+      "hostnameLane": 444,
+      "contentLane": 13,
+      "triaged": 444,
+      "confirmed": 14,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1305.37
+    },
+    "open": {
+      "name": "open",
+      "candidates": 8196,
+      "live": 7364,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 825,
+        "live": 7364,
+        "err-ENOTFOUND": 3,
+        "err-EAI_AGAIN": 1,
+        "err-23": 3
+      },
+      "dossiers": 7363,
+      "hostnameLane": 192,
+      "contentLane": 35,
+      "triaged": 223,
+      "confirmed": 9,
+      "canaryOutcomes": [],
+      "elapsedSec": 769.2
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2357,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 21,
+    "urlscanFailed": 0,
+    "discord": 8,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 4,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://real-time-chat.vercel.app",
+      "host": "real-time-chat.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/shivam-yadav989/Real-time-chat",
+      "repoCreatedAt": "2026-08-26T09:36:56Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1788.94,
+  "output": "drainers-2026-08-26T10-53Z.jsonl"
+}
