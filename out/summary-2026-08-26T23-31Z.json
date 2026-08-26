@@ -1,0 +1,97 @@
+{
+  "generated": "2026-08-26T23:50:38.194Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-26T19:31:08Z",
+  "repos": 57135,
+  "candidates": 6855,
+  "candidatesByName": 1002,
+  "candidatesByHomepage": 85,
+  "candidatesByDeployment": 5766,
+  "live": 5497,
+  "dossiers": 5488,
+  "triaged": 457,
+  "confirmed": 14,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 6,
+    "404": 1332,
+    "500": 10,
+    "503": 1,
+    "live": 5497,
+    "protected": 5,
+    "err-Too many redirects.https://appfinance.ve": 1,
+    "err-ENOTFOUND": 3
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1110,
+      "live": 288,
+      "takedowns": [],
+      "probeStatuses": {
+        "402": 6,
+        "404": 799,
+        "500": 10,
+        "503": 1,
+        "live": 288,
+        "protected": 5,
+        "err-Too many redirects.https://appfinance.ve": 1
+      },
+      "dossiers": 288,
+      "hostnameLane": 287,
+      "contentLane": 12,
+      "triaged": 287,
+      "confirmed": 6,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 402.37
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5745,
+      "live": 5209,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 533,
+        "live": 5209,
+        "err-ENOTFOUND": 3
+      },
+      "dossiers": 5200,
+      "hostnameLane": 147,
+      "contentLane": 27,
+      "triaged": 170,
+      "confirmed": 8,
+      "canaryOutcomes": [],
+      "elapsedSec": 246.28
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1468,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 12,
+    "urlscanFailed": 0,
+    "discord": 3,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 1,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1169.85,
+  "output": "drainers-2026-08-26T23-31Z.jsonl"
+}
