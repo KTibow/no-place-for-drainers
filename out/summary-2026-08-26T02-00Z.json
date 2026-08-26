@@ -1,0 +1,123 @@
+{
+  "generated": "2026-08-26T02:28:18.048Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-25T22:00:04Z",
+  "repos": 45041,
+  "candidates": 5970,
+  "candidatesByName": 821,
+  "candidatesByHomepage": 63,
+  "candidatesByDeployment": 5084,
+  "live": 4799,
+  "dossiers": 4797,
+  "triaged": 352,
+  "confirmed": 8,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 3,
+    "404": 1158,
+    "451": 1,
+    "500": 2,
+    "530": 1,
+    "live": 4799,
+    "protected": 2,
+    "err-Too many redirects.https://money-mint.ve": 1,
+    "err-Too many redirects.https://secureshare.v": 1,
+    "err-ENOTFOUND": 2
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 898,
+      "live": 233,
+      "takedowns": [
+        {
+          "url": "https://supportgenie.vercel.app",
+          "host": "supportgenie.vercel.app",
+          "label": "supportgenie.vercel.app",
+          "source": "guess",
+          "repo": "mralianwar928/supportgenie",
+          "repoCreatedAt": "2026-08-25T23:50:29Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>iad1::sb2jq-1787710465637-946f0e97346f</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 3,
+        "404": 655,
+        "451": 1,
+        "500": 2,
+        "live": 233,
+        "protected": 2,
+        "err-Too many redirects.https://money-mint.ve": 1,
+        "err-Too many redirects.https://secureshare.v": 1
+      },
+      "dossiers": 233,
+      "hostnameLane": 230,
+      "contentLane": 6,
+      "triaged": 230,
+      "confirmed": 5,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1040.84
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5072,
+      "live": 4566,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 503,
+        "530": 1,
+        "live": 4566,
+        "err-ENOTFOUND": 2
+      },
+      "dossiers": 4564,
+      "hostnameLane": 106,
+      "contentLane": 17,
+      "triaged": 122,
+      "confirmed": 3,
+      "canaryOutcomes": [],
+      "elapsedSec": 524.45
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1178,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 7,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 2,
+    "skippedSeen": 2,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://supportgenie.vercel.app",
+      "host": "supportgenie.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/mralianwar928/supportgenie",
+      "repoCreatedAt": "2026-08-25T23:50:29Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1693.17,
+  "output": "drainers-2026-08-26T02-00Z.jsonl"
+}
