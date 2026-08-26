@@ -1,0 +1,119 @@
+{
+  "generated": "2026-08-26T03:57:21.733Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-25T23:26:56Z",
+  "repos": 49226,
+  "candidates": 6452,
+  "candidatesByName": 863,
+  "candidatesByHomepage": 62,
+  "candidatesByDeployment": 5525,
+  "live": 5180,
+  "dossiers": 5177,
+  "triaged": 386,
+  "confirmed": 10,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 4,
+    "404": 1261,
+    "451": 1,
+    "500": 1,
+    "live": 5180,
+    "protected": 1,
+    "err-Too many redirects.https://secureshare.v": 1,
+    "err-ENOTFOUND": 3
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 939,
+      "live": 231,
+      "takedowns": [
+        {
+          "url": "https://supportgenie.vercel.app",
+          "host": "supportgenie.vercel.app",
+          "label": "supportgenie.vercel.app",
+          "source": "guess",
+          "repo": "mralianwar928/supportgenie",
+          "repoCreatedAt": "2026-08-25T23:50:29Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::l5z9q-1787715728002-d228b91f97a4</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 4,
+        "404": 700,
+        "451": 1,
+        "500": 1,
+        "live": 231,
+        "protected": 1,
+        "err-Too many redirects.https://secureshare.v": 1
+      },
+      "dossiers": 231,
+      "hostnameLane": 230,
+      "contentLane": 8,
+      "triaged": 230,
+      "confirmed": 6,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1150.98
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5513,
+      "live": 4949,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 561,
+        "live": 4949,
+        "err-ENOTFOUND": 3
+      },
+      "dossiers": 4946,
+      "hostnameLane": 143,
+      "contentLane": 14,
+      "triaged": 156,
+      "confirmed": 4,
+      "canaryOutcomes": [],
+      "elapsedSec": 702.17
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1238,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 8,
+    "urlscanFailed": 0,
+    "discord": 0,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 4,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://supportgenie.vercel.app",
+      "host": "supportgenie.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/mralianwar928/supportgenie",
+      "repoCreatedAt": "2026-08-25T23:50:29Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1825.29,
+  "output": "drainers-2026-08-26T03-26Z.jsonl"
+}
