@@ -1,0 +1,141 @@
+{
+  "generated": "2026-08-26T09:41:31.962Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-26T05:04:38Z",
+  "repos": 81602,
+  "candidates": 9653,
+  "candidatesByName": 1510,
+  "candidatesByHomepage": 92,
+  "candidatesByDeployment": 8049,
+  "live": 7571,
+  "dossiers": 7564,
+  "triaged": 651,
+  "confirmed": 14,
+  "llmFailures": 6,
+  "probeStatuses": {
+    "402": 5,
+    "404": 2055,
+    "406": 1,
+    "429": 1,
+    "451": 2,
+    "500": 10,
+    "live": 7571,
+    "protected": 5,
+    "err-ENOTFOUND": 3
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1666,
+      "live": 424,
+      "takedowns": [
+        {
+          "url": "https://paytm-wallet.vercel.app",
+          "host": "paytm-wallet.vercel.app",
+          "label": "paytm-wallet.vercel.app",
+          "source": "guess",
+          "repo": "IceCodeIsAce/Paytm-Wallet",
+          "repoCreatedAt": "2026-08-26T05:58:11Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::pr96h-1787736875138-5d884033e984</code></span></main></div>"
+        },
+        {
+          "url": "https://potential-octo-winner.vercel.app",
+          "host": "potential-octo-winner.vercel.app",
+          "label": "potential-octo-winner.vercel.app",
+          "source": "guess",
+          "repo": "nambatachj-coder/potential-octo-winner",
+          "repoCreatedAt": "2026-08-26T05:22:07Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>sfo1::z429c-1787736932970-3b224eab3b21</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 5,
+        "404": 1218,
+        "406": 1,
+        "429": 1,
+        "451": 2,
+        "500": 10,
+        "live": 424,
+        "protected": 5
+      },
+      "dossiers": 424,
+      "hostnameLane": 419,
+      "contentLane": 11,
+      "triaged": 419,
+      "confirmed": 6,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 1157.65
+    },
+    "open": {
+      "name": "open",
+      "candidates": 7987,
+      "live": 7147,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 837,
+        "live": 7147,
+        "err-ENOTFOUND": 3
+      },
+      "dossiers": 7140,
+      "hostnameLane": 203,
+      "contentLane": 32,
+      "triaged": 232,
+      "confirmed": 8,
+      "canaryOutcomes": [],
+      "elapsedSec": 776.95
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 2218,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 12,
+    "urlscanFailed": 0,
+    "discord": 3,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 1,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://paytm-wallet.vercel.app",
+      "host": "paytm-wallet.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/IceCodeIsAce/Paytm-Wallet",
+      "repoCreatedAt": "2026-08-26T05:58:11Z",
+      "source": "guess"
+    },
+    {
+      "url": "https://potential-octo-winner.vercel.app",
+      "host": "potential-octo-winner.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/nambatachj-coder/potential-octo-winner",
+      "repoCreatedAt": "2026-08-26T05:22:07Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 2213.9,
+  "output": "drainers-2026-08-26T09-04Z.jsonl"
+}
