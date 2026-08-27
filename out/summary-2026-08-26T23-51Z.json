@@ -1,0 +1,121 @@
+{
+  "generated": "2026-08-27T00:10:40.907Z",
+  "windowHours": 4,
+  "cutoff": "2026-08-26T19:51:30Z",
+  "repos": 54083,
+  "candidates": 6582,
+  "candidatesByName": 968,
+  "candidatesByHomepage": 79,
+  "candidatesByDeployment": 5533,
+  "live": 5281,
+  "dossiers": 5273,
+  "triaged": 435,
+  "confirmed": 16,
+  "llmFailures": 0,
+  "probeStatuses": {
+    "402": 6,
+    "404": 1275,
+    "451": 1,
+    "500": 9,
+    "503": 1,
+    "live": 5281,
+    "protected": 4,
+    "err-Too many redirects.https://appfinance.ve": 1,
+    "err-ENOTFOUND": 4
+  },
+  "tracks": {
+    "vercel": {
+      "name": "vercel",
+      "candidates": 1063,
+      "live": 271,
+      "takedowns": [
+        {
+          "url": "https://binance.vercel.app",
+          "host": "binance.vercel.app",
+          "label": "binance.vercel.app",
+          "source": "guess",
+          "repo": "barak721ipo-bit/binance",
+          "repoCreatedAt": "2026-08-26T23:18:55Z",
+          "status": 451,
+          "server": "",
+          "note": "DEPLOYMENT_DISABLED",
+          "html": "<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content=\"width=device-width,initial-scale=1\"><meta name=theme-color content=#000><title>Deployment Unavailable</title><style>:root{--background: #fff;--secondary: #666;--foreground: #000}@media(prefers-color-scheme:dark){:root{--background: #000;--secondary: #a1a1a1;--foreground: #fff}}html,body{overflow:hidden;background:var(--background);color:var(--foreground)}*,::after,::before{box-sizing:border-box;margin:0}body{font-family:sf pro text,sf pro icons,helvetica neue,helvetica,arial,sans-serif;font-size:1.6rem;line-height:1.65;word-break:break-word;font-kerning:auto;font-variant:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;hyphens:auto;height:100vh;height:-webkit-fill-available;max-height:100vh;max-height:-webkit-fill-available;margin:0}::selection{background:#79ffe1;color:#000}::-moz-selection{background:#79ffe1;color:#000}.message,.id-container{position:fixed;display:grid;place-content:center;padding:32px}.message{inset:0;padding:32px;font-size:20px}.title{text-wrap:balance;text-align:center}.id-container{left:0;bottom:0;width:100%;font-size:13px;color:var(--secondary)}code{font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;font-size:.92em}</style><div class=container><main><div class=message><p class=title>This deployment is unavailable</div><p class=id-container><span class=vercel-id><code>cle1::d8gzm-1787789263619-cf92dfea519d</code></span></main></div>"
+        }
+      ],
+      "probeStatuses": {
+        "402": 6,
+        "404": 770,
+        "451": 1,
+        "500": 9,
+        "503": 1,
+        "live": 271,
+        "protected": 4,
+        "err-Too many redirects.https://appfinance.ve": 1
+      },
+      "dossiers": 271,
+      "hostnameLane": 271,
+      "contentLane": 11,
+      "triaged": 271,
+      "confirmed": 5,
+      "canaryOutcomes": [
+        "live",
+        "live"
+      ],
+      "elapsedSec": 395.67
+    },
+    "open": {
+      "name": "open",
+      "candidates": 5519,
+      "live": 5010,
+      "takedowns": [],
+      "probeStatuses": {
+        "404": 505,
+        "live": 5010,
+        "err-ENOTFOUND": 4
+      },
+      "dossiers": 5002,
+      "hostnameLane": 143,
+      "contentLane": 26,
+      "triaged": 164,
+      "confirmed": 11,
+      "canaryOutcomes": [],
+      "elapsedSec": 305.17
+    }
+  },
+  "pace": {
+    "vercel.app": {
+      "issued": 1403,
+      "issuedBeforeFirstTrip": null,
+      "trips": 0,
+      "finalRps": 20,
+      "abandoned": false
+    }
+  },
+  "handoff": {
+    "urlscan": 14,
+    "urlscanFailed": 0,
+    "discord": 2,
+    "discordFailed": 0,
+    "skippedCanary": 4,
+    "skippedSeen": 1,
+    "urlscanEnabled": true,
+    "discordEnabled": true
+  },
+  "takedowns": [
+    {
+      "url": "https://binance.vercel.app",
+      "host": "binance.vercel.app",
+      "reason": "DEPLOYMENT_DISABLED",
+      "repoUrl": "https://github.com/barak721ipo-bit/binance",
+      "repoCreatedAt": "2026-08-26T23:18:55Z",
+      "source": "guess"
+    }
+  ],
+  "canary": {
+    "offline": "caught",
+    "live": "caught"
+  },
+  "canaryCaught": true,
+  "elapsedSec": 1150.34,
+  "output": "drainers-2026-08-26T23-51Z.jsonl"
+}
